@@ -47,7 +47,7 @@ namespace Asssignment
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            UpdateProfile up = new UpdateProfile(name);
+            StudentUpdateProfile up = new StudentUpdateProfile(name);
             up.Show();
 
             this.Hide();
