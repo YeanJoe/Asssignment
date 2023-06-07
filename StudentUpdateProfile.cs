@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Asssignment
 {
-    public partial class UpdateProfile : Form
+    public partial class StudentUpdateProfile : Form
     {
         public static string name = "";
-        public UpdateProfile()
+        public StudentUpdateProfile()
         {
             InitializeComponent();
         }
-        public UpdateProfile(string n)
+        public StudentUpdateProfile(string n)
         {
             InitializeComponent();
             name = n;

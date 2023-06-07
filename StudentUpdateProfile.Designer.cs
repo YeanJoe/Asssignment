@@ -1,6 +1,6 @@
 ﻿namespace Asssignment
 {
-    partial class UpdateProfile
+    partial class StudentUpdateProfile
     {
         /// <summary>
         /// Required designer variable.
