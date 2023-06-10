@@ -114,35 +114,41 @@ namespace Asssignment
         }
 
 
-        public static ArrayList viewSchedule(string n)
+        public ArrayList viewSchedule(string date)
         {
             ArrayList sc = new ArrayList();
             con.Open();
-            SqlCommand cmd = new SqlCommand("Select * From Schedule WHERE StudentName = '"+n+"'", con);
+            SqlCommand cmd = new SqlCommand("Select * From Schedule WHERE StudentName = @StudentName AND Date = @date", con);
+            cmd.Parameters.AddWithValue("@StudentName", stdname);
+            cmd.Parameters.AddWithValue("@date", date);
             SqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read()) 
             {
-                string time = rd.GetString(2);
-                string module = rd.GetString(3);
-                string trainer = rd.GetString(4);
-                string schedule = module + "||" + time + "||" + trainer;
+                /*sc.Add(rd.GetString(2));
+                sc.Add(rd.GetString(3));
+                sc.Add(rd.GetString(4));
+                sc.Add(" ");*/
+                
+                string info = rd.GetString(2) + "  ||  " + rd.GetString(3) + "  ||  " + rd.GetString(4);
+                sc.Add(info);
+                 
             }
             con.Close();
             return sc;
         }
 
-        public string Date(string n)
+        public ArrayList Date()
         {
-            string stat = null;
+            ArrayList dt = new ArrayList();
             con.Open();
-            SqlCommand cmd = new SqlCommand("Select Date From Schedule WHERE StudentName = '" + n + "'", con);
+            SqlCommand cmd = new SqlCommand("Select DISTINCT Date FROM Schedule WHERE StudentName = '" + stdname + "'", con);
             SqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read())
             {
-                string date = rd.GetString(1);
+                dt.Add(rd.GetString(0));
             }
             con.Close();
-            return stat;
+            return dt;
         }
 
     }

@@ -25,20 +25,35 @@ namespace Asssignment
             name = n;
         }
 
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            frmHome home = new frmHome();
+            home.Show();
+
+            this.Hide();
+        }
+
         private void Schedule_Load(object sender, EventArgs e)
         {
-            comboDate.Items.Clear();
-            Student std = new Student(name);
-            string date = std.Date(name);
-            comboDate.Items.Add(date);
+           
+                comboDate.Items.Clear();
+                ArrayList dt = new ArrayList();
+                Student std = new Student(name);
+                dt = std.Date();
+                foreach (var date in dt)
+                {
+                    comboDate.Items.Add(date);
+                }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             lstSchedule.Items.Clear();
             ArrayList sch = new ArrayList();
-            sch = Student.viewSchedule(name); 
-            foreach(var schedule in sch)
+            Student std = new Student(name);
+            sch = std.viewSchedule(comboDate.SelectedItem.ToString());
+            foreach (var schedule in sch)
             {
                 lstSchedule.Items.Add(schedule);
             }

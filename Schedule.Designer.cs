@@ -31,6 +31,7 @@
             this.comboDate = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lstSchedule = new System.Windows.Forms.ListBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboDate
@@ -49,6 +50,7 @@
             this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lstSchedule
             // 
@@ -59,16 +61,28 @@
             this.lstSchedule.Size = new System.Drawing.Size(348, 228);
             this.lstSchedule.TabIndex = 13;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(12, 12);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 40);
+            this.btnBack.TabIndex = 14;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lstSchedule);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.comboDate);
             this.Name = "Schedule";
             this.Text = "Schedule";
+            this.Load += new System.EventHandler(this.Schedule_Load);
             this.ResumeLayout(false);
 
         }
@@ -78,5 +92,6 @@
         private System.Windows.Forms.ComboBox comboDate;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ListBox lstSchedule;
+        private System.Windows.Forms.Button btnBack;
     }
 }
