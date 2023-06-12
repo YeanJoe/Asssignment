@@ -90,7 +90,7 @@
             // lblClasses
             // 
             this.lblClasses.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblClasses.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClasses.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClasses.Location = new System.Drawing.Point(341, 76);
             this.lblClasses.Name = "lblClasses";
             this.lblClasses.Size = new System.Drawing.Size(185, 31);
@@ -99,7 +99,7 @@
             // lblLevel
             // 
             this.lblLevel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLevel.Location = new System.Drawing.Point(341, 143);
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(185, 31);
@@ -108,7 +108,7 @@
             // lblStatus
             // 
             this.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.Location = new System.Drawing.Point(341, 214);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(185, 31);
@@ -117,7 +117,7 @@
             // lblCharges
             // 
             this.lblCharges.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCharges.Location = new System.Drawing.Point(341, 279);
             this.lblCharges.Name = "lblCharges";
             this.lblCharges.Size = new System.Drawing.Size(185, 31);
@@ -127,7 +127,7 @@
             // 
             this.btnPayment.Location = new System.Drawing.Point(217, 348);
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(75, 23);
+            this.btnPayment.Size = new System.Drawing.Size(75, 33);
             this.btnPayment.TabIndex = 13;
             this.btnPayment.Text = "Payment";
             this.btnPayment.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@
             // 
             this.btnDlt.Location = new System.Drawing.Point(403, 348);
             this.btnDlt.Name = "btnDlt";
-            this.btnDlt.Size = new System.Drawing.Size(75, 23);
+            this.btnDlt.Size = new System.Drawing.Size(75, 33);
             this.btnDlt.TabIndex = 14;
             this.btnDlt.Text = "Delete";
             this.btnDlt.UseVisualStyleBackColor = true;

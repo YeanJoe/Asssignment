@@ -28,7 +28,7 @@ namespace Asssignment
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmHome home = new frmHome();
+            frmHome home = new frmHome(name);
             home.Show();
 
             this.Hide();

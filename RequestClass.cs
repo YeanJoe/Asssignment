@@ -94,9 +94,9 @@ namespace Asssignment
             return status;
         }
 
-        public string viewReq(string n)
+        public void viewReq(string n)
         {
-            string stat = null;
+
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Request WHERE Username = '" + n + "'", con);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -109,7 +109,6 @@ namespace Asssignment
             }
 
             con.Close();
-            return stat;
         }
 
         public string dltReq(string n)
@@ -131,9 +130,8 @@ namespace Asssignment
             return stat;
         }
 
-        public string Pay(string n)
+        public void Pay(string n)
         {
-            string stat = null;
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Request WHERE Username = '" + n + "'", con);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -145,7 +143,6 @@ namespace Asssignment
             }
 
             con.Close();
-            return stat;
         }
 
         public string ProceedPay(string n)
