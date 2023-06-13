@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Asssignment
+namespace Assignment_Admin_
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Asssignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmHome());
+            Application.Run(FormProvider.Admin);
         }
     }
 }
