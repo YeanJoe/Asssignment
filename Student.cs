@@ -70,9 +70,8 @@ namespace Asssignment
             set { email = value; }
         }
 
-        public string ViewPro(string n)
+        public void ViewPro(string n)
         {
-            string stat = null;
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT * FROM StudentTable WHERE Fullname = '"+n+"'", con);
             SqlDataReader rd = cmd.ExecuteReader();
@@ -87,7 +86,7 @@ namespace Asssignment
             }
 
             con.Close();
-            return stat;
+       
         }
 
         public string Update(string em, string num, string add)
