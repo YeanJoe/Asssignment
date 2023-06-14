@@ -12,10 +12,16 @@ namespace Asssignment.Lecturer
 {
     public partial class LecturerDashboard : Form
     {
+        string username;
+        public LecturerDashboard(string username)
+        {
+            InitializeComponent();
+            this.username = username;
+
+        }
         public LecturerDashboard()
         {
             InitializeComponent();
-
         }
 
         private void LecturerDashboard_Load(object sender, EventArgs e)

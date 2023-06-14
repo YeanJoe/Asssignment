@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Asssignment.Lecturer;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -64,7 +65,11 @@ namespace Asssignment
                     frmHome studentHome = new frmHome(username);
                     studentHome.Show();
                 }
-
+                else if (userRole == "lecturer")
+                {
+                    LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
+                    lecturerDashboard.Show();
+                }
 
             }
             else
