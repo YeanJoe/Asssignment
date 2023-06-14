@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4293DD08-9AA2-4B64-896A-E8E877E4F2F4}</ProjectGuid>
+    <ProjectGuid>{07A96D34-3CD4-4740-9853-B14678C1A36A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Asssignment</RootNamespace>
     <AssemblyName>Asssignment</AssemblyName>
@@ -48,28 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System">
-      <HintPath>..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.ConfigurationManager, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Configuration.ConfigurationManager.7.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
-    </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.OracleClient" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Permissions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Permissions.7.0.0\lib\net462\System.Security.Permissions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,65 +59,67 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Lecturer\ApproveRequest.cs" />
+    <Compile Include="Lecturer\ApproveRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lecturer\ApproveRequest.Designer.cs">
       <DependentUpon>ApproveRequest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lecturer\Confirmation.cs" />
+    <Compile Include="Lecturer\Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lecturer\Confirmation.Designer.cs">
       <DependentUpon>Confirmation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lecturer\DeleteCompletedStudent.cs" />
+    <Compile Include="Lecturer\DeleteCompletedStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lecturer\DeleteCompletedStudent.Designer.cs">
       <DependentUpon>DeleteCompletedStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lecturer\LecturerDashboard.cs" />
+    <Compile Include="Lecturer\LecturerDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lecturer\LecturerDashboard.Designer.cs">
       <DependentUpon>LecturerDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lecturer\Profile.cs" />
+    <Compile Include="Lecturer\Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lecturer\Profile.Designer.cs">
       <DependentUpon>Profile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lecturer\RegisterStudent.cs" />
+    <Compile Include="Lecturer\RegisterStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lecturer\RegisterStudent.Designer.cs">
       <DependentUpon>RegisterStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lecturer\UpdateSubjectEnrollment.cs" />
+    <Compile Include="Lecturer\UpdateSubjectEnrollment.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lecturer\UpdateSubjectEnrollment.Designer.cs">
       <DependentUpon>UpdateSubjectEnrollment.cs</DependentUpon>
     </Compile>
-=======
->>>>>>> parent of e05170d (Create folder)
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profile.cs" />
-    <Compile Include="Profile.Designer.cs">
-      <DependentUpon>Profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Schedule.cs">
+    <Compile Include="Payment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Schedule.Designer.cs">
-      <DependentUpon>Schedule.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StudentHome.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StudentHome.Designer.cs">
-      <DependentUpon>StudentHome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Payment.cs" />
     <Compile Include="Payment.Designer.cs">
       <DependentUpon>Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,16 +130,24 @@
       <DependentUpon>Request.cs</DependentUpon>
     </Compile>
     <Compile Include="RequestClass.cs" />
+    <Compile Include="Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schedule.Designer.cs">
+      <DependentUpon>Schedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs" />
+    <Compile Include="StudentHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentHome.Designer.cs">
+      <DependentUpon>StudentHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="StudentUpdateProfile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StudentUpdateProfile.Designer.cs">
       <DependentUpon>StudentUpdateProfile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="test.cs" />
-    <Compile Include="test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="ViewRequest.cs">
@@ -166,7 +156,6 @@
     <Compile Include="ViewRequest.Designer.cs">
       <DependentUpon>ViewRequest.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <EmbeddedResource Include="Lecturer\ApproveRequest.resx">
       <DependentUpon>ApproveRequest.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,22 +177,14 @@
     <EmbeddedResource Include="Lecturer\UpdateSubjectEnrollment.resx">
       <DependentUpon>UpdateSubjectEnrollment.cs</DependentUpon>
     </EmbeddedResource>
-=======
->>>>>>> parent of e05170d (Create folder)
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profile.resx">
-      <DependentUpon>Profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Schedule.resx">
-      <DependentUpon>Schedule.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StudentHome.resx">
-      <DependentUpon>StudentHome.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -217,11 +198,14 @@
     <EmbeddedResource Include="Request.resx">
       <DependentUpon>Request.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Schedule.resx">
+      <DependentUpon>Schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentHome.resx">
+      <DependentUpon>StudentHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentUpdateProfile.resx">
       <DependentUpon>StudentUpdateProfile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="test.resx">
-      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewRequest.resx">
       <DependentUpon>ViewRequest.cs</DependentUpon>
@@ -245,8 +229,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="myDataBase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>myDataBase.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +245,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
