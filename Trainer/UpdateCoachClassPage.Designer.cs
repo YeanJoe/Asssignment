@@ -38,6 +38,7 @@
             this.cboTime = new System.Windows.Forms.ComboBox();
             this.cboDay = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbBoxClass = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // BtnBack
@@ -63,11 +64,11 @@
             // lblClassName
             // 
             this.lblClassName.AutoSize = true;
-            this.lblClassName.Location = new System.Drawing.Point(368, 30);
+            this.lblClassName.Location = new System.Drawing.Point(353, 91);
             this.lblClassName.Name = "lblClassName";
-            this.lblClassName.Size = new System.Drawing.Size(89, 16);
+            this.lblClassName.Size = new System.Drawing.Size(63, 16);
             this.lblClassName.TabIndex = 2;
-            this.lblClassName.Text = "(Class Name)";
+            this.lblClassName.Text = "Class ID :";
             // 
             // label2
             // 
@@ -137,11 +138,21 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Schedule";
             // 
+            // cmbBoxClass
+            // 
+            this.cmbBoxClass.FormattingEnabled = true;
+            this.cmbBoxClass.Location = new System.Drawing.Point(422, 88);
+            this.cmbBoxClass.Name = "cmbBoxClass";
+            this.cmbBoxClass.Size = new System.Drawing.Size(121, 24);
+            this.cmbBoxClass.TabIndex = 10;
+            this.cmbBoxClass.SelectedIndexChanged += new System.EventHandler(this.cmbBoxClass_SelectedIndexChanged);
+            // 
             // UpdateCoachClassPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbBoxClass);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboDay);
             this.Controls.Add(this.cboTime);
@@ -172,5 +183,6 @@
         private System.Windows.Forms.ComboBox cboTime;
         private System.Windows.Forms.ComboBox cboDay;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbBoxClass;
     }
 }

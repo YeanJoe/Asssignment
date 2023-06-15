@@ -37,5 +37,10 @@ namespace APU_Programming_Cafe_Management_System
         {
 
         }
+
+        private void cmbBoxClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
