@@ -91,6 +91,7 @@
             this.Controls.Add(this.BtnBack);
             this.Name = "TrainerFeedbackPage";
             this.Text = "Feedback";
+            this.Load += new System.EventHandler(this.TrainerFeedbackPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

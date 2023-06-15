@@ -144,6 +144,7 @@
             this.Controls.Add(this.BtnBack);
             this.Name = "AddCoachingClassPage";
             this.Text = "Add Coaching Class Info";
+            this.Load += new System.EventHandler(this.AddCoachingClassPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

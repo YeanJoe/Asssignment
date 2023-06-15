@@ -1,4 +1,5 @@
-﻿using Asssignment.Lecturer;
+﻿using APU_Programming_Cafe_Management_System;
+using Asssignment.Lecturer;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -69,6 +70,11 @@ namespace Asssignment
                 {
                     LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
                     lecturerDashboard.Show();
+                }
+                else if(userRole == "trainer")
+                {
+                    TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
+                    trainerDashboardPage.Show();
                 }
 
             }

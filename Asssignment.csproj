@@ -155,53 +155,41 @@
     <Compile Include="StudentUpdateProfile.Designer.cs">
       <DependentUpon>StudentUpdateProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer\AddCoachingClass.cs">
+    <Compile Include="Trainer\AddCoachingClassPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer\AddCoachingClass.Designer.cs">
-      <DependentUpon>AddCoachingClass.cs</DependentUpon>
+    <Compile Include="Trainer\AddCoachingClassPage.Designer.cs">
+      <DependentUpon>AddCoachingClassPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer\Feedback.cs">
+    <Compile Include="Trainer\TrainerFeedbackPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer\Feedback.Designer.cs">
-      <DependentUpon>Feedback.cs</DependentUpon>
+    <Compile Include="Trainer\TrainerFeedbackPage.Designer.cs">
+      <DependentUpon>TrainerFeedbackPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer\HomePage.cs">
+    <Compile Include="Trainer\TrainerDashboardPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer\HomePage.Designer.cs">
-      <DependentUpon>HomePage.cs</DependentUpon>
+    <Compile Include="Trainer\TrainerDashboardPage.Designer.cs">
+      <DependentUpon>TrainerDashboardPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer\Login%28mic%29.cs">
+    <Compile Include="Trainer\TrainerUpdateProfilePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer\Login%28mic%29.Designer.cs">
-      <DependentUpon>Login%28mic%29.cs</DependentUpon>
+    <Compile Include="Trainer\TrainerUpdateProfilePage.Designer.cs">
+      <DependentUpon>TrainerUpdateProfilePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer\TrainerDashboard.cs">
+    <Compile Include="Trainer\UpdateCoachClassPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer\TrainerDashboard.Designer.cs">
-      <DependentUpon>TrainerDashboard.cs</DependentUpon>
+    <Compile Include="Trainer\UpdateCoachClassPage.Designer.cs">
+      <DependentUpon>UpdateCoachClassPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer\TrainerUpdateProfile.cs">
+    <Compile Include="Trainer\ViewStudentsPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer\TrainerUpdateProfile.Designer.cs">
-      <DependentUpon>TrainerUpdateProfile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Trainer\UpdateCoachingClass.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Trainer\UpdateCoachingClass.Designer.cs">
-      <DependentUpon>UpdateCoachingClass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Trainer\ViewStudents.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Trainer\ViewStudents.Designer.cs">
-      <DependentUpon>ViewStudents.cs</DependentUpon>
+    <Compile Include="Trainer\ViewStudentsPage.Designer.cs">
+      <DependentUpon>ViewStudentsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="ViewRequest.cs">
@@ -261,29 +249,23 @@
     <EmbeddedResource Include="StudentUpdateProfile.resx">
       <DependentUpon>StudentUpdateProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\AddCoachingClass.resx">
-      <DependentUpon>AddCoachingClass.cs</DependentUpon>
+    <EmbeddedResource Include="Trainer\AddCoachingClassPage.resx">
+      <DependentUpon>AddCoachingClassPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\Feedback.resx">
-      <DependentUpon>Feedback.cs</DependentUpon>
+    <EmbeddedResource Include="Trainer\TrainerFeedbackPage.resx">
+      <DependentUpon>TrainerFeedbackPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\HomePage.resx">
-      <DependentUpon>HomePage.cs</DependentUpon>
+    <EmbeddedResource Include="Trainer\TrainerDashboardPage.resx">
+      <DependentUpon>TrainerDashboardPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\Login%28mic%29.resx">
-      <DependentUpon>Login%28mic%29.cs</DependentUpon>
+    <EmbeddedResource Include="Trainer\TrainerUpdateProfilePage.resx">
+      <DependentUpon>TrainerUpdateProfilePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\TrainerDashboard.resx">
-      <DependentUpon>TrainerDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Trainer\UpdateCoachClassPage.resx">
+      <DependentUpon>UpdateCoachClassPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\TrainerUpdateProfile.resx">
-      <DependentUpon>TrainerUpdateProfile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\UpdateCoachingClass.resx">
-      <DependentUpon>UpdateCoachingClass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Trainer\ViewStudents.resx">
-      <DependentUpon>ViewStudents.cs</DependentUpon>
+    <EmbeddedResource Include="Trainer\ViewStudentsPage.resx">
+      <DependentUpon>ViewStudentsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewRequest.resx">
       <DependentUpon>ViewRequest.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace APU_Programming_Cafe_Management_System
 {
-    partial class UpdateProfilePage
+    partial class TrainerUpdateProfilePage
     {
         /// <summary>
         /// Required designer variable.
@@ -55,6 +55,7 @@
             this.BtnSend.TabIndex = 1;
             this.BtnSend.Text = "Update";
             this.BtnSend.UseVisualStyleBackColor = true;
+            this.BtnSend.Click += new System.EventHandler(this.BtnSend_Click);
             // 
             // txtContactNumber
             // 
@@ -113,6 +114,7 @@
             this.Controls.Add(this.BtnBack);
             this.Name = "UpdateProfilePage";
             this.Text = "Update Profile";
+            this.Load += new System.EventHandler(this.UpdateProfilePage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

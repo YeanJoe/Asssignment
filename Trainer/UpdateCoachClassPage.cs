@@ -10,20 +10,32 @@ using System.Windows.Forms;
 
 namespace APU_Programming_Cafe_Management_System
 {
-    public partial class UpdateProfilePage : Form
+    public partial class UpdateCoachClassPage : Form
     {
-        public UpdateProfilePage()
+        string username;
+        public UpdateCoachClassPage(string username)
         {
             InitializeComponent();
+            this.username = username;
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage();
+            TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
             trainerDashboardPage.Show();
 
             // Close Form1
             this.Close();
+        }
+
+        private void BtnSaveChanges_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateCoachClassPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

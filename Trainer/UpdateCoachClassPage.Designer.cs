@@ -58,6 +58,7 @@
             this.BtnSaveChanges.TabIndex = 1;
             this.BtnSaveChanges.Text = "Save Changes";
             this.BtnSaveChanges.UseVisualStyleBackColor = true;
+            this.BtnSaveChanges.Click += new System.EventHandler(this.BtnSaveChanges_Click);
             // 
             // lblClassName
             // 
@@ -153,6 +154,7 @@
             this.Controls.Add(this.BtnBack);
             this.Name = "UpdateCoachClassPage";
             this.Text = "Update Coaching Class Info";
+            this.Load += new System.EventHandler(this.UpdateCoachClassPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

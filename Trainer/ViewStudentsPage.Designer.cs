@@ -228,6 +228,7 @@
             this.Controls.Add(this.BtnBack);
             this.Name = "ViewStudentsPage";
             this.Text = "View Students";
+            this.Load += new System.EventHandler(this.ViewStudentsPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

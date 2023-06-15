@@ -108,6 +108,7 @@
             this.Controls.Add(this.btnLogout);
             this.Name = "TrainerDashboardPage";
             this.Text = "Trainer";
+            this.Load += new System.EventHandler(this.TrainerDashboardPage_Load);
             this.ResumeLayout(false);
 
         }

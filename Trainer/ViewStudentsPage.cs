@@ -10,20 +10,27 @@ using System.Windows.Forms;
 
 namespace APU_Programming_Cafe_Management_System
 {
-    public partial class LoginPage : Form
+    public partial class ViewStudentsPage : Form
     {
-        public LoginPage()
+        string username;
+        public ViewStudentsPage(string username)
         {
             InitializeComponent();
+            this.username = username;
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
-            TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage();
+            TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
             trainerDashboardPage.Show();
 
             // Close Form1
             this.Close();
+        }
+
+        private void ViewStudentsPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
