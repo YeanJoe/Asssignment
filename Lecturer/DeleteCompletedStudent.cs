@@ -19,6 +19,8 @@ namespace Asssignment.Lecturer
 
         private void DeleteCompletedStudent_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'myDataBaseDataSet.CompletedStudent' table. You can move, or remove it, as needed.
+            this.completedStudentTableAdapter.Fill(this.myDataBaseDataSet.CompletedStudent);
 
         }
 
