@@ -62,19 +62,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminHomePage.cs">
+    <Compile Include="Admin\AdminHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminHomePage.Designer.cs">
+    <Compile Include="Admin\AdminHomePage.Designer.cs">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feedback Hub.cs">
+    <Compile Include="Admin\Feedback Hub.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feedback Hub.Designer.cs">
+    <Compile Include="Admin\Feedback Hub.Designer.cs">
       <DependentUpon>Feedback Hub.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProvider.cs" />
+    <Compile Include="Admin\FormProvider.cs" />
     <Compile Include="Lecturer\ApproveRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,22 +168,22 @@
     <Compile Include="Student\StudentUpdateProfile.Designer.cs">
       <DependentUpon>StudentUpdateProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer Register and Delete.cs">
+    <Compile Include="Admin\Trainer Register and Delete.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer Register and Delete.Designer.cs">
+    <Compile Include="Admin\Trainer Register and Delete.Designer.cs">
       <DependentUpon>Trainer Register and Delete.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer%27s Module Assignment.cs">
+    <Compile Include="Admin\Trainer%27s Module Assignment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer%27s Module Assignment.Designer.cs">
+    <Compile Include="Admin\Trainer%27s Module Assignment.Designer.cs">
       <DependentUpon>Trainer%27s Module Assignment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trainer%27s Monthly Income Report.cs">
+    <Compile Include="Admin\Trainer%27s Monthly Income Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trainer%27s Monthly Income Report.Designer.cs">
+    <Compile Include="Admin\Trainer%27s Monthly Income Report.Designer.cs">
       <DependentUpon>Trainer%27s Monthly Income Report.cs</DependentUpon>
     </Compile>
     <Compile Include="Trainer\AddCoachingClassPage.cs">
@@ -230,10 +230,10 @@
     <Compile Include="Student\ViewRequest.Designer.cs">
       <DependentUpon>ViewRequest.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminHomePage.resx">
+    <EmbeddedResource Include="Admin\AdminHomePage.resx">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feedback Hub.resx">
+    <EmbeddedResource Include="Admin\Feedback Hub.resx">
       <DependentUpon>Feedback Hub.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lecturer\ApproveRequest.resx">
@@ -287,13 +287,13 @@
     <EmbeddedResource Include="Student\StudentUpdateProfile.resx">
       <DependentUpon>StudentUpdateProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer Register and Delete.resx">
+    <EmbeddedResource Include="Admin\Trainer Register and Delete.resx">
       <DependentUpon>Trainer Register and Delete.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer%27s Module Assignment.resx">
+    <EmbeddedResource Include="Admin\Trainer%27s Module Assignment.resx">
       <DependentUpon>Trainer%27s Module Assignment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trainer%27s Monthly Income Report.resx">
+    <EmbeddedResource Include="Admin\Trainer%27s Monthly Income Report.resx">
       <DependentUpon>Trainer%27s Monthly Income Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trainer\AddCoachingClassPage.resx">
