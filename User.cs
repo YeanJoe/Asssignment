@@ -71,10 +71,22 @@ namespace Asssignment
                     LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
                     lecturerDashboard.Show();
                 }
+<<<<<<< HEAD
                 else if(userRole == "trainer")
                 {
                     TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
                     trainerDashboardPage.Show();
+=======
+                else if (userRole == "Administrator")
+                {
+                    LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
+                    lecturerDashboard.Show();
+                }
+                else if (userRole == "trainer")
+                {
+                    LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
+                    lecturerDashboard.Show();
+>>>>>>> 9d5dd722cd69a690a98070d478775901806e3f43
                 }
 
             }
