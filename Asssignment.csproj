@@ -347,8 +347,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="myDataBase_log.ldf">
-      <DependentUpon>myDataBase.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>myDataBase.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
