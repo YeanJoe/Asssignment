@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Asssignment.Trainer
 {
@@ -14,6 +17,7 @@ namespace Asssignment.Trainer
         private string email;
         private string contactNumer;
         private string address;
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
         public string TrainerID
         {
@@ -51,6 +55,29 @@ namespace Asssignment.Trainer
         public Trainer() 
         {
             
+        }
+
+        public List<string> GetExistingModules()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT ModuleName ", con);
+
+        }
+        {
+            con.Open();
+            string cmdString = "SELECT * FROM" + tableName + "WHERE ";
+            
+            for(int i = 0; i<values.Count; i++)
+            {
+                cmdString += variables[i] + "= '" + values[i] + "', ";
+            }
+                
+                
+                
+            SqlDataReader rd = cmd.ExecuteReader();
+            con.Close();
+
+            return rd;
+
         }
     }
 }
