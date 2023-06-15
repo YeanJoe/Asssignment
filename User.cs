@@ -70,6 +70,16 @@ namespace Asssignment
                     LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
                     lecturerDashboard.Show();
                 }
+                else if (userRole == "Administrator")
+                {
+                    LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
+                    lecturerDashboard.Show();
+                }
+                else if (userRole == "trainer")
+                {
+                    LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
+                    lecturerDashboard.Show();
+                }
 
             }
             else
