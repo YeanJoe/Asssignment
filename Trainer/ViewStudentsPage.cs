@@ -19,6 +19,12 @@ namespace APU_Programming_Cafe_Management_System
             this.username = username;
         }
 
+        private void ViewStudentsPage_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+
         private void BtnBack_Click(object sender, EventArgs e)
         {
             TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
@@ -28,9 +34,6 @@ namespace APU_Programming_Cafe_Management_System
             this.Close();
         }
 
-        private void ViewStudentsPage_Load(object sender, EventArgs e)
-        {
-
-        }
+   
     }
 }
