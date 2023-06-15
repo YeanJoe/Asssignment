@@ -57,7 +57,7 @@ namespace Asssignment.Trainer
             
         }
 
-        public List<string> GetExistingModules()
+        /*public List<string> GetExistingModules()
         {
             SqlCommand cmd = new SqlCommand("SELECT ModuleName ", con);
 
@@ -78,6 +78,6 @@ namespace Asssignment.Trainer
 
             return rd;
 
-        }
+        }*/
     }
 }

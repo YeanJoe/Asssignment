@@ -78,11 +78,6 @@
             // comboModule
             // 
             this.comboModule.FormattingEnabled = true;
-            this.comboModule.Items.AddRange(new object[] {
-            "Python",
-            "C#",
-            "HTML",
-            "C++"});
             this.comboModule.Location = new System.Drawing.Point(366, 122);
             this.comboModule.Name = "comboModule";
             this.comboModule.Size = new System.Drawing.Size(173, 24);
@@ -109,7 +104,6 @@
             this.lblCharge.Name = "lblCharge";
             this.lblCharge.Size = new System.Drawing.Size(176, 32);
             this.lblCharge.TabIndex = 6;
-            this.lblCharge.Click += new System.EventHandler(this.lblCharge_Click);
             // 
             // btnRequest
             // 
@@ -136,6 +130,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Request";
             this.Text = "Request";
+            this.Load += new System.EventHandler(this.Request_Load);
             this.ResumeLayout(false);
 
         }

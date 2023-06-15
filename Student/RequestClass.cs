@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -164,6 +165,21 @@ namespace Asssignment
                 stat = null;
             con.Close();
             return stat;
+        }
+
+        public ArrayList addModule()
+        {
+            ArrayList mod = new ArrayList();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT DISTINCT ModuleName FROM Module", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                mod.Add(rd.GetString(0));
+            }
+
+            con.Close() ;
+            return mod;
         }
 
        
