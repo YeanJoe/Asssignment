@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Net;
 using System.Security.Cryptography;
+using System.Configuration;
+using Asssignment.Admin;
 
 namespace Assignment_Admin_
 {
@@ -22,23 +24,12 @@ namespace Assignment_Admin_
 
         private void Trainer_Register_and_Delete_Load(object sender, EventArgs e)
         {
-            //Open Connection to the database
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
-            con.Open();
-
-            //Query to find total number of trainers in the trainer table
-            SqlCommand cmdTrainerID = new SqlCommand($"SELECT TrainerID FROM [Trainer] GROUP BY TrainerID", con);
-
-            //Display all TrainerID into the TrainerID ComboBox
-            using (SqlDataReader reader = cmdTrainerID.ExecuteReader())
+            cmbTrainerID.Items.Clear();
+            GetTrainerIDList ID = new GetTrainerIDList();
+            foreach (var id in ID.Refresh())
             {
-                while (reader.Read())
-                {
-                    cmbTrainerID.Items.Add(reader["TrainerID"].ToString());
-                }
+                cmbTrainerID.Items.Add(id.ToString());
             }
-            cmbTrainerID.Items.Add("New Trainer");
-            con.Close();
         }
 
         private void cmbTrainerID_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,21 +44,22 @@ namespace Assignment_Admin_
                 txtContactNumber.Enabled = false;
                 txtAddress.Enabled = false;
 
-                SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyCS"].ToString());
                 con.Open();
                 int TrainerID = int.Parse(cmbTrainerID.Text);
 
-                SqlCommand cmdTrainerUID = new SqlCommand($"SELECT UserID FROM [Trainer] WHERE TrainerID = '{TrainerID}'", con);
+                SqlCommand cmdTrainerUID = new SqlCommand($"SELECT UserId FROM [Trainer] WHERE TrainerId = '{TrainerID}'", con);
                 txtUserID.Text = cmdTrainerUID.ExecuteScalar().ToString();
 
-                SqlCommand cmdUsername = new SqlCommand($"SELECT Username FROM [Trainer] WHERE TrainerID = '{TrainerID}'", con);
+                string UID = txtUserID.Text;
+                SqlCommand cmdUsername = new SqlCommand($"SELECT Username FROM [User] WHERE UserID = '{UID}'", con);
                 txtUsername.Text = cmdUsername.ExecuteScalar().ToString();
 
-                SqlCommand cmdTrainerPassword = new SqlCommand($"SELECT Password FROM [Trainer] WHERE TrainerID = '{TrainerID}'", con);
-                txtPassword.Text = cmdTrainerPassword.ExecuteScalar().ToString();
+                SqlCommand cmdPassword = new SqlCommand($"SELECT Password FROM [User] WHERE UserID = '{UID}'", con);
+                txtPassword.Text = cmdPassword.ExecuteScalar().ToString();
 
-                SqlCommand cmdTrainerName = new SqlCommand($"SELECT FullName FROM [Trainer] WHERE TrainerID = '{TrainerID}'", con);
-                txtName.Text = cmdTrainerName.ExecuteScalar().ToString();
+                SqlCommand cmdName = new SqlCommand($"SELECT FullName FROM [Trainer] WHERE TrainerID = '{TrainerID}'", con);
+                txtName.Text = cmdName.ExecuteScalar().ToString();
 
                 SqlCommand cmdTrainerEmail = new SqlCommand($"SELECT Email FROM [Trainer] WHERE TrainerID = '{TrainerID}'", con);
                 txtEmail.Text = cmdTrainerEmail.ExecuteScalar().ToString();
@@ -121,9 +113,6 @@ namespace Assignment_Admin_
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }*/
             if (cmbTrainerID.Text == "New Trainer")
             {
-                SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
-                con.Open();
-
                 string Username = txtUsername.Text;
                 string Password = txtPassword.Text;
                 string Name = txtName.Text;
@@ -131,21 +120,40 @@ namespace Assignment_Admin_
                 string Contact = txtContactNumber.Text;
                 string Address = txtAddress.Text;
 
-                if (Username == null || Password == null || Name == null || Email == null || Contact == null || Address == null) { MessageBox.Show("Information Missing!"); }
-                else
+                if (Username != "" && Password != "" && Name != "" && Email != "" && Contact != "" && Address != "")
                 {
-                    SqlCommand cmdInsertIntoUser = new SqlCommand($"INSERT INTO [User] VALUES('{Username}', '{Password}', 'Trainer')", con);
+                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyCS"].ToString());
+                    con.Open();
+
+                    SqlCommand cmdInsertIntoUser = new SqlCommand("INSERT  INTO [User] (Username, Password, Role) VALUES (@username, @password, 'trainer')", con);
+                    cmdInsertIntoUser.Parameters.AddWithValue("@username", Username);
+                    cmdInsertIntoUser.Parameters.AddWithValue("@password", Password);
                     cmdInsertIntoUser.ExecuteNonQuery();
 
                     SqlCommand cmdUID = new SqlCommand($"SELECT UserID FROM [User] WHERE Username = '{Username}' AND Password = '{Password}'", con);
                     string UID = cmdUID.ExecuteScalar().ToString();
 
-                    SqlCommand cmdInsertIntoTrainer = new SqlCommand($"INSERT INTO [Trainer] Values('{UID}', '{Username}', '{Password}', '{Name}', '{Email}', '{Contact}', '{Address}')", con);
+                    SqlCommand cmdInsertIntoTrainer = new SqlCommand($"INSERT INTO [Trainer] (UserId, FullName, Email, ContactNumber, Address, Password) Values(@uid, @name, @email, @number, @address, @password)", con);
+                    cmdInsertIntoTrainer.Parameters.AddWithValue("@uid", UID);
+                    cmdInsertIntoTrainer.Parameters.AddWithValue("@name", Name);
+                    cmdInsertIntoTrainer.Parameters.AddWithValue("@email", Email);
+                    cmdInsertIntoTrainer.Parameters.AddWithValue("@number", Contact);
+                    cmdInsertIntoTrainer.Parameters.AddWithValue("@address", Address);
+                    cmdInsertIntoTrainer.Parameters.AddWithValue("@password", Password);
                     cmdInsertIntoTrainer.ExecuteNonQuery();
 
+                    con.Close();
                     MessageBox.Show("Trainer Registered!");
-                    this.Refresh();
+
+                    cmbTrainerID.Items.Clear();
+                    GetTrainerIDList ID = new GetTrainerIDList();
+                    foreach (var id in ID.Refresh())
+                    {
+                        cmbTrainerID.Items.Add(id.ToString());
+                    }
                 }
+                else { MessageBox.Show("Information Missing!"); }
+               
             }
             else
             {
@@ -158,7 +166,7 @@ namespace Assignment_Admin_
             if (cmbTrainerID.Text != "New Trainer")
             {
                 MessageBox.Show("You are trying to delete a trainer! Press enter to continue");
-                SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyCS"].ToString());
                 con.Open();
 
                 string UID = txtUserID.Text;
@@ -166,12 +174,18 @@ namespace Assignment_Admin_
                 string Password = txtPassword.Text;
                 SqlCommand cmdDeleteFromUser = new SqlCommand($"DELETE FROM [User] WHERE UserID = '{UID}' AND Username = '{Username}' AND Password = '{Password}'", con);
                 cmdDeleteFromUser.ExecuteNonQuery();
-                SqlCommand cmdDeleteFromTrainer = new SqlCommand($"DELETE FROM [Trainer] WHERE UserID = '{UID}' AND Username = '{Username}' AND Password = '{Password}'", con);
+                SqlCommand cmdDeleteFromTrainer = new SqlCommand($"DELETE FROM [Trainer] WHERE UserId = '{UID}' AND Password = '{Password}'", con);
                 cmdDeleteFromTrainer.ExecuteNonQuery();
                 con.Close();
 
                 MessageBox.Show("Trainer Deleted");
-                this.Refresh();
+
+                cmbTrainerID.Items.Clear();
+                GetTrainerIDList ID = new GetTrainerIDList();
+                foreach (var id in ID.Refresh())
+                {
+                    cmbTrainerID.Items.Add(id.ToString());
+                }
             }
             else
             {

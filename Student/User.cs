@@ -1,4 +1,5 @@
 ﻿using APU_Programming_Cafe_Management_System;
+using Assignment_Admin_;
 using Asssignment.Lecturer;
 using System;
 using System.Collections.Generic;
@@ -76,10 +77,10 @@ namespace Asssignment
                     TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
                     trainerDashboardPage.Show();
                 }
-                else if (userRole == "Administrator")
+                else if (userRole == "admin")
                 {
-                    LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
-                    lecturerDashboard.Show();
+                    AdminHomePage adminDashboard = new AdminHomePage(username);
+                    adminDashboard.Show();
                 }
 
 
