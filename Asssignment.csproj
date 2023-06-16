@@ -70,6 +70,12 @@
     <Compile Include="Admin\AdminHomePage.Designer.cs">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AlertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\AlertForm.Designer.cs">
+      <DependentUpon>AlertForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Feedback Hub.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,7 +83,7 @@
       <DependentUpon>Feedback Hub.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\FormProvider.cs" />
-    <Compile Include="Admin\GetTrainerIDList.cs" />
+    <Compile Include="Admin\Trainer.cs" />
     <Compile Include="Lecturer\ApproveRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </Compile>
     <EmbeddedResource Include="Admin\AdminHomePage.resx">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\AlertForm.resx">
+      <DependentUpon>AlertForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Feedback Hub.resx">
       <DependentUpon>Feedback Hub.cs</DependentUpon>
