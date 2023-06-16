@@ -69,5 +69,12 @@ namespace Assignment_Admin_
 
 
         }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            AdminHomePage dash = new AdminHomePage();
+            dash.Show();
+            this.Hide();
+        }
     }
 }
