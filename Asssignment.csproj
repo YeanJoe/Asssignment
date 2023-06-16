@@ -83,12 +83,6 @@
       <DependentUpon>Feedback Hub.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\FormProvider.cs" />
-    <Compile Include="Admin\test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Trainer.cs" />
     <Compile Include="Lecturer\ApproveRequest.cs">
       <SubType>Form</SubType>
@@ -132,6 +126,7 @@
     <Compile Include="Lecturer\UpdateSubjectEnrollment.Designer.cs">
       <DependentUpon>UpdateSubjectEnrollment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Student\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,7 +150,6 @@
     <Compile Include="Student\Profile.Designer.cs">
       <DependentUpon>Profile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Student\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student\Request.cs">
       <SubType>Form</SubType>
@@ -255,9 +249,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Feedback Hub.resx">
       <DependentUpon>Feedback Hub.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin\test.resx">
-      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lecturer\ApproveRequest.resx">
       <DependentUpon>ApproveRequest.cs</DependentUpon>
