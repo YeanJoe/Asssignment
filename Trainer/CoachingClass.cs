@@ -59,10 +59,11 @@ namespace Asssignment.Trainer
             con.Close();
             if(i!=0)
             {
+                Module module = new Module(moduleName);
                 con.Open();
-                string cmdString = "INSERT INTO [CoachingClass] (ClassID, ModuleID, TrainerID, Charges, Schedule) ";
-                cmdString += ("VALUES('', {0}, {1}, {2}, '{3}')");
-                cmdString = string.Format(cmdString, moduleID, trainerID, charges, schedule);
+                string cmdString = "INSERT INTO [CoachingClass] (ModuleID, TrainerID, Charges, Schedule) ";
+                cmdString += ("VALUES({0}, {1}, {2}, '{3}')");
+                cmdString = string.Format(cmdString, module.ModuleID, trainerID, charges, schedule);
                 cmd = new SqlCommand(cmdString, con);
                 i = cmd.ExecuteNonQuery();
                 if (i != 0)
