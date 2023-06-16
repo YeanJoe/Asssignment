@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Asssignment.Trainer;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.AxHost;
@@ -17,7 +19,7 @@ namespace Asssignment.Lecturer
         private string email;
         private string contactNumer;
         private string address;
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+        static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
         public int LecturerID
         {
@@ -92,5 +94,55 @@ namespace Asssignment.Lecturer
             return stat;
         }
 
+        internal static string RegisterStudent(string username, string password, Student student)
+        {
+            string stat = "Failed to register Student";
+
+            //insert to usertable
+            con.Open();
+            string cmdString = "INSERT INTO [User] (Username, Password, Role) ";
+            cmdString += ("VALUES('{0}', '{1}', '{2}')");
+            cmdString = string.Format(cmdString, username, password, "student");
+            SqlCommand cmd = new SqlCommand(cmdString, con);
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if (i != 0)
+            {
+                //Get the newly created userID from username
+                student.UserID = GetUserID(username);
+
+                //insert to studentTable
+                con.Open();
+                cmdString = "INSERT INTO [StudentTable] (UserID, FullName, Email, ContactNum, TPNumber, Address) ";
+                cmdString += ("VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}')");
+                cmdString = string.Format(cmdString, student.UserID, student.Stdname, student.Email, student.PhoneNum, student.Tpnum, student.Address);
+                cmd = new SqlCommand(cmdString, con);
+                i = cmd.ExecuteNonQuery();
+                if (i != 0)
+                {
+                    stat = "Student Registered!";
+                }
+                con.Close();
+            }
+
+             return stat;
+
+        }
+
+        public static int GetUserID(string username)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT UserID FROM [User] WHERE Username = '" + username + "'", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            int userID = 0;
+            while (rd.Read())
+            {
+                // Access the UserID column value
+                userID = rd.GetInt32(0);
+            }
+            rd.Close();
+            con.Close();
+            return userID;
+        }
     }
 }

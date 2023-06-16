@@ -56,13 +56,23 @@ namespace Asssignment.Lecturer
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+            this.Dispose();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
             RegisterStudent registerStudent= new RegisterStudent(lecturer);
             registerStudent.Show();
+            this.Hide();
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            ApproveRequest approveRequest = new ApproveRequest(lecturer);
+            approveRequest.Show();
             this.Hide();
         }
     }

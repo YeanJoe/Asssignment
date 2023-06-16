@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,12 +47,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.myDataBaseDataSet = new Asssignment.myDataBaseDataSet();
+            this.myDataBaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.moduleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.moduleTableAdapter = new Asssignment.myDataBaseDataSetTableAdapters.ModuleTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moduleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 39);
+            this.label1.Location = new System.Drawing.Point(28, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 16);
             this.label1.TabIndex = 0;
@@ -60,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 201);
+            this.label2.Location = new System.Drawing.Point(28, 275);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 1;
@@ -69,7 +81,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 161);
+            this.label4.Location = new System.Drawing.Point(28, 235);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 16);
             this.label4.TabIndex = 3;
@@ -78,7 +90,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 120);
+            this.label5.Location = new System.Drawing.Point(28, 194);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 16);
             this.label5.TabIndex = 4;
@@ -87,7 +99,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 80);
+            this.label6.Location = new System.Drawing.Point(28, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 16);
             this.label6.TabIndex = 5;
@@ -95,35 +107,35 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(206, 33);
+            this.txtName.Location = new System.Drawing.Point(206, 107);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(183, 22);
             this.txtName.TabIndex = 6;
             // 
             // txtNumber
             // 
-            this.txtNumber.Location = new System.Drawing.Point(206, 155);
+            this.txtNumber.Location = new System.Drawing.Point(206, 229);
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(183, 22);
             this.txtNumber.TabIndex = 7;
             // 
             // txtTP
             // 
-            this.txtTP.Location = new System.Drawing.Point(206, 74);
+            this.txtTP.Location = new System.Drawing.Point(206, 148);
             this.txtTP.Name = "txtTP";
             this.txtTP.Size = new System.Drawing.Size(183, 22);
             this.txtTP.TabIndex = 8;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(206, 114);
+            this.txtEmail.Location = new System.Drawing.Point(206, 188);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(183, 22);
             this.txtEmail.TabIndex = 9;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(206, 195);
+            this.txtAddress.Location = new System.Drawing.Point(206, 269);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(183, 22);
             this.txtAddress.TabIndex = 11;
@@ -132,8 +144,10 @@
             // 
             this.comboLevel.FormattingEnabled = true;
             this.comboLevel.Items.AddRange(new object[] {
-            "Level"});
-            this.comboLevel.Location = new System.Drawing.Point(52, 263);
+            "Beginner",
+            "Intermediate",
+            "Advanced"});
+            this.comboLevel.Location = new System.Drawing.Point(52, 337);
             this.comboLevel.Name = "comboLevel";
             this.comboLevel.Size = new System.Drawing.Size(100, 24);
             this.comboLevel.TabIndex = 12;
@@ -141,11 +155,14 @@
             // 
             // comboModule
             // 
+            this.comboModule.DataSource = this.moduleBindingSource;
+            this.comboModule.DisplayMember = "ModuleName";
             this.comboModule.FormattingEnabled = true;
-            this.comboModule.Location = new System.Drawing.Point(272, 263);
+            this.comboModule.Location = new System.Drawing.Point(272, 337);
             this.comboModule.Name = "comboModule";
             this.comboModule.Size = new System.Drawing.Size(100, 24);
             this.comboModule.TabIndex = 13;
+            this.comboModule.ValueMember = "ModuleName";
             // 
             // comboMonth
             // 
@@ -163,14 +180,14 @@
             "October",
             "November",
             "December"});
-            this.comboMonth.Location = new System.Drawing.Point(138, 309);
+            this.comboMonth.Location = new System.Drawing.Point(138, 383);
             this.comboMonth.Name = "comboMonth";
             this.comboMonth.Size = new System.Drawing.Size(147, 24);
             this.comboMonth.TabIndex = 14;
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(12, 309);
+            this.btnBack.Location = new System.Drawing.Point(12, 383);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(57, 28);
             this.btnBack.TabIndex = 15;
@@ -180,7 +197,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(335, 309);
+            this.btnSubmit.Location = new System.Drawing.Point(335, 383);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(74, 28);
             this.btnSubmit.TabIndex = 16;
@@ -191,7 +208,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(80, 244);
+            this.label3.Location = new System.Drawing.Point(80, 318);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 16);
             this.label3.TabIndex = 17;
@@ -200,7 +217,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(192, 290);
+            this.label7.Location = new System.Drawing.Point(192, 364);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 16);
             this.label7.TabIndex = 18;
@@ -209,17 +226,72 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(299, 244);
+            this.label8.Location = new System.Drawing.Point(299, 318);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 16);
             this.label8.TabIndex = 19;
             this.label8.Text = "Module";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(28, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 16);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Username";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(31, 41);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(121, 22);
+            this.txtUsername.TabIndex = 21;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(206, 41);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(121, 22);
+            this.txtPassword.TabIndex = 23;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(203, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 16);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Password";
+            // 
+            // myDataBaseDataSet
+            // 
+            this.myDataBaseDataSet.DataSetName = "myDataBaseDataSet";
+            this.myDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // myDataBaseDataSetBindingSource
+            // 
+            this.myDataBaseDataSetBindingSource.DataSource = this.myDataBaseDataSet;
+            this.myDataBaseDataSetBindingSource.Position = 0;
+            // 
+            // moduleBindingSource
+            // 
+            this.moduleBindingSource.DataMember = "Module";
+            this.moduleBindingSource.DataSource = this.myDataBaseDataSetBindingSource;
+            // 
+            // moduleTableAdapter
+            // 
+            this.moduleTableAdapter.ClearBeforeFill = true;
+            // 
             // RegisterStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 349);
+            this.ClientSize = new System.Drawing.Size(421, 433);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
@@ -241,6 +313,9 @@
             this.Name = "RegisterStudent";
             this.Text = "RegisterStudent";
             this.Load += new System.EventHandler(this.RegisterStudent_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moduleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,5 +341,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.BindingSource myDataBaseDataSetBindingSource;
+        private myDataBaseDataSet myDataBaseDataSet;
+        private System.Windows.Forms.BindingSource moduleBindingSource;
+        private myDataBaseDataSetTableAdapters.ModuleTableAdapter moduleTableAdapter;
     }
 }

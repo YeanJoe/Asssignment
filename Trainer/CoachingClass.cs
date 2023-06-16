@@ -133,22 +133,20 @@ namespace Asssignment.Trainer
             return stat;
         }
 
-        public List<string> GetAllOtherColumnValues()
+        public void GetAllOtherColumnValues()
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT ModuleID, Level, Charges, Schedule FROM [CoachingClass] WHERE ClassID = '" + classID + "'", con);
             SqlDataReader rd = cmd.ExecuteReader();
-            List<string> result = new List<string>();
             while (rd.Read())
             {
-                result.Add(rd.GetInt32(0).ToString());
-                result.Add(rd.GetString(1));
-                result.Add(rd.GetInt32(2).ToString());
-                result.Add(rd.GetString(3));
+                moduleID = rd.GetInt32(0);
+                level = rd.GetString(1);
+                charges = rd.GetInt32(2);
+                schedule = rd.GetString(3);
             }
             rd.Close();
             con.Close();
-            return result;
         }
 
         public static List<string> GetAllAdminUsername()

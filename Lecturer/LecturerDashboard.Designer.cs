@@ -75,6 +75,7 @@
             this.btnApprove.TabIndex = 3;
             this.btnApprove.Text = "Approve Request";
             this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // label1
             // 

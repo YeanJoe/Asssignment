@@ -68,12 +68,12 @@ namespace APU_Programming_Cafe_Management_System
         {
             int classID = Convert.ToInt32(cmbBoxClass.Text);
             CoachingClass coachingClass = new CoachingClass(classID);
-            List<string> values = coachingClass.GetAllOtherColumnValues();
+            coachingClass.GetAllOtherColumnValues();
 
-            txtBoxModule.Text = Module.GetModuleName(Convert.ToInt32(values[0]));
-            cboLevel.SelectedItem = values[1];
-            txtBoxCharge.Text = values[2];
-            string[] schedule = values[3].Split(',');
+            txtBoxModule.Text = Module.GetModuleName(coachingClass.ModuleID);
+            cboLevel.SelectedItem = coachingClass.Level;
+            txtBoxCharge.Text = coachingClass.Charges.ToString();
+            string[] schedule = coachingClass.Schedule.Split(',');
             cboDay.SelectedItem = schedule[0];
             cboTime.SelectedItem = schedule[1];
 
