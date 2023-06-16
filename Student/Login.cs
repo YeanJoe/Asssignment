@@ -28,12 +28,10 @@ namespace Asssignment
             }
             txtUsername.Text = "";
             txtPassword.Text = "";
+            this.Hide();
 
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

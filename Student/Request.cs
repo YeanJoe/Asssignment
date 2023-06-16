@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,11 +33,7 @@ namespace Asssignment
             home.Show();
 
         }
-
-        private void lblCharge_Click(object sender, EventArgs e)
-        {
-    
-        }
+        
 
         public void comboLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -63,6 +60,18 @@ namespace Asssignment
             comboModule.Text = "";
             lblCharge.Text = "";
         }
+
+        private void Request_Load(object sender, EventArgs e)
+        {
+            ArrayList module = new ArrayList();
+            RequestClass req = new RequestClass(name);
+            module = req.addModule();
+            foreach (var i in module)
+            {
+                comboModule.Items.Add(i);
+            }
+        }
+
 
     }
 }
