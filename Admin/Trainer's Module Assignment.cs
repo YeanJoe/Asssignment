@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -27,15 +28,21 @@ namespace Assignment_Admin_
             cmbLevel.Text = string.Empty;
 
             string TrainerID = cmbTrainerID.Text;
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
             //Look for Level of selected trainer
-            SqlCommand cmdLevel = new SqlCommand($"SELECT TOP 1 Level FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
-            string Level = cmdLevel.ExecuteScalar().ToString();
-            if (Level == "Beginner") { cmbLevel.SelectedIndex = cmbLevel.FindString("Beginner"); }
-            else if (Level == "Intermediate") { cmbLevel.SelectedIndex = cmbLevel.FindString("Intermediate"); }
-            else if (Level == "Advance") { cmbLevel.SelectedIndex = cmbLevel.FindString("Advance"); }
+            SqlCommand cmdcount = new SqlCommand($"SELECT COUNT(LEVEL) FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
+            int countLvl = Convert.ToInt32(cmdcount.ExecuteScalar());
+            if (countLvl > 0)
+            {
+                SqlCommand cmdLevel = new SqlCommand($"SELECT TOP 1 Level FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
+                string Level = cmdLevel.ExecuteScalar().ToString();
+                if (Level == "Beginner") { cmbLevel.SelectedIndex = cmbLevel.FindString("Beginner"); }
+                else if (Level == "Intermediate") { cmbLevel.SelectedIndex = cmbLevel.FindString("Intermediate"); }
+                else if (Level == "Advance") { cmbLevel.SelectedIndex = cmbLevel.FindString("Advance"); }
+            }
+            else { cmbLevel.Text = ""; }
 
             //Look for modules assigned
             SqlCommand cmdModule = new SqlCommand($"SELECT ModuleName FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
@@ -67,7 +74,7 @@ namespace Assignment_Admin_
         private void Trainer_s_Module_Assignment_Load(object sender, EventArgs e)
         {
             //Open Connection to the database
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
             //Query to find total number of trainers in the trainer table
@@ -98,7 +105,7 @@ namespace Assignment_Admin_
             string CSharp = chkBoxCSharp.Checked.ToString();
             string HTML = chkBoxHTML.Checked.ToString();
 
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
             try
             {
