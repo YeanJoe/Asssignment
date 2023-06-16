@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 184);
+            this.label1.Location = new System.Drawing.Point(198, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 16);
             this.label1.TabIndex = 1;
@@ -61,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(159, 226);
+            this.label2.Location = new System.Drawing.Point(198, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 16);
             this.label2.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(159, 278);
+            this.label3.Location = new System.Drawing.Point(198, 235);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 16);
             this.label3.TabIndex = 3;
@@ -85,7 +85,7 @@
             "Wednesday",
             "Thursday",
             "Friday"});
-            this.cboDay.Location = new System.Drawing.Point(277, 275);
+            this.cboDay.Location = new System.Drawing.Point(316, 232);
             this.cboDay.Name = "cboDay";
             this.cboDay.Size = new System.Drawing.Size(121, 24);
             this.cboDay.TabIndex = 4;
@@ -98,7 +98,7 @@
             "10:00 - 12:00",
             "13:00 - 15:00",
             "15:00 - 17:00"});
-            this.cboTime.Location = new System.Drawing.Point(439, 275);
+            this.cboTime.Location = new System.Drawing.Point(478, 232);
             this.cboTime.Name = "cboTime";
             this.cboTime.Size = new System.Drawing.Size(121, 24);
             this.cboTime.TabIndex = 5;
@@ -106,7 +106,7 @@
             // txtModule
             // 
             this.txtModule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModule.Location = new System.Drawing.Point(277, 178);
+            this.txtModule.Location = new System.Drawing.Point(316, 135);
             this.txtModule.Name = "txtModule";
             this.txtModule.Size = new System.Drawing.Size(154, 22);
             this.txtModule.TabIndex = 6;
@@ -114,19 +114,20 @@
             // txtCharge
             // 
             this.txtCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCharge.Location = new System.Drawing.Point(277, 223);
+            this.txtCharge.Location = new System.Drawing.Point(316, 180);
             this.txtCharge.Name = "txtCharge";
             this.txtCharge.Size = new System.Drawing.Size(154, 22);
             this.txtCharge.TabIndex = 7;
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(356, 373);
+            this.BtnAdd.Location = new System.Drawing.Point(524, 301);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(75, 23);
             this.BtnAdd.TabIndex = 8;
             this.BtnAdd.Text = "Add";
             this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // AddCoachingClassPage
             // 

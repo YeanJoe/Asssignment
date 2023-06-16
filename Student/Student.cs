@@ -20,7 +20,7 @@ namespace Asssignment
         private string TPnumber;
         static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
-     
+
 
         public Student(string aName)
         {
@@ -149,6 +149,20 @@ namespace Asssignment
             }
             con.Close();
             return dt;
+        }
+
+        public int GetStudentID()
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select StudentID FROM StudentTable WHERE FullName = '" + stdname + "'", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            int studentID = 0;
+            while (rd.Read())
+            {
+                studentID = rd.GetInt32(0);
+            }
+            con.Close();
+            return studentID;
         }
 
     }

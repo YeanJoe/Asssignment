@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Asssignment.Trainer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,17 @@ namespace APU_Programming_Cafe_Management_System
 {
     public partial class TrainerFeedbackPage : Form
     {
-        string username;
-        public TrainerFeedbackPage(string username)
+        Trainer trainer;
+        public TrainerFeedbackPage(Trainer trainer)
         {
             InitializeComponent();
-            this.username = username;
+            this.trainer = trainer;
+            
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
+            TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(trainer);
             trainerDashboardPage.Show();
 
             // Close Form1
