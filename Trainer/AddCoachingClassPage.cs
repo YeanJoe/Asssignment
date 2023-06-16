@@ -35,13 +35,13 @@ namespace APU_Programming_Cafe_Management_System
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if(txtModule.Text != "" && cboDay.SelectedIndex >=0 && cboTime.SelectedIndex >= 0)
+            if(txtModule.Text != "" && cboLevel.SelectedIndex >= 0 && cboDay.SelectedIndex >= 0 && cboTime.SelectedIndex >= 0)
             {
                 if (int.TryParse(txtCharge.Text, out int charge))
                 {
                     CoachingClass newCoachingClass = new CoachingClass(trainer);
                     string schedule = cboDay.Text + "," + cboTime.Text;
-                    MessageBox.Show(newCoachingClass.InsertRow(txtModule.Text, charge, schedule));
+                    MessageBox.Show(newCoachingClass.InsertRow(txtModule.Text, cboLevel.Text, charge, schedule));
 
             
 

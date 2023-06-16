@@ -39,6 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbBoxClass = new System.Windows.Forms.ComboBox();
             this.txtBoxModule = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboLevel = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // BtnBack
@@ -82,7 +84,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(197, 199);
+            this.label3.Location = new System.Drawing.Point(197, 230);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 16);
             this.label3.TabIndex = 4;
@@ -90,7 +92,7 @@
             // 
             // txtBoxCharge
             // 
-            this.txtBoxCharge.Location = new System.Drawing.Point(356, 193);
+            this.txtBoxCharge.Location = new System.Drawing.Point(356, 224);
             this.txtBoxCharge.Name = "txtBoxCharge";
             this.txtBoxCharge.Size = new System.Drawing.Size(221, 22);
             this.txtBoxCharge.TabIndex = 6;
@@ -103,7 +105,7 @@
             "10:00 - 12:00",
             "13:00 - 15:00",
             "15:00 - 17:00"});
-            this.cboTime.Location = new System.Drawing.Point(499, 245);
+            this.cboTime.Location = new System.Drawing.Point(499, 276);
             this.cboTime.Name = "cboTime";
             this.cboTime.Size = new System.Drawing.Size(121, 24);
             this.cboTime.TabIndex = 7;
@@ -117,7 +119,7 @@
             "Wednesday",
             "Thursday",
             "Friday"});
-            this.cboDay.Location = new System.Drawing.Point(356, 245);
+            this.cboDay.Location = new System.Drawing.Point(356, 276);
             this.cboDay.Name = "cboDay";
             this.cboDay.Size = new System.Drawing.Size(121, 24);
             this.cboDay.TabIndex = 8;
@@ -125,7 +127,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(197, 248);
+            this.label4.Location = new System.Drawing.Point(197, 279);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 16);
             this.label4.TabIndex = 9;
@@ -147,11 +149,34 @@
             this.txtBoxModule.Size = new System.Drawing.Size(221, 22);
             this.txtBoxModule.TabIndex = 5;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(197, 190);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Level";
+            // 
+            // cboLevel
+            // 
+            this.cboLevel.FormattingEnabled = true;
+            this.cboLevel.Items.AddRange(new object[] {
+            "Beginner",
+            "Intermediate",
+            "Advanced"});
+            this.cboLevel.Location = new System.Drawing.Point(356, 187);
+            this.cboLevel.Name = "cboLevel";
+            this.cboLevel.Size = new System.Drawing.Size(121, 24);
+            this.cboLevel.TabIndex = 12;
+            // 
             // UpdateCoachClassPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboLevel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbBoxClass);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboDay);
@@ -184,5 +209,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbBoxClass;
         private System.Windows.Forms.TextBox txtBoxModule;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboLevel;
     }
 }

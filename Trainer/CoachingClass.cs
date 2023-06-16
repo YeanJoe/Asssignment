@@ -12,6 +12,7 @@ namespace Asssignment.Trainer
     {
         private int classID;
         private int moduleID;
+        private string level;
         private int trainerID;
         private int charges;
         private string schedule;
@@ -27,6 +28,13 @@ namespace Asssignment.Trainer
             get { return moduleID; }
             set { moduleID = value; }   
         }
+
+        public string Level
+        {
+            get { return level; }
+            set { level = value; }
+        }
+
         public int TrainerID
         {
             get { return trainerID; }
@@ -54,17 +62,18 @@ namespace Asssignment.Trainer
             this.classID = classID;
         }
 
-        public CoachingClass(int classID, int moduleID, int trainerID, int charges, string schedule)
+        public CoachingClass(int classID, int moduleID, string level, int trainerID, int charges, string schedule)
         {
             this.classID = classID;
             this.moduleID = moduleID;
+            this.level = level; 
             this.trainerID = trainerID;
             this.charges = charges;
             this.schedule = schedule;
             
         }
 
-        public string InsertRow(string moduleName, int charges, string schedule)
+        public string InsertRow(string moduleName, string level, int charges, string schedule)
         {
             string stat = "Failed to Insert";
             con.Open();
@@ -75,9 +84,9 @@ namespace Asssignment.Trainer
             {
                 con.Open();
                 int moduleID = Module.GetModuleID(moduleName);
-                string cmdString = "INSERT INTO [CoachingClass] (ModuleID, TrainerID, Charges, Schedule) ";
-                cmdString += ("VALUES({0}, {1}, {2}, '{3}')");
-                cmdString = string.Format(cmdString, moduleID, trainerID, charges, schedule);
+                string cmdString = "INSERT INTO [CoachingClass] (ModuleID, Level, TrainerID, Charges, Schedule) ";
+                cmdString += ("VALUES({0}, '{1}', {2}, {3}, '{4}')");
+                cmdString = string.Format(cmdString, moduleID, level, trainerID, charges, schedule);
                 cmd = new SqlCommand(cmdString, con);
                 i = cmd.ExecuteNonQuery();
                 if (i != 0)
@@ -110,8 +119,8 @@ namespace Asssignment.Trainer
             }
            
             con.Open();
-            string cmdString = "UPDATE [CoachingClass] SET ModuleID = {0}, TrainerID = {1}, Charges = {2}, Schedule = '{3}' WHERE ClassID = {4} ";
-            cmdString = string.Format(cmdString, moduleID, trainerID, charges, schedule, classID);
+            string cmdString = "UPDATE [CoachingClass] SET ModuleID = {0}, Level = '{1}', TrainerID = {2}, Charges = {3}, Schedule = '{4}' WHERE ClassID = {5} ";
+            cmdString = string.Format(cmdString, moduleID, level, trainerID, charges, schedule, classID);
             cmd = new SqlCommand(cmdString, con);
             i = cmd.ExecuteNonQuery();
             if (i != 0)
@@ -127,14 +136,15 @@ namespace Asssignment.Trainer
         public List<string> GetAllOtherColumnValues()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT ModuleID, Charges, Schedule FROM [CoachingClass] WHERE ClassID = '" + classID + "'", con);
+            SqlCommand cmd = new SqlCommand("SELECT ModuleID, Level, Charges, Schedule FROM [CoachingClass] WHERE ClassID = '" + classID + "'", con);
             SqlDataReader rd = cmd.ExecuteReader();
             List<string> result = new List<string>();
             while (rd.Read())
             {
                 result.Add(rd.GetInt32(0).ToString());
-                result.Add(rd.GetInt32(1).ToString());
-                result.Add(rd.GetString(2));
+                result.Add(rd.GetString(1));
+                result.Add(rd.GetInt32(2).ToString());
+                result.Add(rd.GetString(3));
             }
             rd.Close();
             con.Close();

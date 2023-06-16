@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using Asssignment.Trainer;
+using static System.Windows.Forms.AxHost;
+using System.Runtime.InteropServices;
 
 namespace Asssignment.Lecturer
 {
     public partial class ApproveRequest : Form
     {
         static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+
 
         public ApproveRequest()
         {
@@ -90,8 +93,36 @@ namespace Asssignment.Lecturer
             if (checkApprove.Checked)
             {
                 request.dltReq(listRequest.SelectedValue.ToString());
-                
+                int classID = 0;
+                int moduleID = Module.GetModuleID(lblModule.Text);
+                if (moduleID != 0)
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT ClassID FROM [CoachingClass] WHERE ModuleID = '" + moduleID + "'", con);
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        classID = rd.GetInt32(0);
+                    }
+                    con.Close();
 
+                    //Get StudentID from username
+                    Student student = new Student(listRequest.SelectedValue.ToString());
+
+                    con.Open();
+                    string cmdString = "INSERT INTO [Enrollment] (StudentID, ClassID, Level, Month) ";
+                    cmdString += ("VALUES({0}, {1}, {2}, '{3}')");
+                    cmdString = string.Format(cmdString, student.StdID, classID, lblLevel.Text, "May");
+                    cmd = new SqlCommand(cmdString, con);
+                    int i = cmd.ExecuteNonQuery();
+                    if (i != 0)
+                    {
+                        string stat = "Insert table row success!";
+                    }
+                    con.Close();
+                }
+
+                
             }
             else
             {
