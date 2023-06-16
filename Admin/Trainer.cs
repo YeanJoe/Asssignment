@@ -97,12 +97,16 @@ namespace Asssignment.Admin
             SqlCommand cmdReadTrainer = new SqlCommand($"SELECT * FROM [Trainer] WHERE TrainerId = '{_trainerID}'", con);
             using (SqlDataReader reader = cmdReadTrainer.ExecuteReader())
             {
-                UID = reader["UserId"].ToString();
-                Name = reader["FullName"].ToString();
-                Email = reader["Email"].ToString();
-                PhoneNumber = reader["ContactNumber"].ToString();
-                Address = reader["Address"].ToString();
-                Password = reader["Password"].ToString();
+                while (reader.Read())
+                {
+                    UID = reader["UserId"].ToString();
+                    Username = reader["Username"].ToString();
+                    Name = reader["FullName"].ToString();
+                    Email = reader["Email"].ToString();
+                    PhoneNumber = reader["ContactNumber"].ToString();
+                    Address = reader["Address"].ToString();
+                    Password = reader["Password"].ToString();
+                }
             }
             con.Close();
         }
@@ -126,13 +130,14 @@ namespace Asssignment.Admin
             SqlCommand cmdUID = new SqlCommand($"SELECT UserID FROM [User] WHERE Username = '{_username}' AND Password = '{Password}'", con);
             string UID = cmdUID.ExecuteScalar().ToString();
 
-            SqlCommand cmdInsertIntoTrainer = new SqlCommand($"INSERT INTO [Trainer] (UserId, FullName, Email, ContactNumber, Address, Password) Values(@uid, @name, @email, @number, @address, @password)", con);
+            SqlCommand cmdInsertIntoTrainer = new SqlCommand($"INSERT INTO [Trainer] (UserId, FullName, Email, ContactNumber, Address, Password, Username) Values(@uid, @name, @email, @number, @address, @password, @username)", con);
             cmdInsertIntoTrainer.Parameters.AddWithValue("@uid", UID);
             cmdInsertIntoTrainer.Parameters.AddWithValue("@name", _name);
             cmdInsertIntoTrainer.Parameters.AddWithValue("@email", _email);
             cmdInsertIntoTrainer.Parameters.AddWithValue("@number", _phoneNumber);
             cmdInsertIntoTrainer.Parameters.AddWithValue("@address", _address);
             cmdInsertIntoTrainer.Parameters.AddWithValue("@password", _password);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@username", _username);
             cmdInsertIntoTrainer.ExecuteNonQuery();
 
             con.Close();
