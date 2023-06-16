@@ -21,25 +21,31 @@ namespace Asssignment.Admin
             set { Confirm = value; }
         }
 
-        public AlertForm()
+        public AlertForm(string type)
         {
-            InitializeComponent();
+            if (type == "delete")
+            {
+                InitializeComponent();
+                lblAlertText.Text = "You are trying to delete a trainer! Press Confirm if you want to continue.";
+                
+            }
         }
 
         public void Delete()
         {
-            lblAlertText.Text = "You are trying to delete a trainer! Press Confirm if you want to continue.";
             InitializeComponent();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             confirm = true;
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             confirm = false;
+            this.Close();
         }
     }
 }
