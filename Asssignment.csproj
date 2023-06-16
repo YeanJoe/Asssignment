@@ -83,7 +83,7 @@
       <DependentUpon>Feedback Hub.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\FormProvider.cs" />
-    <Compile Include="Admin\Trainer.cs" />
+    <Compile Include="Admin\Admin.cs" />
     <Compile Include="Lecturer\ApproveRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +137,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>myDataBaseDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Student\Payment.cs">
       <SubType>Form</SubType>
@@ -333,14 +334,17 @@
     </EmbeddedResource>
     <None Include="myDataBaseDataSet.xsc">
       <DependentUpon>myDataBaseDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="myDataBaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>myDataBaseDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="myDataBaseDataSet.xss">
       <DependentUpon>myDataBaseDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -358,11 +362,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="myDataBase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="myDataBase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>myDataBase.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

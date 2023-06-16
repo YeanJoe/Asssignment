@@ -22,9 +22,9 @@ namespace Assignment_Admin_
         private void cmbTrainerID_SelectedIndexChanged(object sender, EventArgs e)
         {
             chkBoxPython.Checked = false;
-            chkBoxCPlusPlus.Checked = false;
+            chkBoxDatabase.Checked = false;
             chkBoxCSharp.Checked = false;
-            chkBoxHTML.Checked = false;
+            chkBoxJava.Checked = false;
             cmbLevel.Text = string.Empty;
 
             string TrainerID = cmbTrainerID.Text;
@@ -56,7 +56,7 @@ namespace Assignment_Admin_
                     }
                     else if (reader["ModuleName"].ToString() == "C++")
                     {
-                        chkBoxCPlusPlus.Checked = true;
+                        chkBoxDatabase.Checked = true;
                     }
                     else if (reader["ModuleName"].ToString() == "C#")
                     {
@@ -64,7 +64,7 @@ namespace Assignment_Admin_
                     }
                     else if (reader["ModuleName"].ToString() == "HTML")
                     {
-                        chkBoxHTML.Checked = true;
+                        chkBoxJava.Checked = true;
                     }
                 }
             }
@@ -91,9 +91,9 @@ namespace Assignment_Admin_
             con.Close();
 
             chkBoxPython.Checked = false;
-            chkBoxCPlusPlus.Checked = false;
+            chkBoxDatabase.Checked = false;
             chkBoxCSharp.Checked = false;
-            chkBoxHTML.Checked = false;
+            chkBoxJava.Checked = false;
             cmbLevel.Text = string.Empty;
         }
 
@@ -101,9 +101,9 @@ namespace Assignment_Admin_
         {
             string TrainerID = cmbTrainerID.Text;
             string Python = chkBoxPython.Checked.ToString();
-            string CPlusPlus = chkBoxCPlusPlus.Checked.ToString();
+            string CPlusPlus = chkBoxDatabase.Checked.ToString();
             string CSharp = chkBoxCSharp.Checked.ToString();
-            string HTML = chkBoxHTML.Checked.ToString();
+            string HTML = chkBoxJava.Checked.ToString();
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();

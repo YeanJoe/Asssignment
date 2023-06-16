@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Asssignment.Admin
 {
-    internal class Trainer
+    internal class Admin
     {
         //Fields
         private string TrainerID;
@@ -67,12 +67,12 @@ namespace Asssignment.Admin
         //CONSTRUCTORS
 
         //Parameterless
-        public Trainer()
+        public Admin()
         {
 
         }
 
-        public Trainer(string _uid, string _username, string _password)
+        public Admin(string _uid, string _username, string _password)
         {
             this.UID = _uid;
             this.Username = _username;
@@ -80,7 +80,7 @@ namespace Asssignment.Admin
         }
 
         //for Register
-        public Trainer(string _username, string _password, string _name, string _email, string _phoneNumber, string _address)
+        public Admin(string _username, string _password, string _name, string _email, string _phoneNumber, string _address)
         {
             this.Username = _username;
             this.Password = _password;
@@ -181,6 +181,13 @@ namespace Asssignment.Admin
             TrainerID.Add("New Trainer");
             con.Close();
             return TrainerID;
+        }
+
+        public ArrayList GetTrainerModule()
+        {
+            con.Open();
+
+            SqlCommand 
         }
     }
 }

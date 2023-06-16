@@ -31,14 +31,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtLevel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkBoxJava = new System.Windows.Forms.CheckBox();
+            this.chkBoxCSharp = new System.Windows.Forms.CheckBox();
+            this.chkBoxDatabase = new System.Windows.Forms.CheckBox();
+            this.chkBoxPython = new System.Windows.Forms.CheckBox();
             this.cmbTrainerID = new System.Windows.Forms.ComboBox();
             this.cmbLevel = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.chkBoxPython = new System.Windows.Forms.CheckBox();
-            this.chkBoxCPlusPlus = new System.Windows.Forms.CheckBox();
-            this.chkBoxCSharp = new System.Windows.Forms.CheckBox();
-            this.chkBoxHTML = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,9 +62,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkBoxHTML);
+            this.groupBox1.Controls.Add(this.chkBoxJava);
             this.groupBox1.Controls.Add(this.chkBoxCSharp);
-            this.groupBox1.Controls.Add(this.chkBoxCPlusPlus);
+            this.groupBox1.Controls.Add(this.chkBoxDatabase);
             this.groupBox1.Controls.Add(this.chkBoxPython);
             this.groupBox1.Location = new System.Drawing.Point(362, 48);
             this.groupBox1.Name = "groupBox1";
@@ -72,6 +72,46 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modules";
+            // 
+            // chkBoxJava
+            // 
+            this.chkBoxJava.AutoSize = true;
+            this.chkBoxJava.Location = new System.Drawing.Point(14, 76);
+            this.chkBoxJava.Name = "chkBoxJava";
+            this.chkBoxJava.Size = new System.Drawing.Size(59, 20);
+            this.chkBoxJava.TabIndex = 3;
+            this.chkBoxJava.Text = "Java";
+            this.chkBoxJava.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxCSharp
+            // 
+            this.chkBoxCSharp.AutoSize = true;
+            this.chkBoxCSharp.Location = new System.Drawing.Point(14, 24);
+            this.chkBoxCSharp.Name = "chkBoxCSharp";
+            this.chkBoxCSharp.Size = new System.Drawing.Size(45, 20);
+            this.chkBoxCSharp.TabIndex = 2;
+            this.chkBoxCSharp.Text = "C#";
+            this.chkBoxCSharp.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxDatabase
+            // 
+            this.chkBoxDatabase.AutoSize = true;
+            this.chkBoxDatabase.Location = new System.Drawing.Point(14, 50);
+            this.chkBoxDatabase.Name = "chkBoxDatabase";
+            this.chkBoxDatabase.Size = new System.Drawing.Size(89, 20);
+            this.chkBoxDatabase.TabIndex = 1;
+            this.chkBoxDatabase.Text = "Database";
+            this.chkBoxDatabase.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxPython
+            // 
+            this.chkBoxPython.AutoSize = true;
+            this.chkBoxPython.Location = new System.Drawing.Point(14, 102);
+            this.chkBoxPython.Name = "chkBoxPython";
+            this.chkBoxPython.Size = new System.Drawing.Size(70, 20);
+            this.chkBoxPython.TabIndex = 0;
+            this.chkBoxPython.Text = "Python";
+            this.chkBoxPython.UseVisualStyleBackColor = true;
             // 
             // cmbTrainerID
             // 
@@ -113,46 +153,6 @@
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
             // 
-            // chkBoxPython
-            // 
-            this.chkBoxPython.AutoSize = true;
-            this.chkBoxPython.Location = new System.Drawing.Point(7, 23);
-            this.chkBoxPython.Name = "chkBoxPython";
-            this.chkBoxPython.Size = new System.Drawing.Size(70, 20);
-            this.chkBoxPython.TabIndex = 0;
-            this.chkBoxPython.Text = "Python";
-            this.chkBoxPython.UseVisualStyleBackColor = true;
-            // 
-            // chkBoxCPlusPlus
-            // 
-            this.chkBoxCPlusPlus.AutoSize = true;
-            this.chkBoxCPlusPlus.Location = new System.Drawing.Point(7, 50);
-            this.chkBoxCPlusPlus.Name = "chkBoxCPlusPlus";
-            this.chkBoxCPlusPlus.Size = new System.Drawing.Size(52, 20);
-            this.chkBoxCPlusPlus.TabIndex = 1;
-            this.chkBoxCPlusPlus.Text = "C++";
-            this.chkBoxCPlusPlus.UseVisualStyleBackColor = true;
-            // 
-            // chkBoxCSharp
-            // 
-            this.chkBoxCSharp.AutoSize = true;
-            this.chkBoxCSharp.Location = new System.Drawing.Point(7, 77);
-            this.chkBoxCSharp.Name = "chkBoxCSharp";
-            this.chkBoxCSharp.Size = new System.Drawing.Size(45, 20);
-            this.chkBoxCSharp.TabIndex = 2;
-            this.chkBoxCSharp.Text = "C#";
-            this.chkBoxCSharp.UseVisualStyleBackColor = true;
-            // 
-            // chkBoxHTML
-            // 
-            this.chkBoxHTML.AutoSize = true;
-            this.chkBoxHTML.Location = new System.Drawing.Point(7, 104);
-            this.chkBoxHTML.Name = "chkBoxHTML";
-            this.chkBoxHTML.Size = new System.Drawing.Size(66, 20);
-            this.chkBoxHTML.TabIndex = 3;
-            this.chkBoxHTML.Text = "HTML";
-            this.chkBoxHTML.UseVisualStyleBackColor = true;
-            // 
             // Trainer_s_Module_Assignment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -184,9 +184,9 @@
         private System.Windows.Forms.ComboBox cmbLevel;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.CheckBox chkBoxHTML;
+        private System.Windows.Forms.CheckBox chkBoxJava;
         private System.Windows.Forms.CheckBox chkBoxCSharp;
-        private System.Windows.Forms.CheckBox chkBoxCPlusPlus;
+        private System.Windows.Forms.CheckBox chkBoxDatabase;
         private System.Windows.Forms.CheckBox chkBoxPython;
     }
 }

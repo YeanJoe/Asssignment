@@ -33,7 +33,7 @@ namespace Assignment_Admin_
             txtAddress.Enabled = false;
 
             cmbTrainerID.Items.Clear();
-            Trainer ID = new Trainer();
+            Admin ID = new Admin();
             foreach (var id in ID.Refresh())
             {
                 cmbTrainerID.Items.Add(id.ToString());
@@ -52,7 +52,7 @@ namespace Assignment_Admin_
                 txtContactNumber.Enabled = false;
                 txtAddress.Enabled = false;
 
-                Trainer read = new Trainer();
+                Admin read = new Admin();
                 read.ReadTrainerPro(cmbTrainerID.Text);
                 txtUserID.Text = read.uid;
                 txtUsername.Text = read.username;
@@ -98,13 +98,13 @@ namespace Assignment_Admin_
                 {
                     try
                     {
-                        Trainer Register = new Trainer(Username, Password, Name, Email, Contact, Address);
+                        Admin Register = new Admin(Username, Password, Name, Email, Contact, Address);
                         Register.RegisterTrainer();
                     }
                     catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
                     cmbTrainerID.Items.Clear();
-                    Trainer ID = new Trainer();
+                    Admin ID = new Admin();
                     foreach (var id in ID.Refresh())
                     {
                         cmbTrainerID.Items.Add(id.ToString());
@@ -135,13 +135,13 @@ namespace Assignment_Admin_
 
                     try
                     {
-                        Trainer Delete = new Trainer(UID, Username, Password);
+                        Admin Delete = new Admin(UID, Username, Password);
                         Delete.DeleteTrainer();
                     }
                     catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
                     cmbTrainerID.Items.Clear();
-                    Trainer ID = new Trainer();
+                    Admin ID = new Admin();
                     foreach (var id in ID.Refresh())
                     {
                         cmbTrainerID.Items.Add(id.ToString());

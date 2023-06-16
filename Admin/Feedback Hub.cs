@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -21,7 +22,7 @@ namespace Assignment_Admin_
         private void Feedback_HUB_Load(object sender, EventArgs e)
         {
             //Open Connection to the database
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString()) ;
             con.Open();
 
             //Query to find total number of trainers in the trainer table
@@ -39,11 +40,12 @@ namespace Assignment_Admin_
 
         private void cmbTrainerID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+            lstFeedback.Items.Clear();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
             string TrainerID = cmbTrainerID.Text;
-            SqlCommand cmdFeedbackID = new SqlCommand($"SELECT FeedbcakID FROM [TrainerFeedback] WHERE TrainerID = '{TrainerID}'", con);
+            SqlCommand cmdFeedbackID = new SqlCommand($"SELECT FeedbackID FROM [TrainerFeedback] WHERE TrainerID = '{TrainerID}'", con);
             using (SqlDataReader reader = cmdFeedbackID.ExecuteReader())
             {
                 while (reader.Read())
@@ -58,7 +60,7 @@ namespace Assignment_Admin_
         {
             string FeedbackID = lstFeedback.SelectedItem.ToString();
             string TrainerID = cmbTrainerID.Text;
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
             SqlCommand cmdViewFeedback = new SqlCommand($"SELECT FeedbackMessage FROM [TrainerFeedback] WHERE TrainerID = '{TrainerID}' AND FeedbackID = '{FeedbackID}'", con);
