@@ -183,11 +183,6 @@ namespace Asssignment.Admin
             return TrainerID;
         }
 
-        public ArrayList GetTrainerModule()
-        {
-            con.Open();
 
-            SqlCommand 
-        }
     }
 }

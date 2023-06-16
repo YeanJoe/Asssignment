@@ -18,7 +18,7 @@ namespace Asssignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Trainer_Register_and_Delete());
+            Application.Run(new TrainerDashboardPage(new Trainer.Trainer("Paul")));
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using Asssignment.Trainer;
 
 namespace Asssignment.Lecturer
 {
@@ -85,7 +86,17 @@ namespace Asssignment.Lecturer
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-           
+            RequestClass request = new RequestClass(lblModule.Text, lblLevel.Text, lblName.Text);
+            if (checkApprove.Checked)
+            {
+                request.dltReq(listRequest.SelectedValue.ToString());
+                
+
+            }
+            else
+            {
+                MessageBox.Show(request.dltReq(listRequest.SelectedValue.ToString()));
+            }
         }
 
     }

@@ -80,8 +80,8 @@ namespace Asssignment.Lecturer
         {
             string stat = "Failed to Update Profile";
             con.Open();
-            string commandString = "UPDATE [LecturerTable] SET UserID = {0}, FullName = '{1}', Email = '{2}', ContactNumber = '{3}', Address = '{4}'";
-            commandString = String.Format(commandString, userID, name, email, contactNumber, address);
+            string commandString = "UPDATE [LecturerTable] SET UserID = {0}, FullName = '{1}', Email = '{2}', ContactNumber = '{3}', Address = '{4}' WHERE LecturerID = {5}";
+            commandString = String.Format(commandString, userID, name, email, contactNumber, address, lecturerID);
             SqlCommand cmd = new SqlCommand(commandString, con);
             int i = cmd.ExecuteNonQuery();
             if (i != 0)

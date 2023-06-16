@@ -40,7 +40,21 @@ namespace APU_Programming_Cafe_Management_System
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(trainer.UpdateContactInfo(txtEmail.Text, txtContactNumber.Text));
+            if(txtEmail.Text != "")
+            {
+                if(int.TryParse(txtContactNumber.Text, out int contactNumber))
+                {
+                    MessageBox.Show(trainer.UpdateContactInfo(txtEmail.Text, txtContactNumber.Text));
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid contact number");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill up the textBoxes");
+            }
         }
     }
 }

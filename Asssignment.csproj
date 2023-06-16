@@ -102,6 +102,7 @@
     <Compile Include="Lecturer\DeleteCompletedStudent.Designer.cs">
       <DependentUpon>DeleteCompletedStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lecturer\Enrollment.cs" />
     <Compile Include="Lecturer\Lecturer.cs" />
     <Compile Include="Lecturer\LecturerDashboard.cs">
       <SubType>Form</SubType>

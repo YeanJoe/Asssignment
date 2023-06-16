@@ -79,6 +79,9 @@ namespace Asssignment.Trainer
                 userID = rd.GetInt32(0);
             }
             rd.Close();
+            con.Close();
+
+            con.Open();
             cmd = new SqlCommand("SELECT TrainerID, FullName, Email, ContactNumber, Address, Password, Username FROM [Trainer] WHERE UserID = " + userID, con);
             rd = cmd.ExecuteReader();
             while (rd.Read())
@@ -121,8 +124,7 @@ namespace Asssignment.Trainer
                 modules = new List<string>();
                 foreach (int moduleID in moduleIDs)
                 {
-                    Module module = new Module(moduleID);
-                    string moduleName = module.ModuleName;
+                    string moduleName = Module.GetModuleName(moduleID);
                     if(moduleName != "")
                     {
                         modules.Add(moduleName);

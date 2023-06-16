@@ -49,7 +49,21 @@ namespace Asssignment.Lecturer
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
+            Profile profile = new Profile(lecturer);
+            profile.Show();
+            this.Hide();
+        }
 
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            RegisterStudent registerStudent= new RegisterStudent(lecturer);
+            registerStudent.Show();
+            this.Hide();
         }
     }
 }

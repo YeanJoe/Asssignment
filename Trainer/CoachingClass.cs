@@ -15,7 +15,7 @@ namespace Asssignment.Trainer
         private int trainerID;
         private int charges;
         private string schedule;
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+        static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
         public int ClassID
         {
@@ -73,11 +73,11 @@ namespace Asssignment.Trainer
             con.Close();
             if(i!=0)
             {
-                Module module = new Module(moduleName);
                 con.Open();
+                int moduleID = Module.GetModuleID(moduleName);
                 string cmdString = "INSERT INTO [CoachingClass] (ModuleID, TrainerID, Charges, Schedule) ";
                 cmdString += ("VALUES({0}, {1}, {2}, '{3}')");
-                cmdString = string.Format(cmdString, module.ModuleID, trainerID, charges, schedule);
+                cmdString = string.Format(cmdString, moduleID, trainerID, charges, schedule);
                 cmd = new SqlCommand(cmdString, con);
                 i = cmd.ExecuteNonQuery();
                 if (i != 0)
@@ -139,6 +139,21 @@ namespace Asssignment.Trainer
             rd.Close();
             con.Close();
             return result;
+        }
+
+        public static List<string> GetAllAdminUsername()
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT FullName FROM [Admin]", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            List<string> AdminList = new List<string>();
+            while (rd.Read())
+            {
+                AdminList.Add(rd.GetString(0));
+            }
+            rd.Close();
+            con.Close();
+            return AdminList;
         }
 
     }

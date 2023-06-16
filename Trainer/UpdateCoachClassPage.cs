@@ -52,6 +52,10 @@ namespace APU_Programming_Cafe_Management_System
                     MessageBox.Show(coachingClass.UpdateRow(txtBoxModule.Text));
 
                 }
+                else
+                {
+                    MessageBox.Show("Syntax error in Charge textbox");
+                }
             }
             else
             {

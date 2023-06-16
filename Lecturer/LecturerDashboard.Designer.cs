@@ -45,6 +45,7 @@
             this.btnRegister.TabIndex = 0;
             this.btnRegister.Text = "Register Student";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnUpdate
             // 
@@ -105,6 +106,7 @@
             this.btnLogOut.TabIndex = 6;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // LecturerDashboard
             // 

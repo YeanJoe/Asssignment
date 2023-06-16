@@ -26,7 +26,7 @@ namespace Asssignment.Lecturer
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            LecturerDashboard next = new LecturerDashboard();
+            LecturerDashboard next = new LecturerDashboard(lecturer);
             next.Show();
             this.Hide();
         }
@@ -38,7 +38,11 @@ namespace Asssignment.Lecturer
 
         private void Profile_Load(object sender, EventArgs e)
         {
-
+            txtID.Text = lecturer.LecturerID.ToString();
+            txtName.Text = lecturer.FullName;
+            txtEmail.Text = lecturer.Email;
+            txtAddress.Text = lecturer.Address;
+            txtNumber.Text = lecturer.ContactNumber;
         }
     }
 }
