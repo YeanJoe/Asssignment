@@ -12,9 +12,11 @@ namespace Asssignment.Lecturer
 {
     public partial class UpdateSubjectEnrollment : Form
     {
-        public UpdateSubjectEnrollment()
+        Lecturer lecturer;
+        public UpdateSubjectEnrollment(Lecturer lecturer)
         {
             InitializeComponent();
+            this.lecturer = lecturer;
         }
 
         private void label6_Click(object sender, EventArgs e)

@@ -12,11 +12,11 @@ namespace Asssignment.Lecturer
 {
     public partial class LecturerDashboard : Form
     {
-        string username;
-        public LecturerDashboard(string username)
+        Lecturer lecturer;
+        public LecturerDashboard(Lecturer lecturer)
         {
             InitializeComponent();
-            this.username = username;
+            this.lecturer = lecturer;
 
         }
         public LecturerDashboard()
@@ -29,51 +29,27 @@ namespace Asssignment.Lecturer
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            RegisterStudent next =new RegisterStudent();
-            next.Show();
-            this.Hide();
-        }
+       
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ApproveRequest next =new ApproveRequest();
-            next.Show();
-            this.Hide();
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Profile next = new Profile();
-            next.Show();
-            this.Hide();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Login next =new Login();
-            next.Show();
-            this.Hide();
-        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            UpdateSubjectEnrollment next =new UpdateSubjectEnrollment();
+            UpdateSubjectEnrollment next =new UpdateSubjectEnrollment(lecturer);
             next.Show();
             this.Hide();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DeleteCompletedStudent next =new DeleteCompletedStudent();
+            DeleteCompletedStudent next =new DeleteCompletedStudent(lecturer);
             next.Show();
             this.Hide();
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

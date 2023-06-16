@@ -12,9 +12,11 @@ namespace Asssignment.Lecturer
 {
     public partial class DeleteCompletedStudent : Form
     {
-        public DeleteCompletedStudent()
+        Lecturer lecturer;
+        public DeleteCompletedStudent(Lecturer lecturer)
         {
             InitializeComponent();
+            this.lecturer = lecturer;
         }
 
         private void DeleteCompletedStudent_Load(object sender, EventArgs e)
@@ -26,14 +28,14 @@ namespace Asssignment.Lecturer
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            LecturerDashboard next= new LecturerDashboard();
+            LecturerDashboard next= new LecturerDashboard(lecturer);
             next.Show();
             this.Hide();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Confirmation next= new Confirmation();
+            Confirmation next= new Confirmation(lecturer);
             next.Show();
             this.Hide();
         }

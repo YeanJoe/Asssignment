@@ -16,10 +16,12 @@ namespace Asssignment.Lecturer
 {
     public partial class Profile : Form
     {
+        Lecturer lecturer;
         static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
-        public Profile()
+        public Profile(Lecturer lecturer)
         {
             InitializeComponent();
+            this.lecturer = lecturer;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -31,42 +33,7 @@ namespace Asssignment.Lecturer
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            UpdateData(txtEmail.Text, txtNumber.Text);
-        }
-
-        private void UpdateData(string email , string contact)
-        {
-            con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE LecturerTable set Email=@Email, ContactNumber=@ContactNumber))", con);
-            cmd.Parameters.AddWithValue("@Email", email);
-            cmd.Parameters.AddWithValue("@ContactNumber", contact);
-            con.Close();
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
+            lecturer.UpdateProfile(txtName.Text, txtEmail.Text, txtNumber.Text, txtAddress.Text);
         }
 
         private void Profile_Load(object sender, EventArgs e)
