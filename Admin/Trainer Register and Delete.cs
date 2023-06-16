@@ -121,8 +121,8 @@ namespace Assignment_Admin_
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            AlertForm Alert = new AlertForm();
-            Alert.Delete();
+            AlertForm Alert = new AlertForm("delete");
+            Alert.ShowDialog();
             if (Alert.confirm == true)
             {
                 if (cmbTrainerID.Text != "New Trainer")

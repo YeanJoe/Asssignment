@@ -18,7 +18,7 @@ namespace Asssignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrainerDashboardPage(new Trainer.Trainer("Paul")));
+            Application.Run(new Trainer_s_Module_Assignment());
         }
     }
 }

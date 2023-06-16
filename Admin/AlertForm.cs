@@ -38,13 +38,13 @@ namespace Asssignment.Admin
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            confirm = true;
+            Confirm = true;
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            confirm = false;
+            Confirm = false;
             this.Close();
         }
     }
