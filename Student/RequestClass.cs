@@ -182,6 +182,21 @@ namespace Asssignment
             return mod;
         }
 
+        public ArrayList chargesChange()
+        {
+            ArrayList chg = new ArrayList();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select DISTINCT Charges From CoachingClass", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                chg.Add(rd.GetString(0));
+            }
+            con.Close() ;
+            return chg;
+
+        }
+
        
     }
 }
