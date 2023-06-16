@@ -194,6 +194,7 @@
             this.cboModule.Name = "cboModule";
             this.cboModule.Size = new System.Drawing.Size(121, 24);
             this.cboModule.TabIndex = 16;
+            this.cboModule.SelectedIndexChanged += new System.EventHandler(this.cboModule_SelectedIndexChanged);
             // 
             // cboStudent
             // 
@@ -202,6 +203,7 @@
             this.cboStudent.Name = "cboStudent";
             this.cboStudent.Size = new System.Drawing.Size(121, 24);
             this.cboStudent.TabIndex = 17;
+            this.cboStudent.SelectedIndexChanged += new System.EventHandler(this.cboStudent_SelectedIndexChanged);
             // 
             // ViewStudentsPage
             // 

@@ -1,6 +1,8 @@
 ﻿using APU_Programming_Cafe_Management_System;
 using Assignment_Admin_;
+using Asssignment.Admin;
 using Asssignment.Lecturer;
+using Asssignment.Trainer;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -74,7 +76,8 @@ namespace Asssignment
                 }
                 else if (userRole == "trainer")
                 {
-                    TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(username);
+
+                    TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(new Trainer.Trainer(username));
                     trainerDashboardPage.Show();
                 }
                 else if (userRole == "admin")

@@ -45,7 +45,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(242, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 39);
+            this.label1.Size = new System.Drawing.Size(320, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Update Your Profile";
             // 
@@ -120,7 +120,7 @@
             this.txtAddress.Size = new System.Drawing.Size(274, 22);
             this.txtAddress.TabIndex = 8;
             // 
-            // UpdateProfile
+            // StudentUpdateProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +134,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label1);
-            this.Name = "UpdateProfile";
+            this.Name = "StudentUpdateProfile";
             this.Text = "Update Profile";
             this.ResumeLayout(false);
             this.PerformLayout();

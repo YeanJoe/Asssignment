@@ -207,6 +207,8 @@
     <Compile Include="Trainer\AddCoachingClassPage.Designer.cs">
       <DependentUpon>AddCoachingClassPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trainer\CoachingClass.cs" />
+    <Compile Include="Trainer\Module.cs" />
     <Compile Include="Trainer\Trainer.cs" />
     <Compile Include="Trainer\TrainerFeedbackPage.cs">
       <SubType>Form</SubType>

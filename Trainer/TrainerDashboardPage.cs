@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Asssignment;
+using Asssignment.Trainer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,61 +14,70 @@ namespace APU_Programming_Cafe_Management_System
 {
     public partial class TrainerDashboardPage : Form
     {
-        string username;
-        public TrainerDashboardPage(string username)
+        Trainer trainer;
+        public TrainerDashboardPage(Trainer trainer)
         {
             InitializeComponent();
-            this.username = username;
+            this.trainer = trainer;
+
         }
 
         private void btnUpdateClass_Click(object sender, EventArgs e)
         {
-            UpdateCoachClassPage updateCoachClassPage = new UpdateCoachClassPage(username);
+            UpdateCoachClassPage updateCoachClassPage = new UpdateCoachClassPage(trainer);
             updateCoachClassPage.Show();
 
-            // Close Form1
-            this.Close();
+            // Hide Dashboard
+            this.Hide();
         }
 
         private void BtnAddClass_Click(object sender, EventArgs e)
         {
-            AddCoachingClassPage addCoachingClassPage = new AddCoachingClassPage(username);
+            AddCoachingClassPage addCoachingClassPage = new AddCoachingClassPage(trainer);
             addCoachingClassPage.Show();
 
-            // Close Form1
-            this.Close();
+            // Hide Dashboard
+            this.Hide();
         }
 
         private void BtnViewStudent_Click(object sender, EventArgs e)
         {
-            ViewStudentsPage viewStudentsPage = new ViewStudentsPage(username);
+            ViewStudentsPage viewStudentsPage = new ViewStudentsPage(trainer);
             viewStudentsPage.Show();
 
-            // Close Form1
-            this.Close();
+            // Hide Dashboard
+            this.Hide();
         }
 
         private void BtnFeedback_Click(object sender, EventArgs e)
         {
-            TrainerFeedbackPage trainerFeedbackPage = new TrainerFeedbackPage(username);
+            TrainerFeedbackPage trainerFeedbackPage = new TrainerFeedbackPage(trainer);
             trainerFeedbackPage.Show();
 
-            // Close Form1
-            this.Close();
+            // Hide Dashboard
+            this.Hide();
         }
 
         private void btnUpdateProfile_Click(object sender, EventArgs e)
         {
-            TrainerUpdateProfilePage updateProfilePage = new TrainerUpdateProfilePage(username);
+            TrainerUpdateProfilePage updateProfilePage = new TrainerUpdateProfilePage(trainer);
             updateProfilePage.Show();
 
-            // Close Form1
-            this.Close();
+            // Hide Dashboard
+            this.Hide();
         }
 
         private void TrainerDashboardPage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+            this.Dispose();
         }
     }
 }

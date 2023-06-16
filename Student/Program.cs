@@ -1,4 +1,5 @@
-﻿using Assignment_Admin_;
+﻿using APU_Programming_Cafe_Management_System;
+using Assignment_Admin_;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Asssignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Trainer_Register_and_Delete());
+            Application.Run(new TrainerDashboardPage(new Trainer.Trainer("Paul")));
         }
     }
 }
