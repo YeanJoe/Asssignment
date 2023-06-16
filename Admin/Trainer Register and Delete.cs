@@ -156,8 +156,9 @@ namespace Assignment_Admin_
 
         private void btn2Home_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FormProvider.Admin.Show();
+            AdminHomePage adminHomePage = new AdminHomePage();
+            adminHomePage.Show();
+            this.Hide();
         }
     }
 }

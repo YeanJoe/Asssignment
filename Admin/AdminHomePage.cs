@@ -41,35 +41,41 @@ namespace Assignment_Admin_
 
         private void btnTrainerRaD_Click(object sender, EventArgs e)
         {
-            Trainer_Register_and_Delete t = new Trainer_Register_and_Delete();
-            FormProvider.Admin.Hide();
-            t.ShowDialog();
+            Trainer_Register_and_Delete t = new Trainer_Register_and_Delete():
+            t.Show();
+            this.Hide();
         }
 
         private void btnTrainerModule_Click(object sender, EventArgs e)
         {
             Trainer_s_Module_Assignment t = new Trainer_s_Module_Assignment();
-            FormProvider.Admin.Hide();
-            t.ShowDialog();
+            t.Show();
+            this.Hide();
         }
 
         private void btnTrainerIncome_Click(object sender, EventArgs e)
         {
             Trainer_s_Monthly_Income_Report t = new Trainer_s_Monthly_Income_Report();
-            FormProvider.Admin.Hide();
-            t.ShowDialog();
+            t.Show(); 
+            this.Hide();
         }
 
         private void btnFeedbackHub_Click(object sender, EventArgs e)
         {
             Feedback_HUB t = new Feedback_HUB();
-            FormProvider.Admin.Hide();
-            t.ShowDialog();
+            t.Show();
+            this.Hide();
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)
         {
             Application.Restart();
+            this.Hide();
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

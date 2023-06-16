@@ -71,7 +71,7 @@ namespace Asssignment.Trainer
         public Trainer(string username) 
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT UserID FROM [User] WHERE Username = '" + username + "'", con);
+            SqlCommand cmd = new SqlCommand("SELECT  FROM [User] WHERE Username = '" + username + "'", con);
             SqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read())
             {

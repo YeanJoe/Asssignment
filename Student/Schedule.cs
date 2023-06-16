@@ -36,27 +36,15 @@ namespace Asssignment
 
         private void Schedule_Load(object sender, EventArgs e)
         {
-           
-                comboDate.Items.Clear();
-                ArrayList dt = new ArrayList();
-                Student std = new Student(name);
-                dt = std.Date();
-                foreach (var date in dt)
-                {
-                    comboDate.Items.Add(date);
-                }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            lstSchedule.Items.Clear();
             ArrayList sch = new ArrayList();
             Student std = new Student(name);
-            sch = std.viewSchedule(comboDate.SelectedItem.ToString());
+            sch = std.viewSchedule();
             foreach (var schedule in sch)
             {
                 lstSchedule.Items.Add(schedule);
             }
         }
+
+ 
     }
 }

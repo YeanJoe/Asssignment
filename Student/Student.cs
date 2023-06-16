@@ -18,24 +18,37 @@ namespace Asssignment
         private string email;
         private string address;
         private string TPnumber;
+        private int stdID;
+        private int userID;
         static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
 
 
         public Student(string aName)
         {
-            stdname = aName;
-            phoneNum = "";
-            email = "";
-            address = "";
-            TPnumber = "";
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select * From [User] WHERE Username = '" + aName + "'", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                userID = rd.GetInt32(0);
+            }
+            rd.Close();
+            cmd = new SqlCommand("Select StudentID, FullName, Email, ContactNum, TPNumber, Address FROM StudentTable WHERE UserID = '" + userID + "'", con);
+            rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                stdID = rd.GetInt32(0);
+                stdname = rd.GetString(1);
+                phoneNum = rd.GetString(3);
+                email = rd.GetString(2);
+                TPnumber = rd.GetString(4);
+                address = rd.GetString(5);
+            }
+            con.Close();
+
         }
 
-        public string Address
-        {
-            get { return address; }
-            set { address = value; }
-        }
 
         public Student(string aContact, string aEmail, string aAdress)
         {
@@ -45,6 +58,25 @@ namespace Asssignment
             stdname = "";
             TPnumber = "";
         }
+
+        public int UserID
+        {
+            get { return userID; }
+            set { userID = value; }
+        }
+
+        public int StdID
+        {
+            get { return stdID; }
+            set { stdID = value; }
+        }
+
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+
 
         public string Tpnum
         {
@@ -114,41 +146,57 @@ namespace Asssignment
         }
 
 
-        public ArrayList viewSchedule(string date)
+        public ArrayList viewSchedule()
         {
+            int module = 0;
+            int trainer = 0;
+            string mod = "";
+            string train = "";
+            string schedule = "";
             ArrayList sc = new ArrayList();
+            List<int> classIDs = new List<int>();
             con.Open();
-            SqlCommand cmd = new SqlCommand("Select * From Schedule WHERE StudentName = @StudentName AND Date = @date", con);
-            cmd.Parameters.AddWithValue("@StudentName", stdname);
-            cmd.Parameters.AddWithValue("@date", date);
-            SqlDataReader rd = cmd.ExecuteReader();
-            while (rd.Read()) 
-            {
-                /*sc.Add(rd.GetString(2));
-                sc.Add(rd.GetString(3));
-                sc.Add(rd.GetString(4));
-                sc.Add(" ");*/
-                
-                string info = rd.GetString(2) + "  ||  " + rd.GetString(3) + "  ||  " + rd.GetString(4);
-                sc.Add(info);
-                 
-            }
-            con.Close();
-            return sc;
-        }
-
-        public ArrayList Date()
-        {
-            ArrayList dt = new ArrayList();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Select DISTINCT Date FROM Schedule WHERE StudentName = '" + stdname + "'", con);
+            SqlCommand cmd = new SqlCommand("Select ClassID From [Enrollment] WHERE StudentID = '" + stdID + "'", con);
             SqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read())
             {
-                dt.Add(rd.GetString(0));
+                classIDs.Add(rd.GetInt32(0));
             }
+            rd.Close();
+            foreach(int classID in classIDs)
+            {
+                SqlCommand cmd2 = new SqlCommand("Select * FROM [CoachingClass] WHERE ClassID = '" + classID + "'", con);
+                SqlDataReader rd2 = cmd2.ExecuteReader();
+                while (rd2.Read())
+                {
+                    schedule = rd2.GetString(4);
+                    module = rd2.GetInt32(1);
+                    trainer = rd2.GetInt32(2);
+                }
+                rd2.Close();
+
+                SqlCommand cmd3 = new SqlCommand("Select ModuleName From [Module] WHERE ModuleID = '" + module + "'", con);
+                SqlDataReader rd3 = cmd3.ExecuteReader();
+                while (rd3.Read())
+                {
+                    mod = rd3.GetString(0);
+                }
+                rd3.Close();
+
+                SqlCommand cmd4 = new SqlCommand("Select Fullname From [Trainer] WHERE TrainerID = '" + trainer + "'", con);
+                SqlDataReader rd4 = cmd4.ExecuteReader();
+                while (rd4.Read())
+                {
+                    train = rd4.GetString(0);
+                }
+                rd4.Close();
+
+                string info = mod + " || " + train + " || " + schedule;
+                sc.Add(info);
+            }
+          
             con.Close();
-            return dt;
+            return sc;
         }
 
         public int GetStudentID()
@@ -164,6 +212,7 @@ namespace Asssignment
             con.Close();
             return studentID;
         }
+
 
     }
 }
