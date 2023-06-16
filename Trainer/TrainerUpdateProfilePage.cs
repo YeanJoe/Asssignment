@@ -26,7 +26,6 @@ namespace APU_Programming_Cafe_Management_System
             TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(trainer);
             trainerDashboardPage.Show();
 
-            // Close Form1
             this.Close();
         }
 

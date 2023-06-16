@@ -25,7 +25,6 @@ namespace APU_Programming_Cafe_Management_System
             TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(trainer);
             trainerDashboardPage.Show();
 
-            // Close Form1
             this.Close();
         }
 
@@ -36,9 +35,27 @@ namespace APU_Programming_Cafe_Management_System
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            CoachingClass newCoachingClass = new CoachingClass(trainer);
-            string schedule = cboDay.Text + " " + cboTime.Text;
-            newCoachingClass.InsertRow(txtModule.Text, Convert.ToInt32(txtCharge.Text), schedule);
+            if(txtModule.Text != "" && cboDay.SelectedIndex >=0 && cboTime.SelectedIndex >= 0)
+            {
+                if (int.TryParse(txtCharge.Text, out int charge))
+                {
+                    CoachingClass newCoachingClass = new CoachingClass(trainer);
+                    string schedule = cboDay.Text + "," + cboTime.Text;
+                    MessageBox.Show(newCoachingClass.InsertRow(txtModule.Text, charge, schedule));
+
+            
+
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect syntax on Charge section please enter an int");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Some values are empty");
+            }
+ 
         }
     }
 }

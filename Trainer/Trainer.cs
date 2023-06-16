@@ -139,6 +139,22 @@ namespace Asssignment.Trainer
             return classIDs;
         }
 
+        public List<int> GetTrainerClassIDList()
+        {
+            List<int> classIDs = new List<int>();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT ClassID FROM [CoachingClass] WHERE TrainerID = '" + TrainerID + "'", con);
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    int classID = rd.GetInt32(0);
+                    classIDs.Add(classID);
+                }
+                con.Close();
+
+            return classIDs;
+        }
+
         //Get student list which is being handled by trainer
         public List<string> GetTrainerStudentList (string moduleName)
         {

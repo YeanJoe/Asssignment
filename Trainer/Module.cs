@@ -12,7 +12,7 @@ namespace Asssignment.Trainer
     {
         private int moduleID;
         private string moduleName;
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+        static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
 
         public int ModuleID
@@ -42,7 +42,7 @@ namespace Asssignment.Trainer
             ModuleID = GetModuleID(moduleName);
         }
 
-        private int GetModuleID(string moduleName)
+        public static int GetModuleID(string moduleName)
         {
 
             con.Open();
@@ -59,7 +59,7 @@ namespace Asssignment.Trainer
 
         }
 
-        private string GetModuleName(int moduleID)
+        public static string GetModuleName(int moduleID)
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT ModuleName FROM [Module] WHERE ModuleID = '" + moduleID + "'", con);

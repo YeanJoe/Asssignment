@@ -33,12 +33,12 @@
             this.lblClassName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxCharge = new System.Windows.Forms.TextBox();
             this.cboTime = new System.Windows.Forms.ComboBox();
             this.cboDay = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbBoxClass = new System.Windows.Forms.ComboBox();
+            this.txtBoxModule = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // BtnBack
@@ -64,7 +64,7 @@
             // lblClassName
             // 
             this.lblClassName.AutoSize = true;
-            this.lblClassName.Location = new System.Drawing.Point(353, 91);
+            this.lblClassName.Location = new System.Drawing.Point(287, 97);
             this.lblClassName.Name = "lblClassName";
             this.lblClassName.Size = new System.Drawing.Size(63, 16);
             this.lblClassName.TabIndex = 2;
@@ -88,19 +88,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Charge (RM)";
             // 
-            // textBox1
+            // txtBoxCharge
             // 
-            this.textBox1.Location = new System.Drawing.Point(356, 147);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 22);
-            this.textBox1.TabIndex = 5;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(356, 193);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(221, 22);
-            this.textBox2.TabIndex = 6;
+            this.txtBoxCharge.Location = new System.Drawing.Point(356, 193);
+            this.txtBoxCharge.Name = "txtBoxCharge";
+            this.txtBoxCharge.Size = new System.Drawing.Size(221, 22);
+            this.txtBoxCharge.TabIndex = 6;
             // 
             // cboTime
             // 
@@ -110,7 +103,7 @@
             "10:00 - 12:00",
             "13:00 - 15:00",
             "15:00 - 17:00"});
-            this.cboTime.Location = new System.Drawing.Point(502, 248);
+            this.cboTime.Location = new System.Drawing.Point(499, 245);
             this.cboTime.Name = "cboTime";
             this.cboTime.Size = new System.Drawing.Size(121, 24);
             this.cboTime.TabIndex = 7;
@@ -141,11 +134,18 @@
             // cmbBoxClass
             // 
             this.cmbBoxClass.FormattingEnabled = true;
-            this.cmbBoxClass.Location = new System.Drawing.Point(422, 88);
+            this.cmbBoxClass.Location = new System.Drawing.Point(356, 94);
             this.cmbBoxClass.Name = "cmbBoxClass";
             this.cmbBoxClass.Size = new System.Drawing.Size(121, 24);
             this.cmbBoxClass.TabIndex = 10;
             this.cmbBoxClass.SelectedIndexChanged += new System.EventHandler(this.cmbBoxClass_SelectedIndexChanged);
+            // 
+            // txtBoxModule
+            // 
+            this.txtBoxModule.Location = new System.Drawing.Point(356, 147);
+            this.txtBoxModule.Name = "txtBoxModule";
+            this.txtBoxModule.Size = new System.Drawing.Size(221, 22);
+            this.txtBoxModule.TabIndex = 5;
             // 
             // UpdateCoachClassPage
             // 
@@ -156,8 +156,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboDay);
             this.Controls.Add(this.cboTime);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxCharge);
+            this.Controls.Add(this.txtBoxModule);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblClassName);
@@ -178,11 +178,11 @@
         private System.Windows.Forms.Label lblClassName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxCharge;
         private System.Windows.Forms.ComboBox cboTime;
         private System.Windows.Forms.ComboBox cboDay;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbBoxClass;
+        private System.Windows.Forms.TextBox txtBoxModule;
     }
 }

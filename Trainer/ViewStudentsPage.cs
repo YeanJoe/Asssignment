@@ -46,13 +46,13 @@ namespace APU_Programming_Cafe_Management_System
             TrainerDashboardPage trainerDashboardPage = new TrainerDashboardPage(trainer);
             trainerDashboardPage.Show();
 
-            // Close Form1
             this.Close();
         }
 
         private void cboModule_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboStudent.Items.Clear();
+            cboStudent.Text = "";
             List<string>studentNames = trainer.GetTrainerStudentList(cboModule.Text);
             foreach (string studentName in studentNames)
             {

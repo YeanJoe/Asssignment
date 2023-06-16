@@ -1,4 +1,5 @@
-﻿using Asssignment.Trainer;
+﻿using Asssignment;
+using Asssignment.Trainer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,6 +70,14 @@ namespace APU_Programming_Cafe_Management_System
         private void TrainerDashboardPage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+            this.Dispose();
         }
     }
 }
