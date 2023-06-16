@@ -57,6 +57,20 @@ namespace Asssignment
 
         }
 
-
+        private void comboLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboLevel.SelectedIndex == 0)
+            {
+                lblCharge.Text = "RM100.00";
+            }
+            else if (comboLevel.SelectedIndex == 1)
+            {
+                lblCharge.Text = "RM125.00";
+            }
+            else if (comboLevel.SelectedIndex == 2)
+            {
+                lblCharge.Text = "RM150.00";
+            }
+        }
     }
 }
