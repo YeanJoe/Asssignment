@@ -22,15 +22,6 @@ namespace Asssignment.Lecturer
 
         }
         
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -76,16 +67,6 @@ namespace Asssignment.Lecturer
             return value;
         }
 
-        private void lblName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void checkApprove_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox clickedCheckbox = (CheckBox)sender;
@@ -107,9 +88,5 @@ namespace Asssignment.Lecturer
            
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

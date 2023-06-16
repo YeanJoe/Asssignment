@@ -71,7 +71,7 @@ namespace Asssignment
                 }
                 else if (userRole == "lecturer")
                 {
-                    LecturerDashboard lecturerDashboard = new LecturerDashboard(username);
+                    LecturerDashboard lecturerDashboard = new LecturerDashboard(new Lecturer.Lecturer(username));
                     lecturerDashboard.Show();
                 }
                 else if (userRole == "trainer")

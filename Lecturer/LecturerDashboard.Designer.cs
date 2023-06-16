@@ -45,7 +45,6 @@
             this.btnRegister.TabIndex = 0;
             this.btnRegister.Text = "Register Student";
             this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnUpdate
             // 
@@ -75,7 +74,6 @@
             this.btnApprove.TabIndex = 3;
             this.btnApprove.Text = "Approve Request";
             this.btnApprove.UseVisualStyleBackColor = true;
-            this.btnApprove.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -88,7 +86,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Welcome Back";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnProfile
             // 
@@ -98,7 +95,7 @@
             this.btnProfile.TabIndex = 5;
             this.btnProfile.Text = "Update Profile";
             this.btnProfile.UseVisualStyleBackColor = true;
-            this.btnProfile.Click += new System.EventHandler(this.button5_Click);
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // btnLogOut
             // 
@@ -108,7 +105,6 @@
             this.btnLogOut.TabIndex = 6;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
-            this.btnLogOut.Click += new System.EventHandler(this.button6_Click);
             // 
             // LecturerDashboard
             // 

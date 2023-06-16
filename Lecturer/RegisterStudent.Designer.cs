@@ -43,6 +43,9 @@
             this.comboMonth = new System.Windows.Forms.ComboBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -130,7 +133,7 @@
             this.comboLevel.FormattingEnabled = true;
             this.comboLevel.Items.AddRange(new object[] {
             "Level"});
-            this.comboLevel.Location = new System.Drawing.Point(57, 244);
+            this.comboLevel.Location = new System.Drawing.Point(52, 263);
             this.comboLevel.Name = "comboLevel";
             this.comboLevel.Size = new System.Drawing.Size(100, 24);
             this.comboLevel.TabIndex = 12;
@@ -139,7 +142,7 @@
             // comboModule
             // 
             this.comboModule.FormattingEnabled = true;
-            this.comboModule.Location = new System.Drawing.Point(269, 244);
+            this.comboModule.Location = new System.Drawing.Point(272, 263);
             this.comboModule.Name = "comboModule";
             this.comboModule.Size = new System.Drawing.Size(100, 24);
             this.comboModule.TabIndex = 13;
@@ -147,7 +150,20 @@
             // comboMonth
             // 
             this.comboMonth.FormattingEnabled = true;
-            this.comboMonth.Location = new System.Drawing.Point(143, 289);
+            this.comboMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.comboMonth.Location = new System.Drawing.Point(138, 309);
             this.comboMonth.Name = "comboMonth";
             this.comboMonth.Size = new System.Drawing.Size(147, 24);
             this.comboMonth.TabIndex = 14;
@@ -170,13 +186,43 @@
             this.btnSubmit.TabIndex = 16;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.button1_Click);
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(80, 244);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 16);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Level";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(192, 290);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 16);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Month";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(299, 244);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 16);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Module";
             // 
             // RegisterStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 349);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.comboMonth);
@@ -217,5 +263,8 @@
         private System.Windows.Forms.ComboBox comboMonth;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

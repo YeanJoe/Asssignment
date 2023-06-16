@@ -62,7 +62,6 @@
             this.label1.Size = new System.Drawing.Size(81, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Request List";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // listRequest
             // 
@@ -154,7 +153,6 @@
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(102, 16);
             this.lblName.TabIndex = 14;
-            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // btnBack
             // 
@@ -189,7 +187,6 @@
             this.groupBox1.Size = new System.Drawing.Size(128, 63);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // checkApprove
             // 
@@ -220,7 +217,6 @@
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(102, 16);
             this.lblStatus.TabIndex = 23;
-            this.lblStatus.Click += new System.EventHandler(this.label5_Click);
             // 
             // label7
             // 

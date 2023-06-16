@@ -19,6 +19,8 @@ namespace Asssignment.Trainer
         private string email;
         private string contactNumer;
         private string address;
+        private string password;
+        private string username;
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
         public int TrainerID
@@ -54,6 +56,18 @@ namespace Asssignment.Trainer
             set { address = value; }
         }
 
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
         public Trainer(string username) 
         {
             con.Open();
@@ -65,7 +79,7 @@ namespace Asssignment.Trainer
                 userID = rd.GetInt32(0);
             }
             rd.Close();
-            cmd = new SqlCommand("SELECT TrainerID, FullName, Email, ContactNumber, Address FROM [Trainer] WHERE UserID = " + userID, con);
+            cmd = new SqlCommand("SELECT TrainerID, FullName, Email, ContactNumber, Address, Password, Username FROM [Trainer] WHERE UserID = " + userID, con);
             rd = cmd.ExecuteReader();
             while (rd.Read())
             {
@@ -74,6 +88,9 @@ namespace Asssignment.Trainer
                 Email = rd.GetString(2);
                 ContactNumber = rd.GetString(3);
                 Address = rd.GetString(4);
+                Password = rd.GetString(5);
+                Username = rd.GetString(6);
+                
             }
             con.Close();
         }

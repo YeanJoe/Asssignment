@@ -66,7 +66,6 @@
             this.label2.Size = new System.Drawing.Size(103, 16);
             this.label2.TabIndex = 13;
             this.label2.Text = "Contact Number";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtNumber
             // 
@@ -74,7 +73,6 @@
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(146, 22);
             this.txtNumber.TabIndex = 14;
-            this.txtNumber.TextChanged += new System.EventHandler(this.txtNumber_TextChanged);
             // 
             // btnBack
             // 
@@ -113,7 +111,6 @@
             this.label4.Size = new System.Drawing.Size(44, 16);
             this.label4.TabIndex = 29;
             this.label4.Text = "Name";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtName
             // 
@@ -126,6 +123,7 @@
             // 
             this.txtID.Location = new System.Drawing.Point(31, 37);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(146, 22);
             this.txtID.TabIndex = 31;
             // 
@@ -137,7 +135,6 @@
             this.label5.Size = new System.Drawing.Size(58, 16);
             this.label5.TabIndex = 32;
             this.label5.Text = "Address";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtAddress
             // 
@@ -145,7 +142,6 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(146, 22);
             this.txtAddress.TabIndex = 33;
-            this.txtAddress.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // Profile
             // 
