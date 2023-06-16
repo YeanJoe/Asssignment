@@ -41,7 +41,7 @@ namespace Assignment_Admin_
 
         private void btnTrainerRaD_Click(object sender, EventArgs e)
         {
-            Trainer_Register_and_Delete t = new Trainer_Register_and_Delete():
+            Trainer_Register_and_Delete t = new Trainer_Register_and_Delete();
             t.Show();
             this.Hide();
         }
