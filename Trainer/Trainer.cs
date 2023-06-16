@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -121,9 +122,7 @@ namespace Asssignment.Trainer
         public List<int> GetTrainerClassIDList(string moduleName)
         {
             List<int> classIDs = new List<int>();
-            Module module = new Module(moduleName);
-
-            int moduleID = module.ModuleID;
+            int moduleID = Module.GetModuleID(moduleName);
             if(moduleID != 0)
             {
                 con.Open();
@@ -188,7 +187,23 @@ namespace Asssignment.Trainer
             return studentNames;
         }
 
-        
+        public string UpdateContactInfo(string email, string contactNumber)
+        {
+            this.email = email;
+            this.contactNumer = contactNumber;
+            string stat = "Failed to Update Contact Info";
+            con.Open();
+            string cmdString = "UPDATE [Trainer] SET Email = '{0}', ContactNumber = '{1}' WHERE TrainerID = {2} ";
+            cmdString = string.Format(cmdString, email, contactNumber, trainerID);
+            SqlCommand cmd = new SqlCommand(cmdString, con);
+            int i = cmd.ExecuteNonQuery();
+            if (i != 0)
+            {
+                stat = "Update Contact Info success!";
+            }
+            con.Close();
+            return stat;
+        }
 
         //Searches the database in the specified tablename and column and returns a value
         //Accepts a string and returns an int

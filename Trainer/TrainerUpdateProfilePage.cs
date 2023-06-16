@@ -29,14 +29,18 @@ namespace APU_Programming_Cafe_Management_System
             this.Close();
         }
 
-        private void BtnSend_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void UpdateProfilePage_Load(object sender, EventArgs e)
         {
+            txtEmail.Text = trainer.Email;
+            txtContactNumber.Text = trainer.ContactNumber;
+            
+        }
 
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(trainer.UpdateContactInfo(txtEmail.Text, txtContactNumber.Text));
         }
     }
 }

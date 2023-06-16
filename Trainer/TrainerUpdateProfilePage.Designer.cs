@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.BtnBack = new System.Windows.Forms.Button();
-            this.BtnSend = new System.Windows.Forms.Button();
+            this.BtnUpdate = new System.Windows.Forms.Button();
             this.txtContactNumber = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,15 +47,15 @@
             this.BtnBack.UseVisualStyleBackColor = true;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
-            // BtnSend
+            // BtnUpdate
             // 
-            this.BtnSend.Location = new System.Drawing.Point(347, 377);
-            this.BtnSend.Name = "BtnSend";
-            this.BtnSend.Size = new System.Drawing.Size(75, 23);
-            this.BtnSend.TabIndex = 1;
-            this.BtnSend.Text = "Update";
-            this.BtnSend.UseVisualStyleBackColor = true;
-            this.BtnSend.Click += new System.EventHandler(this.BtnSend_Click);
+            this.BtnUpdate.Location = new System.Drawing.Point(392, 326);
+            this.BtnUpdate.Name = "BtnUpdate";
+            this.BtnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.BtnUpdate.TabIndex = 1;
+            this.BtnUpdate.Text = "Update";
+            this.BtnUpdate.UseVisualStyleBackColor = true;
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // txtContactNumber
             // 
@@ -100,7 +100,7 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Contact Number";
             // 
-            // UpdateProfilePage
+            // TrainerUpdateProfilePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,9 +110,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtContactNumber);
-            this.Controls.Add(this.BtnSend);
+            this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.BtnBack);
-            this.Name = "UpdateProfilePage";
+            this.Name = "TrainerUpdateProfilePage";
             this.Text = "Update Profile";
             this.Load += new System.EventHandler(this.UpdateProfilePage_Load);
             this.ResumeLayout(false);
@@ -123,7 +123,7 @@
         #endregion
 
         private System.Windows.Forms.Button BtnBack;
-        private System.Windows.Forms.Button BtnSend;
+        private System.Windows.Forms.Button BtnUpdate;
         private System.Windows.Forms.TextBox txtContactNumber;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label1;
