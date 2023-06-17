@@ -38,16 +38,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listCompleted = new System.Windows.Forms.ListBox();
+            this.completedStudentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.myDataBaseDataSet = new Asssignment.myDataBaseDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.myDataBaseDataSet = new Asssignment.myDataBaseDataSet();
             this.myDataBaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.completedStudentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.completedStudentTableAdapter = new Asssignment.myDataBaseDataSetTableAdapters.CompletedStudentTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.completedStudentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.completedStudentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -121,15 +121,23 @@
             // listCompleted
             // 
             this.listCompleted.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.completedStudentBindingSource, "FullName", true));
-            this.listCompleted.DataSource = this.completedStudentBindingSource;
-            this.listCompleted.DisplayMember = "FullName";
             this.listCompleted.FormattingEnabled = true;
             this.listCompleted.ItemHeight = 16;
             this.listCompleted.Location = new System.Drawing.Point(28, 59);
             this.listCompleted.Name = "listCompleted";
             this.listCompleted.Size = new System.Drawing.Size(120, 84);
             this.listCompleted.TabIndex = 16;
-            this.listCompleted.ValueMember = "FullName";
+            this.listCompleted.SelectedIndexChanged += new System.EventHandler(this.listCompleted_SelectedIndexChanged);
+            // 
+            // completedStudentBindingSource
+            // 
+            this.completedStudentBindingSource.DataMember = "CompletedStudent";
+            this.completedStudentBindingSource.DataSource = this.myDataBaseDataSet;
+            // 
+            // myDataBaseDataSet
+            // 
+            this.myDataBaseDataSet.DataSetName = "myDataBaseDataSet";
+            this.myDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -160,20 +168,10 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // myDataBaseDataSet
-            // 
-            this.myDataBaseDataSet.DataSetName = "myDataBaseDataSet";
-            this.myDataBaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // myDataBaseDataSetBindingSource
             // 
             this.myDataBaseDataSetBindingSource.DataSource = this.myDataBaseDataSet;
             this.myDataBaseDataSetBindingSource.Position = 0;
-            // 
-            // completedStudentBindingSource
-            // 
-            this.completedStudentBindingSource.DataMember = "CompletedStudent";
-            this.completedStudentBindingSource.DataSource = this.myDataBaseDataSet;
             // 
             // completedStudentTableAdapter
             // 
@@ -199,9 +197,9 @@
             this.Name = "DeleteCompletedStudent";
             this.Text = "DeleteCompletedStudent";
             this.Load += new System.EventHandler(this.DeleteCompletedStudent_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.completedStudentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataBaseDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.completedStudentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

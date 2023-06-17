@@ -49,6 +49,25 @@ namespace Asssignment
 
         }
 
+        public Student(int studentID)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select * From [StudentTable] WHERE StudentID = '" + studentID + "'", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                stdID = rd.GetInt32(0);
+                userID = rd.GetInt32(1);
+                stdname = rd.GetString(2);
+                email = rd.GetString(3);
+                phoneNum = rd.GetString(4);
+                TPnumber = rd.GetString(5);
+                address = rd.GetString(6);
+            }
+            con.Close();
+
+        }
+
 
         public Student(string aContact, string aEmail, string aAdress)
         {

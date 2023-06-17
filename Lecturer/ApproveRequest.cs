@@ -102,7 +102,10 @@ namespace Asssignment.Lecturer
             {
                 RequestClass request = new RequestClass(username);
                 request.dltReq(username);
-                Enrollment.InsertRow(lblModule.Text, lblLevel.Text, username);
+                //Gets the current month in string form for ex: May
+                string currentMonth = DateTime.Now.ToString("MMMM");
+
+                Enrollment.InsertRow(lblModule.Text, lblLevel.Text, username, currentMonth);
             }
             else if (checkReject.Checked)
             {
