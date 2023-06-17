@@ -50,7 +50,7 @@ namespace Asssignment
         {
             string status = null;
             con.Open();
-
+            // Check the available data
             SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Username = @Username AND Password = @Password", con);
             cmd.Parameters.AddWithValue("@Username", username);
             cmd.Parameters.AddWithValue("@Password", password);
@@ -58,7 +58,8 @@ namespace Asssignment
             int count = Convert.ToInt32(cmd.ExecuteScalar());
 
             if (count > 0)
-            {
+            {   
+                // If data exist, then login to respective dashboard
                 SqlCommand cmd2 = new SqlCommand("SELECT Role FROM [User] WHERE Username = @Username AND Password = @Password", con);
                 cmd2.Parameters.AddWithValue("@Username", username);
                 cmd2.Parameters.AddWithValue("@Password", password);
@@ -86,7 +87,7 @@ namespace Asssignment
                     adminDashboard.Show();
                 }
 
-
+            //If no data exist, then return "Incorrect username/password".
             }
             else
             {

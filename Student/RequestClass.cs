@@ -48,6 +48,7 @@ namespace Asssignment
             set { charges = value; }
         }
 
+        //Constructor 1
         public RequestClass(string aModule, string aLevel, string aCharges)
         {
             module = aModule;
@@ -56,6 +57,7 @@ namespace Asssignment
             status = "pending";
         }
 
+       //Constructor 2
         public RequestClass(string aUsername)
         {
             username = aUsername;

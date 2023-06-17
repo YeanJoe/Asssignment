@@ -68,16 +68,6 @@ namespace Asssignment
 
         }
 
-
-        public Student(string aContact, string aEmail, string aAdress)
-        {
-            phoneNum = aContact;
-            email = aEmail;
-            address = aAdress;
-            stdname = "";
-            TPnumber = "";
-        }
-
         public int UserID
         {
             get { return userID; }
@@ -188,9 +178,9 @@ namespace Asssignment
                 SqlDataReader rd2 = cmd2.ExecuteReader();
                 while (rd2.Read())
                 {
-                    schedule = rd2.GetString(4);
+                    schedule = rd2.GetString(5);
                     module = rd2.GetInt32(1);
-                    trainer = rd2.GetInt32(2);
+                    trainer = rd2.GetInt32(3);
                 }
                 rd2.Close();
 
