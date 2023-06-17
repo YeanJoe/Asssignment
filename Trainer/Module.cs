@@ -34,11 +34,13 @@ namespace Asssignment.Trainer
 
         public Module(int moduleID)
         {
+            this.moduleID = moduleID;
             ModuleName = GetModuleName(moduleID);
         }
 
         public Module(string moduleName)
         {
+            this.moduleName = moduleName;
             ModuleID = GetModuleID(moduleName);
         }
 
@@ -72,6 +74,20 @@ namespace Asssignment.Trainer
             }
             con.Close();
             return moduleName;
+        }
+
+        public string InsertRow()
+        {
+            string stat = "Failed to Insert";
+            con.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO [Module] (ModuleName) VALUES('" + moduleName + "')", con);
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            if(i != 0)
+            {
+                stat = "Insert Success";
+            }
+            return stat;
         }
     }
 }

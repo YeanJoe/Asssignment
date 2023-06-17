@@ -39,9 +39,19 @@ namespace APU_Programming_Cafe_Management_System
             {
                 if (int.TryParse(txtCharge.Text, out int charge))
                 {
+                    if(Module.GetModuleID(txtModule.Text) == 0)
+                    {
+                        Module module = new Module(txtModule.Text);
+                        module.InsertRow();
+                    }
+                    int moduleID = Module.GetModuleID(txtModule.Text);
                     CoachingClass newCoachingClass = new CoachingClass(trainer);
                     string schedule = cboDay.Text + "," + cboTime.Text;
-                    MessageBox.Show(newCoachingClass.InsertRow(txtModule.Text, cboLevel.Text, charge, schedule));
+                    newCoachingClass.ModuleID = moduleID;
+                    newCoachingClass.Level = cboLevel.SelectedItem.ToString();
+                    newCoachingClass.Charges = charge;
+                    newCoachingClass.Schedule = schedule;
+                    MessageBox.Show(newCoachingClass.InsertRow());
 
             
 

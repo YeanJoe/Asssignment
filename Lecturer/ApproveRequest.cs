@@ -41,6 +41,8 @@ namespace Asssignment.Lecturer
             // TODO: This line of code loads data into the 'myDataBaseDataSet.Request' table. You can move, or remove it, as needed.
             this.requestTableAdapter.Fill(this.myDataBaseDataSet.Request);
 
+            //Makes the listBox select nothing at start
+            listRequest.SelectedIndex = -1;
         }
 
         private void listRequest_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,6 +113,10 @@ namespace Asssignment.Lecturer
             {
                 MessageBox.Show("Please select an option");
             }
+
+            LecturerDashboard next = new LecturerDashboard();
+            next.Show();
+            this.Close();
         }
 
     }

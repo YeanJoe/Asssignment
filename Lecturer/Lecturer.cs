@@ -98,36 +98,51 @@ namespace Asssignment.Lecturer
         {
             string stat = "Failed to register Student";
 
-            //insert to usertable
+            //Check if user already exist
             con.Open();
-            string cmdString = "INSERT INTO [User] (Username, Password, Role) ";
-            cmdString += ("VALUES('{0}', '{1}', '{2}')");
-            cmdString = string.Format(cmdString, username, password, "student");
-            SqlCommand cmd = new SqlCommand(cmdString, con);
-            int i = cmd.ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Username = '" + username + "'", con);
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
-            if (i != 0)
+            if (count == 0)
             {
-                //Get the newly created userID from username
-                student.UserID = GetUserID(username);
-
-                //insert to studentTable
+                //insert to usertable
                 con.Open();
-                cmdString = "INSERT INTO [StudentTable] (UserID, FullName, Email, ContactNum, TPNumber, Address) ";
-                cmdString += ("VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}')");
-                cmdString = string.Format(cmdString, student.UserID, student.Stdname, student.Email, student.PhoneNum, student.Tpnum, student.Address);
+                string cmdString = "INSERT INTO [User] (Username, Password, Role) ";
+                cmdString += ("VALUES('{0}', '{1}', '{2}')");
+                cmdString = string.Format(cmdString, username, password, "student");
                 cmd = new SqlCommand(cmdString, con);
-                i = cmd.ExecuteNonQuery();
+                int i = cmd.ExecuteNonQuery();
+                con.Close();
                 if (i != 0)
                 {
-                    stat = "Student Registered!";
+                    //Get the newly created userID from username
+                    student.UserID = GetUserID(username);
+
+                    //insert to studentTable
+                    con.Open();
+                    cmdString = "INSERT INTO [StudentTable] (UserID, FullName, Email, ContactNum, TPNumber, Address) ";
+                    cmdString += ("VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}')");
+                    cmdString = string.Format(cmdString, student.UserID, student.Stdname, student.Email, student.PhoneNum, student.Tpnum, student.Address);
+                    cmd = new SqlCommand(cmdString, con);
+                    i = cmd.ExecuteNonQuery();
+                    if (i != 0)
+                    {
+                        stat = "Student Registered!";
+                    }
+                    con.Close();
                 }
-                con.Close();
+
+            }
+            else
+            {
+                stat = "Username already exists";
             }
 
-             return stat;
+            return stat;
 
         }
+
+
 
         public static int GetUserID(string username)
         {

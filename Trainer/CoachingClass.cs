@@ -52,7 +52,12 @@ namespace Asssignment.Trainer
             set { schedule = value; }
         }
 
-        public CoachingClass( Trainer trainer)
+        public CoachingClass()
+        {
+
+        }
+
+        public CoachingClass(Trainer trainer)
         {
             trainerID = trainer.TrainerID;
         }
@@ -73,48 +78,43 @@ namespace Asssignment.Trainer
             
         }
 
-        public string InsertRow(string moduleName, string level, int charges, string schedule)
+        public string InsertRow()
         {
-            string stat = "Failed to Insert";
-            con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO [Module] (ModuleName) VALUES('" + moduleName + "')", con);
-            int i = cmd.ExecuteNonQuery();
-            con.Close();
-            if(i!=0)
-            {
+                string stat = "Failed to Insert";
+           
                 con.Open();
-                int moduleID = Module.GetModuleID(moduleName);
                 string cmdString = "INSERT INTO [CoachingClass] (ModuleID, Level, TrainerID, Charges, Schedule) ";
                 cmdString += ("VALUES({0}, '{1}', {2}, {3}, '{4}')");
                 cmdString = string.Format(cmdString, moduleID, level, trainerID, charges, schedule);
-                cmd = new SqlCommand(cmdString, con);
-                i = cmd.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand(cmdString, con);
+                int i = cmd.ExecuteNonQuery();
                 if (i != 0)
                 {
                     stat = "Insert table row success!";
                 }
                 con.Close();
-            }
 
             return stat;
 
         }
 
+        //Updates the current values in the current field to reflect on the database
         public string UpdateRow(string moduleName)
         {
             SqlCommand cmd;
             int i = 0;
             string stat = "Failed to Update";
+            //Check if the edited module doesn't exist, if it doesn't then update it in the moduleTable 
             if (moduleID == 0)
             {
+                int originalModuleID = GetModuleIDFromClassID(classID);
                 con.Open();
-                cmd = new SqlCommand("INSERT INTO [Module] (ModuleName) VALUES('" + moduleName + "')", con);
+                cmd = new SqlCommand("UPDATE [Module] SET ModuleName = '" + moduleName + "' WHERE ModuleID = " + originalModuleID , con);
                 i = cmd.ExecuteNonQuery();
                 con.Close();
                 if (i != 0)
                 {
-                    Module module = new Module(moduleName);
-                    moduleID = module.ModuleID;
+                    moduleID = Module.GetModuleID(moduleName);
                 }
             }
            
@@ -132,6 +132,22 @@ namespace Asssignment.Trainer
             
             return stat;
         }
+
+        public static int GetModuleIDFromClassID(int classID)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT ModuleID FROM [CoachingClass] WHERE ClassID = " + classID, con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            int moduleID = 0;
+            while(rd.Read())
+            {
+                moduleID = rd.GetInt32(0);
+            }
+            con.Close();
+            return moduleID;
+        }
+
+ 
 
         public void GetAllOtherColumnValues()
         {

@@ -15,6 +15,7 @@ namespace Asssignment.Lecturer
     {
         Lecturer lecturer;
         Enrollment enrollment;
+        CoachingClass coachingClass;
         public UpdateSubjectEnrollment(Lecturer lecturer)
         {
             InitializeComponent();
@@ -35,9 +36,12 @@ namespace Asssignment.Lecturer
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (lblLevel.Text != "" && lblModule.Text != "")
+            if (lblLevel.Text != "" && lblModule.Text != "" && comboNewLevel.SelectedItem.ToString() != "" && comboNewModule.SelectedItem.ToString() != "")
             {
-
+                //Check if module and level exist in class Table
+                //if it doesnot then create one
+                //then update the current values into the new ones
+                MessageBox.Show(enrollment.UpdateRow(comboNewModule.SelectedValue.ToString(), comboNewLevel.SelectedItem.ToString() ));
             }
             else
             {
@@ -88,7 +92,7 @@ namespace Asssignment.Lecturer
         private void comboClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             int classID = Convert.ToInt32(comboClass.SelectedItem);
-            CoachingClass coachingClass = new CoachingClass(classID);
+            coachingClass = new CoachingClass(classID);
             coachingClass.GetAllOtherColumnValues();
             lblLevel.Text = coachingClass.Level;
             lblModule.Text = Module.GetModuleName(coachingClass.ModuleID);

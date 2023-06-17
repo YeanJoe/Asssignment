@@ -191,6 +191,11 @@ namespace Asssignment
                 }
                 rd4.Close();
 
+                if(train == null || train == "")
+                {
+                    train = "No Trainer";
+                }
+
                 string info = mod + " || " + train + " || " + schedule;
                 sc.Add(info);
             }
