@@ -53,7 +53,7 @@ namespace Asssignment.Lecturer
                 MessageBox.Show(stat);
                 if(stat != "Username already exists")
                 {
-                    Enrollment.InsertRow(comboModule.Text, comboLevel.Text, txtUsername.Text);
+                    Enrollment.InsertRow(comboModule.Text, comboLevel.Text, txtUsername.Text, comboMonth.Text);
                 }
             }
             else

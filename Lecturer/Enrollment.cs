@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Asssignment.Lecturer
         private int classID;
         private string level;
         private string month;
+        private List<int> studentList;
+        private List<int> classList;
         static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
         public int EnrollmentID
@@ -52,6 +55,18 @@ namespace Asssignment.Lecturer
             set { month = value; }
         }
 
+        public List<int> StudentList
+        { 
+            get { return studentList; }
+            set { studentList = value; }
+        }
+        
+        public List<int> ClassList
+        {
+            get { return classList; }
+            set { classList = value; }
+        }
+
         public Enrollment(int studentID)
         {
             con.Open();
@@ -67,6 +82,28 @@ namespace Asssignment.Lecturer
             }
             rd.Close();
             con.Close();
+        }
+
+        public Enrollment(int studentID, int classID)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [Enrollment] WHERE StudentID = " + studentID + " AND ClassID = " + classID, con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                EnrollmentID = rd.GetInt32(0);
+                StudentID = rd.GetInt32(1);
+                ClassID = rd.GetInt32(2);
+                Level = rd.GetString(3);
+                Month = rd.GetString(4);
+            }
+            rd.Close();
+            con.Close();
+        }
+
+        public Enrollment()
+        {
+
         }
 
         public List<int> GetClassIDsByStudent()
@@ -87,7 +124,7 @@ namespace Asssignment.Lecturer
 
 
 
-        public static string InsertRow(string moduleName, string level, string username)
+        public static string InsertRow(string moduleName, string level, string username, string enrollmentMonth)
         {
             string stat = "Failed to Enroll Student";
             int classID = 0;
@@ -108,13 +145,12 @@ namespace Asssignment.Lecturer
                 Student student = new Student(username);
                 int studentID = student.StdID;
 
-                //Gets the current month in string form for ex: May
-                string currentMonth = DateTime.Now.ToString("MMMM");
+                
 
                 con.Open();
                 string cmdString = "INSERT INTO [Enrollment] (StudentID, ClassID, Level, Month) ";
                 cmdString += ("VALUES({0}, {1}, '{2}', '{3}')");
-                cmdString = string.Format(cmdString, studentID, classID, level, currentMonth);
+                cmdString = string.Format(cmdString, studentID, classID, level, enrollmentMonth);
                 SqlCommand cmd = new SqlCommand(cmdString, con);
                 int i = cmd.ExecuteNonQuery();
                 if (i != 0)
@@ -153,6 +189,45 @@ namespace Asssignment.Lecturer
             con.Close();
             return stat;
 
+        }
+
+        public void GetStudentsCompletedClasses()
+        {
+            studentList = new List<int>();
+            classList = new List<int>();
+            string currentMonth = DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT Month, StudentID, ClassID FROM Enrollment", con);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while(rd.Read())
+            {
+                //Check if 3 months has passed from the enrollment month if it has then add the student and its classID to the list
+                //Turn the Month column value like "March" to number 3
+                int monthNumber = DateTime.ParseExact(rd.GetString(0), "MMMM", CultureInfo.InvariantCulture).Month;
+                if(DateTime.Now.Month - monthNumber >= 3)
+                {
+                    studentList.Add(rd.GetInt32(1));
+                    classList.Add(rd.GetInt32(2));
+                }
+                
+            }
+            con.Close();
+            rd.Close();
+        }
+
+
+        public string DeleteRow()
+        {
+            string stat = "Delete failed";
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM [Enrollment] WHERE EnrollmentID = " + EnrollmentID, con);
+            int i = cmd.ExecuteNonQuery();
+            if (i != 0)
+            {
+                stat = "Delete success!";
+            }
+            con.Close();
+            return stat;
         }
 
         private static void CreateClassWithoutTrainer(int moduleID, string level)

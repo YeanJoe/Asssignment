@@ -12,11 +12,13 @@ namespace Asssignment.Lecturer
 {
     public partial class Confirmation : Form
     {
-        Lecturer lecturer;
-        public Confirmation(Lecturer lecturer)
+        int studentID;
+        int classID;
+        public Confirmation(int studentID, int classID)
         {
             InitializeComponent();
-            this.lecturer = lecturer;
+            this.studentID = studentID;
+            this.classID = classID;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -31,9 +33,15 @@ namespace Asssignment.Lecturer
 
         private void btnNo_Click(object sender, EventArgs e)
         {
-            DeleteCompletedStudent next= new DeleteCompletedStudent(lecturer);
-            Show();
-            this.Hide();
+            this.Dispose();
+        }
+
+        private void btnYes_Click(object sender, EventArgs e)
+        {
+
+            Enrollment enrollment = new Enrollment(studentID, classID);
+            MessageBox.Show(enrollment.DeleteRow());
+            this.Dispose();
         }
     }
 }

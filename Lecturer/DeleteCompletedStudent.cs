@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Asssignment.Trainer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace Asssignment.Lecturer
     public partial class DeleteCompletedStudent : Form
     {
         Lecturer lecturer;
+        Enrollment enrollment;
         public DeleteCompletedStudent(Lecturer lecturer)
         {
             InitializeComponent();
@@ -21,8 +23,13 @@ namespace Asssignment.Lecturer
 
         private void DeleteCompletedStudent_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'myDataBaseDataSet.CompletedStudent' table. You can move, or remove it, as needed.
-            this.completedStudentTableAdapter.Fill(this.myDataBaseDataSet.CompletedStudent);
+            enrollment = new Enrollment();
+            enrollment.GetStudentsCompletedClasses();
+            foreach(int studentID in enrollment.StudentList)
+            {
+                Student student = new Student(studentID);
+                listCompleted.Items.Add(student.Stdname);
+            }
 
         }
 
@@ -35,9 +42,31 @@ namespace Asssignment.Lecturer
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Confirmation next= new Confirmation(lecturer);
-            next.Show();
-            this.Hide();
+            int index = listCompleted.SelectedIndex;
+            int studentID = enrollment.StudentList[index];
+            int classID = enrollment.ClassList[index];
+            if (studentID != 0l && classID != 0)
+            {
+                Confirmation next = new Confirmation(studentID, classID);
+                next.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Student");
+            }
+        }
+
+        private void listCompleted_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = listCompleted.SelectedIndex;
+            string studentName = listCompleted.SelectedItem.ToString();
+            Student student = new Student(studentName);
+            lblName.Text = studentName;
+            lblTP.Text = student.Tpnum;
+            CoachingClass coachingClass = new CoachingClass(enrollment.ClassList[index]);
+            coachingClass.GetAllOtherColumnValues();
+            lblModule.Text = Module.GetModuleName(coachingClass.ModuleID);
+            lblLevel.Text = coachingClass.Level;
         }
     }
 }
