@@ -94,6 +94,7 @@
             this.comboLevel.Name = "comboLevel";
             this.comboLevel.Size = new System.Drawing.Size(173, 24);
             this.comboLevel.TabIndex = 5;
+            this.comboLevel.SelectedIndexChanged += new System.EventHandler(this.comboLevel_SelectedIndexChanged);
             // 
             // lblCharge
             // 
