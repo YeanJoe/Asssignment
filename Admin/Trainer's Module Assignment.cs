@@ -17,9 +17,12 @@ namespace Assignment_Admin_
 {
     public partial class Trainer_s_Module_Assignment : Form
     {
-        public Trainer_s_Module_Assignment()
+        public string name;
+
+        public Trainer_s_Module_Assignment(string n)
         {
             InitializeComponent();
+            name = n;
         }
 
         private void cmbTrainerID_SelectedIndexChanged(object sender, EventArgs e)

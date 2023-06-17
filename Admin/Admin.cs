@@ -12,149 +12,85 @@ namespace Asssignment.Admin
 {
     internal class Admin
     {
-        //Fields
-        private string TrainerID;
-        private string UID;
-        private string Username;
-        private string Password;
-        private string Name;
-        private string Email;
-        private string PhoneNumber;
-        private string Address;
+        private string adminID;
+        private string userID;
+        private string fullName;
+        private string email;
+        private string contactNumber;
+        private string address;
         static SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
 
-        public string trainerID
+        public string AdminID
         {
-            get {  return TrainerID; }
-            set { TrainerID = value; }
+            get { return adminID; }
+            set { adminID = value; }
         }
-        public string uid
+        public string UserID
         {
-            get { return UID; }
-            set { UID = value; }
+            get { return userID; }
+            set { userID = value; }
         }
-        public string username
+        public string Fullname
         {
-            get { return Username; }
-            set { Username = value; }
+            get { return fullName; }
+            set { fullName = value; }
         }
-        public string password
+        public string Email
         {
-            get { return Password; }
-            set { Password = value; }
+            get { return email; }
+            set { email = value; }
         }
-        public string name
+        public string ContactNumber
         {
-            get { return Name; }
-            set { Name = value; }
+            get { return contactNumber; }
+            set { contactNumber = value; }
         }
-        public string email
+        public string Address
         {
-            get { return Email; }
-            set { Email = value; }
-        }
-        public string phoneNumber
-        {
-            get { return PhoneNumber; }
-            set { PhoneNumber = value; }
-        }
-        public string address
-        {
-            get { return Address; }
-            set { Address = value; }
+            get { return address; }
+            set { address = value; }
         }
 
-        //CONSTRUCTORS
 
-        //Parameterless
         public Admin()
         {
 
         }
 
-        public Admin(string _uid, string _username, string _password)
+        public Admin(string _name)
         {
-            this.UID = _uid;
-            this.Username = _username;
-            this.Password = _password;
+            this.fullName = _name;
         }
 
-        //for Register
-        public Admin(string _username, string _password, string _name, string _email, string _phoneNumber, string _address)
+        public Admin(string _email, string _contactNumber, string _address)
         {
-            this.Username = _username;
-            this.Password = _password;
-            this.Name = _name;
-            this.Email = _email;
-            this.PhoneNumber = _phoneNumber;
-            this.Address = _address;
+            this.email = _email;
+            this.contactNumber = _contactNumber;
+            this.address = _address;
         }
 
 
-        public void ReadTrainerPro(string _trainerID)
+        public void GetAdminProfile()
         {
             con.Open();
-            SqlCommand cmdReadTrainer = new SqlCommand($"SELECT * FROM [Trainer] WHERE TrainerId = '{_trainerID}'", con);
-            using (SqlDataReader reader = cmdReadTrainer.ExecuteReader())
+
+            SqlCommand cmdProfile = new SqlCommand($"SELECT Email, ContactNumber, Address FROM [Admin] WHERE Fullname = '{fullName}'", con);
+            using (SqlDataReader reader = cmdProfile.ExecuteReader())
             {
-                while (reader.Read())
-                {
-                    UID = reader["UserId"].ToString();
-                    Username = reader["Username"].ToString();
-                    Name = reader["FullName"].ToString();
-                    Email = reader["Email"].ToString();
-                    PhoneNumber = reader["ContactNumber"].ToString();
-                    Address = reader["Address"].ToString();
-                    Password = reader["Password"].ToString();
-                }
+                email = reader.GetString(0);
+                contactNumber = reader["ContactNumber"].ToString();
+                address = reader["Address"].ToString();
             }
             con.Close();
         }
 
-        public void RegisterTrainer()
+        public void UpdateAdminProfile()
         {
             con.Open();
 
-            SqlCommand cmdInsertIntoUser = new SqlCommand("INSERT  INTO [User] (Username, Password, Role) VALUES (@username, @password, 'trainer')", con);
-            cmdInsertIntoUser.Parameters.AddWithValue("@username", Username);
-            cmdInsertIntoUser.Parameters.AddWithValue("@password", Password);
-            cmdInsertIntoUser.ExecuteNonQuery();
-
-            SqlCommand cmdUID = new SqlCommand($"SELECT UserID FROM [User] WHERE Username = '{Username}' AND Password = '{Password}'", con);
-            string UID = cmdUID.ExecuteScalar().ToString();
-
-            SqlCommand cmdInsertIntoTrainer = new SqlCommand($"INSERT INTO [Trainer] (UserId, FullName, Email, ContactNumber, Address, Password, Username) Values(@uid, @name, @email, @number, @address, @password, @username)", con);
-            cmdInsertIntoTrainer.Parameters.AddWithValue("@uid", UID);
-            cmdInsertIntoTrainer.Parameters.AddWithValue("@name", Name);
-            cmdInsertIntoTrainer.Parameters.AddWithValue("@email", Email);
-            cmdInsertIntoTrainer.Parameters.AddWithValue("@number", PhoneNumber);
-            cmdInsertIntoTrainer.Parameters.AddWithValue("@address", Address);
-            cmdInsertIntoTrainer.Parameters.AddWithValue("@password", Password);
-            cmdInsertIntoTrainer.Parameters.AddWithValue("@username", Username);
-            cmdInsertIntoTrainer.ExecuteNonQuery();
-
+            SqlCommand cmdUpdate = new SqlCommand($"UPDATE [Admin] SET Email = '{email}', ContactNumber = '{contactNumber}', Address = '{address}' WHERE AdminID = '{adminID}'", con);
+            cmdUpdate.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show("Trainer Registered!");
         }
-
-        public void DeleteTrainer()
-        {
-            string _uid = this.UID;
-            string _username = this.Username;
-            string _password = this.Password;
-
-            con.Open();
-            SqlCommand cmdDeleteFromUser = new SqlCommand($"DELETE FROM [User] WHERE UserID = '{_uid}' AND Username = '{_username}' AND Password = '{_password}'", con);
-            cmdDeleteFromUser.ExecuteNonQuery();
-            SqlCommand cmdDeleteFromTrainer = new SqlCommand($"DELETE FROM [Trainer] WHERE UserId = '{_uid}' AND Password = '{_password}'", con);
-            cmdDeleteFromTrainer.ExecuteNonQuery();
-            con.Close();
-            MessageBox.Show("Trainer Deleted");
-
-        }
-
-        
-
-
     }
 }

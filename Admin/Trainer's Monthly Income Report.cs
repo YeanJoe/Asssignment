@@ -16,9 +16,12 @@ namespace Assignment_Admin_
 {
     public partial class Trainer_s_Monthly_Income_Report : Form
     {
-        public Trainer_s_Monthly_Income_Report()
+        public string name;
+        
+        public Trainer_s_Monthly_Income_Report(string n)
         {
             InitializeComponent();
+            name = n;
         }
 
         private void Trainer_s_Monthly_Income_Report_Load(object sender, EventArgs e)

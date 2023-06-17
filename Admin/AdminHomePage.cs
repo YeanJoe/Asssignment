@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Asssignment.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,28 +42,28 @@ namespace Assignment_Admin_
 
         private void btnTrainerRaD_Click(object sender, EventArgs e)
         {
-            Trainer_Register_and_Delete t = new Trainer_Register_and_Delete();
+            Trainer_Register_and_Delete t = new Trainer_Register_and_Delete(name);
             t.Show();
             this.Hide();
         }
 
         private void btnTrainerModule_Click(object sender, EventArgs e)
         {
-            Trainer_s_Module_Assignment t = new Trainer_s_Module_Assignment();
+            Trainer_s_Module_Assignment t = new Trainer_s_Module_Assignment(name);
             t.Show();
             this.Hide();
         }
 
         private void btnTrainerIncome_Click(object sender, EventArgs e)
         {
-            Trainer_s_Monthly_Income_Report t = new Trainer_s_Monthly_Income_Report();
+            Trainer_s_Monthly_Income_Report t = new Trainer_s_Monthly_Income_Report(name);
             t.Show(); 
             this.Hide();
         }
 
         private void btnFeedbackHub_Click(object sender, EventArgs e)
         {
-            Feedback_HUB t = new Feedback_HUB();
+            Feedback_HUB t = new Feedback_HUB(name);
             t.Show();
             this.Hide();
         }
@@ -75,7 +76,9 @@ namespace Assignment_Admin_
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-
+            AdminProfile t = new AdminProfile(name);
+            t.Show();
+            this.Hide();
         }
     }
 }

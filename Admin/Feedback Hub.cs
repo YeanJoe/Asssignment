@@ -17,9 +17,12 @@ namespace Assignment_Admin_
 {
     public partial class Feedback_HUB : Form
     {
-        public Feedback_HUB()
+        public string name;
+
+        public Feedback_HUB(string n)
         {
             InitializeComponent();
+            name = n;
         }
 
         private void Feedback_HUB_Load(object sender, EventArgs e)

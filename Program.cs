@@ -18,7 +18,7 @@ namespace Asssignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Feedback_HUB());
+            Application.Run(new Login());
         }
     }
 }
