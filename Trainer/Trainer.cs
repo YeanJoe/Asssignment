@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Asssignment.Trainer
 {
@@ -98,6 +101,39 @@ namespace Asssignment.Trainer
             con.Close();
         }
 
+        public Trainer()
+        {
+
+        }
+
+        public Trainer(int trainerID)
+        {
+            this.trainerID = trainerID;
+        }
+
+        public ArrayList GetAllTrainerID()
+        {
+            ArrayList TrainerID = new ArrayList();
+
+            //Open Connection to the database
+            con.Open();
+
+            //Query to find total number of trainers in the trainer table
+            SqlCommand cmdTrainerID = new SqlCommand($"SELECT TrainerId FROM [Trainer] GROUP BY TrainerId", con);
+
+            //Display all TrainerID into the TrainerID ComboBox
+            using (SqlDataReader reader = cmdTrainerID.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    TrainerID.Add(reader["TrainerId"].ToString());
+                }
+            }
+            
+            con.Close();
+            return TrainerID;
+        }
+
         public List<string> GetTrainerExistingModules()
         {
             con.Open();
@@ -171,6 +207,27 @@ namespace Asssignment.Trainer
                 con.Close();
 
             return classIDs;
+        }
+
+        public string GetClassModule(string ClassID)
+        {
+            con.Open();
+            SqlCommand cmdModuleID = new SqlCommand($"SELECT ModuleID FROM [CoachingClass] WHERE ClassID = '{ClassID}'", con);
+            int ModuleID = Convert.ToInt32(cmdModuleID.ExecuteScalar());
+            con.Close();
+
+            return Module.GetModuleName(ModuleID);
+        }
+
+        public string GetClassLevel(string ClassID)
+        {
+            string lvl;
+            con.Open();
+            SqlCommand cmdLevel = new SqlCommand($"SELECT Level FROM [CoachingClass] WHERE ClassID = '{ClassID}'", con);
+            lvl = cmdLevel.ExecuteScalar().ToString();
+            con.Close();
+
+            return lvl;
         }
 
         //Get student list which is being handled by trainer

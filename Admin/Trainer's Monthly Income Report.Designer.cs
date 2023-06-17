@@ -30,14 +30,16 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTrainerID = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtLevel = new System.Windows.Forms.TextBox();
             this.txtIncome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lstModules = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lstClassID = new System.Windows.Forms.ListBox();
+            this.lstLevel = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -58,25 +60,9 @@
             this.cmbTrainerID.TabIndex = 1;
             this.cmbTrainerID.SelectedIndexChanged += new System.EventHandler(this.cmbTrainerID_SelectedIndexChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 153);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Level";
-            // 
-            // txtLevel
-            // 
-            this.txtLevel.Location = new System.Drawing.Point(88, 172);
-            this.txtLevel.Name = "txtLevel";
-            this.txtLevel.Size = new System.Drawing.Size(186, 22);
-            this.txtLevel.TabIndex = 3;
-            // 
             // txtIncome
             // 
-            this.txtIncome.Location = new System.Drawing.Point(88, 250);
+            this.txtIncome.Location = new System.Drawing.Point(88, 147);
             this.txtIncome.Name = "txtIncome";
             this.txtIncome.Size = new System.Drawing.Size(186, 22);
             this.txtIncome.TabIndex = 4;
@@ -84,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 228);
+            this.label3.Location = new System.Drawing.Point(88, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 16);
             this.label3.TabIndex = 5;
@@ -93,7 +79,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(398, 64);
+            this.label4.Location = new System.Drawing.Point(486, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 16);
             this.label4.TabIndex = 6;
@@ -102,19 +88,19 @@
             // 
             this.lstModules.FormattingEnabled = true;
             this.lstModules.ItemHeight = 16;
-            this.lstModules.Location = new System.Drawing.Point(401, 83);
+            this.lstModules.Location = new System.Drawing.Point(489, 85);
             this.lstModules.Name = "lstModules";
-            this.lstModules.Size = new System.Drawing.Size(177, 180);
+            this.lstModules.Size = new System.Drawing.Size(108, 84);
             this.lstModules.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(401, 63);
+            this.label5.Location = new System.Drawing.Point(489, 65);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 16);
+            this.label5.Size = new System.Drawing.Size(59, 16);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Module\'s Assigned";
+            this.label5.Text = "Modules";
             // 
             // btnHome
             // 
@@ -126,19 +112,57 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(335, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 16);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "ClassID";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(644, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 16);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Level";
+            // 
+            // lstClassID
+            // 
+            this.lstClassID.FormattingEnabled = true;
+            this.lstClassID.ItemHeight = 16;
+            this.lstClassID.Location = new System.Drawing.Point(338, 85);
+            this.lstClassID.Name = "lstClassID";
+            this.lstClassID.Size = new System.Drawing.Size(108, 84);
+            this.lstClassID.TabIndex = 14;
+            // 
+            // lstLevel
+            // 
+            this.lstLevel.FormattingEnabled = true;
+            this.lstLevel.ItemHeight = 16;
+            this.lstLevel.Location = new System.Drawing.Point(647, 85);
+            this.lstLevel.Name = "lstLevel";
+            this.lstLevel.Size = new System.Drawing.Size(108, 84);
+            this.lstLevel.TabIndex = 15;
+            // 
             // Trainer_s_Monthly_Income_Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 396);
+            this.ClientSize = new System.Drawing.Size(842, 237);
+            this.Controls.Add(this.lstLevel);
+            this.Controls.Add(this.lstClassID);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lstModules);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtIncome);
-            this.Controls.Add(this.txtLevel);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTrainerID);
             this.Controls.Add(this.label1);
             this.Name = "Trainer_s_Monthly_Income_Report";
@@ -153,13 +177,15 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbTrainerID;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtLevel;
         private System.Windows.Forms.TextBox txtIncome;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lstModules;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListBox lstClassID;
+        private System.Windows.Forms.ListBox lstLevel;
     }
 }

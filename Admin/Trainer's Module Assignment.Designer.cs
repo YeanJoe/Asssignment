@@ -30,16 +30,14 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtLevel = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkBoxJava = new System.Windows.Forms.CheckBox();
-            this.chkBoxCSharp = new System.Windows.Forms.CheckBox();
-            this.chkBoxDatabase = new System.Windows.Forms.CheckBox();
-            this.chkBoxPython = new System.Windows.Forms.CheckBox();
             this.cmbTrainerID = new System.Windows.Forms.ComboBox();
             this.cmbLevel = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.cmbClassID = new System.Windows.Forms.ComboBox();
+            this.cmbModule = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -59,59 +57,6 @@
             this.txtLevel.Size = new System.Drawing.Size(40, 16);
             this.txtLevel.TabIndex = 2;
             this.txtLevel.Text = "Level";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.chkBoxJava);
-            this.groupBox1.Controls.Add(this.chkBoxCSharp);
-            this.groupBox1.Controls.Add(this.chkBoxDatabase);
-            this.groupBox1.Controls.Add(this.chkBoxPython);
-            this.groupBox1.Location = new System.Drawing.Point(362, 48);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(126, 149);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Modules";
-            // 
-            // chkBoxJava
-            // 
-            this.chkBoxJava.AutoSize = true;
-            this.chkBoxJava.Location = new System.Drawing.Point(14, 76);
-            this.chkBoxJava.Name = "chkBoxJava";
-            this.chkBoxJava.Size = new System.Drawing.Size(59, 20);
-            this.chkBoxJava.TabIndex = 3;
-            this.chkBoxJava.Text = "Java";
-            this.chkBoxJava.UseVisualStyleBackColor = true;
-            // 
-            // chkBoxCSharp
-            // 
-            this.chkBoxCSharp.AutoSize = true;
-            this.chkBoxCSharp.Location = new System.Drawing.Point(14, 24);
-            this.chkBoxCSharp.Name = "chkBoxCSharp";
-            this.chkBoxCSharp.Size = new System.Drawing.Size(45, 20);
-            this.chkBoxCSharp.TabIndex = 2;
-            this.chkBoxCSharp.Text = "C#";
-            this.chkBoxCSharp.UseVisualStyleBackColor = true;
-            // 
-            // chkBoxDatabase
-            // 
-            this.chkBoxDatabase.AutoSize = true;
-            this.chkBoxDatabase.Location = new System.Drawing.Point(14, 50);
-            this.chkBoxDatabase.Name = "chkBoxDatabase";
-            this.chkBoxDatabase.Size = new System.Drawing.Size(89, 20);
-            this.chkBoxDatabase.TabIndex = 1;
-            this.chkBoxDatabase.Text = "Database";
-            this.chkBoxDatabase.UseVisualStyleBackColor = true;
-            // 
-            // chkBoxPython
-            // 
-            this.chkBoxPython.AutoSize = true;
-            this.chkBoxPython.Location = new System.Drawing.Point(14, 102);
-            this.chkBoxPython.Name = "chkBoxPython";
-            this.chkBoxPython.Size = new System.Drawing.Size(70, 20);
-            this.chkBoxPython.TabIndex = 0;
-            this.chkBoxPython.Text = "Python";
-            this.chkBoxPython.UseVisualStyleBackColor = true;
             // 
             // cmbTrainerID
             // 
@@ -136,7 +81,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(110, 218);
+            this.btnUpdate.Location = new System.Drawing.Point(272, 263);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 7;
@@ -154,23 +99,64 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // cmbClassID
+            // 
+            this.cmbClassID.FormattingEnabled = true;
+            this.cmbClassID.Location = new System.Drawing.Point(359, 68);
+            this.cmbClassID.Name = "cmbClassID";
+            this.cmbClassID.Size = new System.Drawing.Size(195, 24);
+            this.cmbClassID.TabIndex = 10;
+            this.cmbClassID.SelectedIndexChanged += new System.EventHandler(this.cmbClassID_SelectedIndexChanged);
+            // 
+            // cmbModule
+            // 
+            this.cmbModule.FormattingEnabled = true;
+            this.cmbModule.Items.AddRange(new object[] {
+            "C#",
+            "Database",
+            "Java",
+            "Python"});
+            this.cmbModule.Location = new System.Drawing.Point(359, 156);
+            this.cmbModule.Name = "cmbModule";
+            this.cmbModule.Size = new System.Drawing.Size(195, 24);
+            this.cmbModule.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(359, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 16);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "ClassID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(359, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 16);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Module";
+            // 
             // Trainer_s_Module_Assignment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 355);
+            this.ClientSize = new System.Drawing.Size(634, 355);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbModule);
+            this.Controls.Add(this.cmbClassID);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.cmbLevel);
             this.Controls.Add(this.cmbTrainerID);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtLevel);
             this.Controls.Add(this.label1);
             this.Name = "Trainer_s_Module_Assignment";
             this.Text = "Trainer\'s Module Assignment";
             this.Load += new System.EventHandler(this.Trainer_s_Module_Assignment_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,14 +166,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label txtLevel;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbTrainerID;
         private System.Windows.Forms.ComboBox cmbLevel;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.CheckBox chkBoxJava;
-        private System.Windows.Forms.CheckBox chkBoxCSharp;
-        private System.Windows.Forms.CheckBox chkBoxDatabase;
-        private System.Windows.Forms.CheckBox chkBoxPython;
+        private System.Windows.Forms.ComboBox cmbClassID;
+        private System.Windows.Forms.ComboBox cmbModule;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

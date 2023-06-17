@@ -12,6 +12,8 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Configuration;
 using Asssignment.Admin;
+using Asssignment.Trainer;
+using System.Collections;
 
 namespace Assignment_Admin_
 {
@@ -33,10 +35,11 @@ namespace Assignment_Admin_
             txtAddress.Enabled = false;
 
             cmbTrainerID.Items.Clear();
-            Admin ID = new Admin();
-            foreach (var id in ID.Refresh())
+            ArrayList TrainerID = new Trainer().GetAllTrainerID();
+            TrainerID.Add("New Trainer");
+            foreach (string id in TrainerID)
             {
-                cmbTrainerID.Items.Add(id.ToString());
+                cmbTrainerID.Items.Add(id);
             }
         }
 
@@ -104,10 +107,11 @@ namespace Assignment_Admin_
                     catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
                     cmbTrainerID.Items.Clear();
-                    Admin ID = new Admin();
-                    foreach (var id in ID.Refresh())
+                    ArrayList TrainerID = new Trainer().GetAllTrainerID();
+                    TrainerID.Add("New Trainer");
+                    foreach (string id in TrainerID)
                     {
-                        cmbTrainerID.Items.Add(id.ToString());
+                        cmbTrainerID.Items.Add(id);
                     }
                 }
                 else { MessageBox.Show("Information Missing!"); }
@@ -142,9 +146,11 @@ namespace Assignment_Admin_
 
                     cmbTrainerID.Items.Clear();
                     Admin ID = new Admin();
-                    foreach (var id in ID.Refresh())
+                    ArrayList TrainerID = new Trainer().GetAllTrainerID();
+                    TrainerID.Add("New Trainer");
+                    foreach (string id in TrainerID)
                     {
-                        cmbTrainerID.Items.Add(id.ToString());
+                        cmbTrainerID.Items.Add(id);
                     }
                 }
                 else

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Asssignment.Trainer;
 
 namespace Assignment_Admin_
 {
@@ -21,99 +23,53 @@ namespace Assignment_Admin_
 
         private void Trainer_s_Monthly_Income_Report_Load(object sender, EventArgs e)
         {
-            //Open Connection to the database
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
-            con.Open();
-
-            //Query to find total number of trainers in the trainer table
-            SqlCommand cmdTrainerID = new SqlCommand($"SELECT TrainerID FROM [TrainerModule] GROUP BY TrainerID", con);
-
-            //Display all TrainerID into the TrainerID ComboBox
-            using (SqlDataReader reader = cmdTrainerID.ExecuteReader())
+            Trainer trainers = new Trainer();
+            ArrayList ids = trainers.GetAllTrainerID();
+            foreach (string id in ids)
             {
-                while (reader.Read())
-                {
-                    cmbTrainerID.Items.Add(reader["TrainerID"].ToString());
-                }
+                cmbTrainerID.Items.Add(id);
             }
-
-            con.Close();
+            
         }
 
         private void cmbTrainerID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtLevel.Clear();
             txtIncome.Clear();
             lstModules.Items.Clear();
-            string TrainerID = cmbTrainerID.Text;
+            lstClassID.Items.Clear();
+            lstLevel.Items.Clear();
+            int TrainerID = Convert.ToInt32(cmbTrainerID.Text);
 
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database1.mdf;Integrated Security=True;Connect Timeout=30");
-            con.Open();
-
-            SqlCommand cmdLvl = new SqlCommand($"SELECT TOP 1 Level FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
-            txtLevel.Text = cmdLvl.ExecuteScalar().ToString();
-            try
-            {
-                SqlCommand cmdModules = new SqlCommand($"SELECT ModuleName FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
-                using (SqlDataReader reader = cmdModules.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string Module = reader.GetString(0);
-                        lstModules.Items.Add(Module);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("The trainer has not been assigned to any module. Please assign the trainer to a module to view monthly report of the trainer.");
-            }
-            con.Close();
-
-            double lvlBonus = 0;
-            if (txtLevel.Text == "Beginner")
-            {
-                lvlBonus = 1.1;
-            }
-            else if (txtLevel.Text == "Intermediate")
-            {
-                lvlBonus = 1.4;
-            }
-            else if (txtLevel.Text == "Advance")
-            {
-                lvlBonus = 1.6;
-            }
             
-            float baseIncome = 0;
+            double TotalIncome = 0;
 
-            int ModulesAssigned = lstModules.Items.Count;
-            for (int i = 0; i < ModulesAssigned; i++)
+            Trainer trainer = new Trainer(TrainerID);
+            List<int> classes = trainer.GetTrainerClassIDList();
+            foreach (int classID in classes)
             {
-                foreach (var module in lstModules.Items)
-                {
-                    if (module.ToString() == "Python")
-                    {
-                        baseIncome = baseIncome + 1000;
-                    }
-                    else if (module.ToString() == "C++")
-                    {
-                        baseIncome = baseIncome + 1250;
-                    }
-                    else if (module.ToString() == "C#")
-                    {
-                        baseIncome = baseIncome + 1500;
-                    }
-                    else if (module.ToString() == "HTML")
-                    {
-                        baseIncome = baseIncome + 1100;
-                    }
-                }
+                double basePay = 0;
+                double bonus = 0;
+                lstClassID.Items.Add(classID);
 
-                string TotalIncome = (baseIncome * lvlBonus).ToString();
+                string module = trainer.GetClassModule(classID.ToString());
+                lstModules.Items.Add(module);
+                string level = trainer.GetClassLevel(classID.ToString());
+                lstLevel.Items.Add(level);
 
-                txtIncome.Text = TotalIncome;
+                if (module == "C#") { basePay = 1000; }
+                else if (module == "Database") { basePay = 1100; }
+                else if (module == "Java") { basePay = 1200; }
+                else if (module == "Python") { basePay = 1250; }
 
+                if (level == "Beginner") { bonus = 1.1; }
+                else if (level == "Intermediate") { bonus = 1.25; }
+                else if (level == "Advance") { bonus = 1.4; }
+
+                TotalIncome = TotalIncome + (basePay * bonus);
             }
+
+            txtIncome.Text = TotalIncome.ToString();
+
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -124,5 +80,6 @@ namespace Assignment_Admin_
             this.Hide();
             
         }
+
     }
 }

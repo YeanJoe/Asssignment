@@ -113,13 +113,6 @@ namespace Asssignment.Admin
 
         public void RegisterTrainer()
         {
-            /*string _username = this.Username;
-            string _password = this.Password;
-            string _name = this.Name;
-            string _email = this.Email;
-            string _phoneNumber = this.PhoneNumber;
-            string _address = this.Address;*/
-
             con.Open();
 
             SqlCommand cmdInsertIntoUser = new SqlCommand("INSERT  INTO [User] (Username, Password, Role) VALUES (@username, @password, 'trainer')", con);
@@ -160,28 +153,7 @@ namespace Asssignment.Admin
 
         }
 
-        public ArrayList Refresh()
-        {
-            ArrayList TrainerID = new ArrayList();
-
-            //Open Connection to the database
-            con.Open();
-
-            //Query to find total number of trainers in the trainer table
-            SqlCommand cmdTrainerID = new SqlCommand($"SELECT TrainerId FROM [Trainer] GROUP BY TrainerId", con);
-
-            //Display all TrainerID into the TrainerID ComboBox
-            using (SqlDataReader reader = cmdTrainerID.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    TrainerID.Add(reader["TrainerId"].ToString());
-                }
-            }
-            TrainerID.Add("New Trainer");
-            con.Close();
-            return TrainerID;
-        }
+        
 
 
     }

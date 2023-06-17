@@ -82,6 +82,7 @@
     <Compile Include="Admin\Feedback Hub.Designer.cs">
       <DependentUpon>Feedback Hub.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Feedback.cs" />
     <Compile Include="Admin\FormProvider.cs" />
     <Compile Include="Admin\Admin.cs" />
     <Compile Include="Lecturer\ApproveRequest.cs">
