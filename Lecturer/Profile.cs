@@ -33,7 +33,10 @@ namespace Asssignment.Lecturer
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            lecturer.UpdateProfile(txtName.Text, txtEmail.Text, txtNumber.Text, txtAddress.Text);
+            MessageBox.Show(lecturer.UpdateProfile(txtName.Text, txtEmail.Text, txtNumber.Text, txtAddress.Text));
+            LecturerDashboard next = new LecturerDashboard(lecturer);
+            next.Show();
+            this.Hide();
         }
 
         private void Profile_Load(object sender, EventArgs e)
