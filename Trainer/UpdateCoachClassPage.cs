@@ -78,5 +78,22 @@ namespace APU_Programming_Cafe_Management_System
             cboTime.SelectedItem = schedule[1];
 
         }
+
+        private void cboLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string level = cboLevel.Text;
+            if (level == "Beginner")
+            {
+                txtBoxCharge.Text = "100";
+            }
+            else if (level == "Intermediate")
+            {
+                txtBoxCharge.Text = "125";
+            }
+            else if (level == "Advanced")
+            {
+                txtBoxCharge.Text = "150";
+            }
+        }
     }
 }

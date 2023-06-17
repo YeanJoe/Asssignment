@@ -118,6 +118,7 @@
             this.txtCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCharge.Location = new System.Drawing.Point(316, 185);
             this.txtCharge.Name = "txtCharge";
+            this.txtCharge.ReadOnly = true;
             this.txtCharge.Size = new System.Drawing.Size(154, 22);
             this.txtCharge.TabIndex = 7;
             // 
@@ -142,6 +143,7 @@
             this.cboLevel.Name = "cboLevel";
             this.cboLevel.Size = new System.Drawing.Size(121, 24);
             this.cboLevel.TabIndex = 14;
+            this.cboLevel.SelectedIndexChanged += new System.EventHandler(this.cboLevel_SelectedIndexChanged);
             // 
             // label4
             // 
