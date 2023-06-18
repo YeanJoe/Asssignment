@@ -37,7 +37,6 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // coachingClassTableAdapter1
@@ -112,19 +111,11 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(12, 81);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 22);
-            this.txtName.TabIndex = 8;
-            // 
             // AdminProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 450);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.txtAddress);
@@ -152,6 +143,5 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.TextBox txtName;
     }
 }

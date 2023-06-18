@@ -86,7 +86,7 @@ namespace APU_Programming_Cafe_Management_System
             }
             lblLevel.Text = level;
             lblMonthofEnrollment.Text = month;
-
+            con.Close();
 
         }
 
