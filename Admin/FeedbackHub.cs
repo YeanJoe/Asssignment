@@ -54,7 +54,7 @@ namespace Assignment_Admin_
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            AdminHomePage dash = new AdminHomePage();
+            AdminHomePage dash = new AdminHomePage(name);
             dash.Show();
             this.Hide();
         }
