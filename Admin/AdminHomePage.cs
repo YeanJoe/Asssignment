@@ -30,13 +30,6 @@ namespace Assignment_Admin_
 
         private void AdminHomePage_Load(object sender, EventArgs e)
         {
-            /*SqlConnection con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename =| DataDirectory |\\Database1.mdf; Integrated Security = True; Connect Timeout = 30");
-            con.Open();
-            SqlCommand cmdName = new SqlCommand("", con);*/
-            // string UID = UserLogin.GetUID();  Cannot access GetUID method from UID
-            // I want to get the UID and Password from the UserLogin class in order to run a query
-            // To search for the name of the user and show it on the label
-            // I have the FormProvider class to show and hide the AdminHomePage but I can't pass the name into it
             lblHomeTitle.Text = "Welcome, " + name;
         }
 

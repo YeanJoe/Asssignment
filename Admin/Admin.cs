@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -88,7 +88,8 @@ namespace Asssignment.Admin
         {
             con.Open();
 
-            SqlCommand cmdUpdate = new SqlCommand($"UPDATE [Admin] SET Email = '{email}', ContactNumber = '{contactNumber}', Address = '{address}' WHERE AdminID = '{adminID}'", con);
+            SqlCommand cmdUpdate = new SqlCommand($"UPDATE [Admin] SET Email = '{email}', " +
+                $"ContactNumber = '{contactNumber}', Address = '{address}' WHERE AdminID = '{adminID}'", con);
             cmdUpdate.ExecuteNonQuery();
             con.Close();
         }

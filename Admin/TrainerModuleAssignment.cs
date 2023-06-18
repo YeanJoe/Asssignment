@@ -79,7 +79,7 @@ namespace Assignment_Admin_
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            AdminHomePage adminHomePage = new AdminHomePage();
+            AdminHomePage adminHomePage = new AdminHomePage(name);
             adminHomePage.Show();
             this.Hide();
         }
