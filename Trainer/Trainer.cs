@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+
 
 namespace Asssignment.Trainer
 {
@@ -17,7 +22,7 @@ namespace Asssignment.Trainer
         private int userID;
         private string fullName;
         private string email;
-        private string contactNumer;
+        private string contactNumber;
         private string address;
         private string password;
         private string username;
@@ -47,8 +52,8 @@ namespace Asssignment.Trainer
         }
         public string ContactNumber
         {
-            get { return contactNumer; }
-            set { contactNumer = value; }
+            get { return contactNumber; }
+            set { contactNumber = value; }
         }
         public string Address
         {
@@ -96,6 +101,119 @@ namespace Asssignment.Trainer
                 
             }
             con.Close();
+        }
+
+        public Trainer()
+        {
+
+        }
+
+        public Trainer(int trainerID)
+        {
+            this.trainerID = trainerID;
+        }
+
+        public Trainer(string username, string password, string name, string email, string contactNumber, string address)
+        {
+            this.username = username;
+            this.password = password;
+            this.fullName = name;
+            this.email = email;
+            this.contactNumber = contactNumber;
+            this.address = address;
+        }
+
+        public Trainer(string userID, string username, string password)
+        {
+            this.userID = Convert.ToInt32(userID);
+            this.username = username;
+            this.password = password;
+        }
+
+
+        public void ReadTrainerPro(string _trainerID)
+        {
+            con.Open();
+            SqlCommand cmdReadTrainer = new SqlCommand($"SELECT * FROM [Trainer] WHERE TrainerId = '{_trainerID}'", con);
+            using (SqlDataReader reader = cmdReadTrainer.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    userID = Convert.ToInt32(reader["UserId"]);
+                    username = reader["Username"].ToString();
+                    fullName = reader["FullName"].ToString();
+                    Email = reader["Email"].ToString();
+                    contactNumber = reader["ContactNumber"].ToString();
+                    address = reader["Address"].ToString();
+                    password = reader["Password"].ToString();
+                }
+            }
+            con.Close();
+        }
+
+        public void RegisterTrainer()
+        {
+            con.Open();
+
+            SqlCommand cmdInsertIntoUser = new SqlCommand("INSERT  INTO [User] (Username, Password, Role) VALUES (@username, @password, 'trainer')", con);
+            cmdInsertIntoUser.Parameters.AddWithValue("@username", username);
+            cmdInsertIntoUser.Parameters.AddWithValue("@password", password);
+            cmdInsertIntoUser.ExecuteNonQuery();
+
+            SqlCommand cmdUID = new SqlCommand($"SELECT UserID FROM [User] WHERE Username = '{username}' AND Password = '{password}'", con);
+            string UID = cmdUID.ExecuteScalar().ToString();
+
+            SqlCommand cmdInsertIntoTrainer = new SqlCommand($"INSERT INTO [Trainer] (UserId, FullName, Email, ContactNumber, Address, Password, Username) Values(@uid, @name, @email, @number, @address, @password, @username)", con);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@uid", UID);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@name", fullName);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@email", email);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@number", contactNumber);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@address", address);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@password", password);
+            cmdInsertIntoTrainer.Parameters.AddWithValue("@username", username);
+            cmdInsertIntoTrainer.ExecuteNonQuery();
+
+            con.Close();
+            MessageBox.Show("Trainer Registered!");
+        }
+
+        public void DeleteTrainer()
+        {
+            int _uid = this.userID;
+            string _username = this.Username;
+            string _password = this.Password;
+
+            con.Open();
+            SqlCommand cmdDeleteFromUser = new SqlCommand($"DELETE FROM [User] WHERE UserID = '{_uid}' AND Username = '{_username}' AND Password = '{_password}'", con);
+            cmdDeleteFromUser.ExecuteNonQuery();
+            SqlCommand cmdDeleteFromTrainer = new SqlCommand($"DELETE FROM [Trainer] WHERE UserId = '{_uid}' AND Password = '{_password}'", con);
+            cmdDeleteFromTrainer.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Trainer Deleted");
+
+        }
+
+        public ArrayList GetAllTrainerID()
+        {
+            ArrayList TrainerID = new ArrayList();
+
+            //Open Connection to the database
+            con.Open();
+
+            //Query to find total number of trainers in the trainer table
+            SqlCommand cmdTrainerID = new SqlCommand($"SELECT TrainerId FROM [Trainer] GROUP BY TrainerId", con);
+
+            //Display all TrainerID into the TrainerID ComboBox
+            using (SqlDataReader reader = cmdTrainerID.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    TrainerID.Add(reader["TrainerId"].ToString());
+                }
+            }
+            
+            con.Close();
+            return TrainerID;
         }
 
         public List<string> GetTrainerExistingModules()
@@ -173,6 +291,27 @@ namespace Asssignment.Trainer
             return classIDs;
         }
 
+        public string GetClassModule(string ClassID)
+        {
+            con.Open();
+            SqlCommand cmdModuleID = new SqlCommand($"SELECT ModuleID FROM [CoachingClass] WHERE ClassID = '{ClassID}'", con);
+            int ModuleID = Convert.ToInt32(cmdModuleID.ExecuteScalar());
+            con.Close();
+
+            return Module.GetModuleName(ModuleID);
+        }
+
+        public string GetClassLevel(string ClassID)
+        {
+            string lvl;
+            con.Open();
+            SqlCommand cmdLevel = new SqlCommand($"SELECT Level FROM [CoachingClass] WHERE ClassID = '{ClassID}'", con);
+            lvl = cmdLevel.ExecuteScalar().ToString();
+            con.Close();
+
+            return lvl;
+        }
+
         //Get student list which is being handled by trainer
         public List<string> GetTrainerStudentList (string moduleName)
         {
@@ -209,7 +348,7 @@ namespace Asssignment.Trainer
         public string UpdateContactInfo(string email, string contactNumber)
         {
             this.email = email;
-            this.contactNumer = contactNumber;
+            this.contactNumber = contactNumber;
             string stat = "Failed to Update Contact Info";
             con.Open();
             string cmdString = "UPDATE [Trainer] SET Email = '{0}', ContactNumber = '{1}' WHERE TrainerID = {2} ";

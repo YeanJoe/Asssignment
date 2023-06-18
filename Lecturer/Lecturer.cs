@@ -89,6 +89,10 @@ namespace Asssignment.Lecturer
             if (i != 0)
             {
                 stat = "Update Contact Info success!";
+                this.fullName = name;
+                this.email = email;
+                this.contactNumer = contactNumber;
+                this.address = address;
             }
             con.Close();
             return stat;

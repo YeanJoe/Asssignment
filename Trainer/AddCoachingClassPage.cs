@@ -67,5 +67,22 @@ namespace APU_Programming_Cafe_Management_System
             }
  
         }
+
+        private void cboLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string level = cboLevel.Text;
+            if(level == "Beginner")
+            {
+                txtCharge.Text = "100";
+            }
+            else if(level == "Intermediate")
+            {
+                txtCharge.Text = "125";
+            }
+            else if (level == "Advanced")
+            {
+                txtCharge.Text = "150";
+            }
+        }
     }
 }

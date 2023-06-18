@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -9,191 +10,71 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Asssignment.Trainer;
+
 
 namespace Assignment_Admin_
 {
     public partial class Trainer_s_Module_Assignment : Form
     {
-        public Trainer_s_Module_Assignment()
+        public string name;
+
+        public Trainer_s_Module_Assignment(string n)
         {
             InitializeComponent();
+            name = n;
         }
 
         private void cmbTrainerID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkBoxPython.Checked = false;
-            chkBoxDatabase.Checked = false;
-            chkBoxCSharp.Checked = false;
-            chkBoxJava.Checked = false;
-            cmbLevel.Text = string.Empty;
-
-            string TrainerID = cmbTrainerID.Text;
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
-            con.Open();
-
-            //Look for Level of selected trainer
-            SqlCommand cmdcount = new SqlCommand($"SELECT COUNT(LEVEL) FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
-            int countLvl = Convert.ToInt32(cmdcount.ExecuteScalar());
-            if (countLvl > 0)
+            cmbClassID.Items.Clear();
+            List<int> ClassID = new Trainer(Convert.ToInt32(cmbTrainerID.Text)).GetTrainerClassIDList();
+            foreach (int classID in ClassID)
             {
-                SqlCommand cmdLevel = new SqlCommand($"SELECT TOP 1 Level FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
-                string Level = cmdLevel.ExecuteScalar().ToString();
-                if (Level == "Beginner") { cmbLevel.SelectedIndex = cmbLevel.FindString("Beginner"); }
-                else if (Level == "Intermediate") { cmbLevel.SelectedIndex = cmbLevel.FindString("Intermediate"); }
-                else if (Level == "Advance") { cmbLevel.SelectedIndex = cmbLevel.FindString("Advance"); }
+                cmbClassID.Items.Add(classID);
             }
-            else { cmbLevel.Text = ""; }
-
-            //Look for modules assigned
-            SqlCommand cmdModule = new SqlCommand($"SELECT ModuleName FROM [TrainerModule] WHERE TrainerID = '{TrainerID}'", con);
-            using (SqlDataReader reader = cmdModule.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    if (reader["ModuleName"].ToString() == "Python")    
-                    {
-                        chkBoxPython.Checked = true;
-                    }
-                    else if (reader["ModuleName"].ToString() == "C++")
-                    {
-                        chkBoxDatabase.Checked = true;
-                    }
-                    else if (reader["ModuleName"].ToString() == "C#")
-                    {
-                        chkBoxCSharp.Checked = true;
-                    }
-                    else if (reader["ModuleName"].ToString() == "HTML")
-                    {
-                        chkBoxJava.Checked = true;
-                    }
-                }
-            }
-            con.Close();
         }
 
         private void Trainer_s_Module_Assignment_Load(object sender, EventArgs e)
         {
-            //Open Connection to the database
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
-            con.Open();
-
-            //Query to find total number of trainers in the trainer table
-            SqlCommand cmdTrainerID = new SqlCommand($"SELECT TrainerID FROM [Trainer] GROUP BY TrainerID", con);
-
-            //Display all TrainerID into the TrainerID ComboBox
-            using (SqlDataReader reader = cmdTrainerID.ExecuteReader())
+            ArrayList TrainerID = new Trainer().GetAllTrainerID();
+            foreach (string id in TrainerID)
             {
-                while (reader.Read())
-                {
-                    cmbTrainerID.Items.Add(reader["TrainerID"].ToString());
-                }
+                cmbTrainerID.Items.Add(id);
             }
-            con.Close();
-
-            chkBoxPython.Checked = false;
-            chkBoxDatabase.Checked = false;
-            chkBoxCSharp.Checked = false;
-            chkBoxJava.Checked = false;
-            cmbLevel.Text = string.Empty;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string TrainerID = cmbTrainerID.Text;
-            string Python = chkBoxPython.Checked.ToString();
-            string CPlusPlus = chkBoxDatabase.Checked.ToString();
-            string CSharp = chkBoxCSharp.Checked.ToString();
-            string HTML = chkBoxJava.Checked.ToString();
+            Trainer ClassID = new Trainer();
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
-            con.Open();
-            try
+            string OriLevel = ClassID.GetClassLevel(cmbClassID.Text);
+            string OriModule = ClassID.GetClassModule(cmbClassID.Text);
+
+            if (cmbLevel.SelectedItem != OriLevel || cmbModule.SelectedItem != OriModule)
             {
-                //Check if Trainer been assigned to python
-                SqlCommand cmdCheckPython = new SqlCommand($"SELECT COUNT(ModuleName) FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleName = 'Python'", con);
-                int PythonCount = Convert.ToInt32(cmdCheckPython.ExecuteScalar());
-                //if checkBoxPython is checked, insert a row into database if haven't been inserted
-                if (Python == "true")
+                CoachingClass newClass = new CoachingClass();
+                newClass.ModuleID = Module.GetModuleID(cmbModule.Text);
+                newClass.Level = cmbLevel.Text;
+                if (cmbLevel.Text == "Beginner")
                 {
-                    if (PythonCount == 0)
-                    {
-                        SqlCommand cmdAddPython = new SqlCommand($"INSERT INTO [TrainerModule] VALUES ('{TrainerID}', 'Python'", con);
-                        cmdAddPython.ExecuteNonQuery();
-                    }
+                    newClass.Charges = 100;
                 }
-                //if checkBoxPython is not checked, delete a row from database if already been inserted
-                else if (Python == "false")
+                else if (cmbLevel.Text == "Intermediate")
                 {
-                    if (PythonCount > 0)
-                    {
-                        SqlCommand cmdDelPython = new SqlCommand($"DELETE FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleNae = 'Python'", con);
-                        cmdDelPython.ExecuteNonQuery();
-                    }
+                    newClass.Charges = 125;
                 }
+                else if (cmbLevel.Text == "Advance")
+                {
+                    newClass.Charges = 150;
+                }
+                newClass.TrainerID = Convert.ToInt32(cmbTrainerID.Text);
+                newClass.Schedule = "";
 
-                //same logic as Python but apply for C++ checkbox
-                SqlCommand cmdCheckCPP = new SqlCommand($"SELECT COUNT(ModuleName) FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleName = 'C++'", con);
-                int CPPCount = Convert.ToInt32(cmdCheckCPP.ExecuteScalar());
-                if (CPlusPlus == "true")
-                {
-                    if (CPPCount == 0)
-                    {
-                        SqlCommand cmdAddCPP = new SqlCommand($"INSERT INTO [TrainerModule] VALUES ('{TrainerID}', 'C++'", con);
-                        cmdAddCPP.ExecuteNonQuery();
-                    }
-                }
-                else if (CPlusPlus == "false")
-                {
-                    if (CPPCount > 0)
-                    {
-                        SqlCommand cmdDelCPP = new SqlCommand($"DELETE FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleNae = 'C++'", con);
-                        cmdDelCPP.ExecuteNonQuery();
-                    }
-                }
+                newClass.RemoveTrainerFromOriClass(cmbClassID.Text);
 
-                //same logic as Python but apply for C# checkbox
-                SqlCommand cmdCheckCSharp = new SqlCommand($"SELECT COUNT(ModuleName) FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleName = 'C#'", con);
-                int CSharpCount = Convert.ToInt32(cmdCheckCSharp.ExecuteScalar());
-                if (CSharp == "true")
-                {
-                    if (CSharpCount == 0)
-                    {
-                        SqlCommand cmdAddCSharp = new SqlCommand($"INSERT INTO [TrainerModule] VALUES ('{TrainerID}', 'C#'", con);
-                        cmdAddCSharp.ExecuteNonQuery();
-                    }
-                }
-                else if (CSharp == "false")
-                {
-                    if (CSharpCount > 0)
-                    {
-                        SqlCommand cmdDelCSharp = new SqlCommand($"DELETE FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleNae = 'C#'", con);
-                        cmdDelCSharp.ExecuteNonQuery();
-                    }
-                }
-
-                //same logic as Python but apply for HTML checkbox
-                SqlCommand cmdCheckHTML = new SqlCommand($"SELECT COUNT(ModuleName) FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleName = 'HTML'", con);
-                int HTMLCount = Convert.ToInt32(cmdCheckHTML.ExecuteScalar());
-                if (HTML == "true")
-                {
-                    if (HTMLCount == 0)
-                    {
-                        SqlCommand cmdAddHTML = new SqlCommand($"INSERT INTO [TrainerModule] VALUES ('{TrainerID}', 'HTML'", con);
-                        cmdAddHTML.ExecuteNonQuery();
-                    }
-                }
-                else if (HTML == "false")
-                {
-                    if (HTMLCount > 0)
-                    {
-                        SqlCommand cmdDelHTML = new SqlCommand($"DELETE FROM [TrainerModule] WHERE TrainerID = '{TrainerID}' AND ModuleNae = 'HTML'", con);
-                        cmdDelHTML.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Update Successfully");
+                MessageBox.Show(newClass.InsertRow());
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -202,5 +83,14 @@ namespace Assignment_Admin_
             adminHomePage.Show();
             this.Hide();
         }
+
+        private void cmbClassID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Trainer ClassID = new Trainer();
+            cmbLevel.SelectedItem = ClassID.GetClassLevel(cmbClassID.Text);
+            cmbModule.SelectedItem = ClassID.GetClassModule(cmbClassID.Text);
+        }
+
+
     }
 }

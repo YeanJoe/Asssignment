@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Asssignment.Admin;
+using Asssignment.Trainer;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -14,60 +17,39 @@ namespace Assignment_Admin_
 {
     public partial class Feedback_HUB : Form
     {
-        public Feedback_HUB()
+        public string name;
+
+        public Feedback_HUB(string n)
         {
             InitializeComponent();
+            name = n;
         }
 
         private void Feedback_HUB_Load(object sender, EventArgs e)
         {
-            //Open Connection to the database
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString()) ;
-            con.Open();
-
-            //Query to find total number of trainers in the trainer table
-            SqlCommand cmdTrainerID = new SqlCommand($"SELECT TrainerID FROM [TrainerFeedback] GROUP BY TrainerID", con);
-
-            //Display all TrainerID into the TrainerID ComboBox
-            using (SqlDataReader reader = cmdTrainerID.ExecuteReader())
+            cmbTrainerID.Items.Clear();
+            ArrayList TrainerID = new Trainer().GetAllTrainerID();
+            foreach (string trainer in TrainerID)
             {
-                while (reader.Read())
-                {
-                    cmbTrainerID.Items.Add(reader["TrainerID"].ToString());
-                }
+                cmbTrainerID.Items.Add(trainer);
             }
         }
 
         private void cmbTrainerID_SelectedIndexChanged(object sender, EventArgs e)
         {
             lstFeedback.Items.Clear();
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
-            con.Open();
-
-            string TrainerID = cmbTrainerID.Text;
-            SqlCommand cmdFeedbackID = new SqlCommand($"SELECT FeedbackID FROM [TrainerFeedback] WHERE TrainerID = '{TrainerID}'", con);
-            using (SqlDataReader reader = cmdFeedbackID.ExecuteReader())
+            List<string> FeedbackIDs = new Feedback().GetFeedbackIDList(Convert.ToInt32(cmbTrainerID.Text));
+            foreach (string FeedbackID in FeedbackIDs)
             {
-                while (reader.Read())
-                {
-                    lstFeedback.Items.Add(reader["FeedbackID"].ToString());
-                }
+                lstFeedback.Items.Add(FeedbackID);
             }
-            con.Close();
         }
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            string FeedbackID = lstFeedback.SelectedItem.ToString();
-            string TrainerID = cmbTrainerID.Text;
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
-            con.Open();
-
-            SqlCommand cmdViewFeedback = new SqlCommand($"SELECT FeedbackMessage FROM [TrainerFeedback] WHERE TrainerID = '{TrainerID}' AND FeedbackID = '{FeedbackID}'", con);
-            string Message = cmdViewFeedback.ExecuteScalar().ToString();
+            int FeedbackID = Convert.ToInt32(lstFeedback.GetItemText(lstFeedback.SelectedItem));
+            string Message = new Feedback().GetFeedbackMessage(FeedbackID);
             MessageBox.Show(Message);
-
-
         }
 
         private void btnHome_Click(object sender, EventArgs e)

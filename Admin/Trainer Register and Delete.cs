@@ -12,14 +12,20 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Configuration;
 using Asssignment.Admin;
+using Asssignment.Trainer;
+using System.Collections;
 
 namespace Assignment_Admin_
 {
+
     public partial class Trainer_Register_and_Delete : Form
     {
-        public Trainer_Register_and_Delete()
+        public static string name;
+
+        public Trainer_Register_and_Delete(string n)
         {
             InitializeComponent();
+            Name = n;
         }
 
         private void Trainer_Register_and_Delete_Load(object sender, EventArgs e)
@@ -33,10 +39,11 @@ namespace Assignment_Admin_
             txtAddress.Enabled = false;
 
             cmbTrainerID.Items.Clear();
-            Admin ID = new Admin();
-            foreach (var id in ID.Refresh())
+            ArrayList TrainerID = new Trainer().GetAllTrainerID();
+            TrainerID.Add("New Trainer");
+            foreach (string id in TrainerID)
             {
-                cmbTrainerID.Items.Add(id.ToString());
+                cmbTrainerID.Items.Add(id);
             }
         }
 
@@ -52,15 +59,15 @@ namespace Assignment_Admin_
                 txtContactNumber.Enabled = false;
                 txtAddress.Enabled = false;
 
-                Admin read = new Admin();
+                Trainer read = new Trainer();
                 read.ReadTrainerPro(cmbTrainerID.Text);
-                txtUserID.Text = read.uid;
-                txtUsername.Text = read.username;
-                txtPassword.Text = read.password;
-                txtName.Text = read.name;
-                txtEmail.Text = read.email;
-                txtContactNumber.Text = read.phoneNumber;
-                txtAddress.Text = read.address;
+                txtUserID.Text = read.UserID.ToString();
+                txtUsername.Text = read.Username;
+                txtPassword.Text = read.Password;
+                txtName.Text = read.FullName;
+                txtEmail.Text = read.Email;
+                txtContactNumber.Text = read.ContactNumber;
+                txtAddress.Text = read.Address;
             }
             else if (cmbTrainerID.Text == "New Trainer")
             {
@@ -98,16 +105,19 @@ namespace Assignment_Admin_
                 {
                     try
                     {
-                        Admin Register = new Admin(Username, Password, Name, Email, Contact, Address);
+                        Trainer Register = new Trainer(Username, Password, Name, Email, Contact, Address);
                         Register.RegisterTrainer();
                     }
                     catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
+
+                    //Refresh cmbTrainerID after registeration
                     cmbTrainerID.Items.Clear();
-                    Admin ID = new Admin();
-                    foreach (var id in ID.Refresh())
+                    ArrayList TrainerID = new Trainer().GetAllTrainerID();
+                    TrainerID.Add("New Trainer");
+                    foreach (string id in TrainerID)
                     {
-                        cmbTrainerID.Items.Add(id.ToString());
+                        cmbTrainerID.Items.Add(id);
                     }
                 }
                 else { MessageBox.Show("Information Missing!"); }
@@ -135,16 +145,19 @@ namespace Assignment_Admin_
 
                     try
                     {
-                        Admin Delete = new Admin(UID, Username, Password);
+                        Trainer Delete = new Trainer(UID, Username, Password);
                         Delete.DeleteTrainer();
                     }
                     catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
+
+                    //refresh cmbTrainerID after delete
                     cmbTrainerID.Items.Clear();
-                    Admin ID = new Admin();
-                    foreach (var id in ID.Refresh())
+                    ArrayList TrainerID = new Trainer().GetAllTrainerID();
+                    TrainerID.Add("New Trainer");
+                    foreach (string id in TrainerID)
                     {
-                        cmbTrainerID.Items.Add(id.ToString());
+                        cmbTrainerID.Items.Add(id);
                     }
                 }
                 else

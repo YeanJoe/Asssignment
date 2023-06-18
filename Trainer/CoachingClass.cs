@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -96,6 +96,14 @@ namespace Asssignment.Trainer
 
             return stat;
 
+        }
+
+        public void RemoveTrainerFromOriClass(string ClassID)
+        {
+            con.Open();
+            SqlCommand cmdRemove = new SqlCommand($"UPDATE [CoachingClass] SET TrainerID = null WHERE ClassID = '{ClassID}'", con);
+            cmdRemove.ExecuteNonQuery();
+            con.Close();
         }
 
         //Updates the current values in the current field to reflect on the database

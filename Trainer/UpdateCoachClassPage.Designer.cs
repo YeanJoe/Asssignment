@@ -94,6 +94,7 @@
             // 
             this.txtBoxCharge.Location = new System.Drawing.Point(356, 224);
             this.txtBoxCharge.Name = "txtBoxCharge";
+            this.txtBoxCharge.ReadOnly = true;
             this.txtBoxCharge.Size = new System.Drawing.Size(221, 22);
             this.txtBoxCharge.TabIndex = 6;
             // 
@@ -169,6 +170,7 @@
             this.cboLevel.Name = "cboLevel";
             this.cboLevel.Size = new System.Drawing.Size(121, 24);
             this.cboLevel.TabIndex = 12;
+            this.cboLevel.SelectedIndexChanged += new System.EventHandler(this.cboLevel_SelectedIndexChanged);
             // 
             // UpdateCoachClassPage
             // 
