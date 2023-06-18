@@ -22,7 +22,13 @@ namespace Asssignment
             InitializeComponent();
             name = n;
         }
-
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Profile pro = new Profile(name);
+            pro.Show();
+            
+            this.Hide();
+        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -35,13 +41,7 @@ namespace Asssignment
             this.Hide();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            Profile pro = new Profile(name);
-            pro.Show();
-
-            this.Hide();
-        }
+       
 
 
     }

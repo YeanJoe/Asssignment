@@ -24,6 +24,13 @@ namespace Asssignment
             InitializeComponent();
             name = n;
         }
+         private void btnBack_Click(object sender, EventArgs e)
+         {
+            frmHome home = new frmHome(name);
+            home.Show();
+
+            this.Hide();
+         }
 
         private void Profile_Load(object sender, EventArgs e)
         {
@@ -35,14 +42,6 @@ namespace Asssignment
             lblContact.Text = std.PhoneNum;
             lblEmail.Text = std.Email;
             lblAddress.Text = std.Address;
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            frmHome home = new frmHome(name);
-            home.Show();
-
-            this.Hide();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

@@ -23,7 +23,11 @@ namespace Asssignment
             InitializeComponent();
             name = n;
         }
-
+        private void frmHome_Load(object sender, EventArgs e)
+        {
+            lblWelcome.Text = "Welcome, " + name;
+            
+        }
         private void btnEnroll_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -38,13 +42,6 @@ namespace Asssignment
 
             frmViewReq view = new frmViewReq(name);
             view.Show();
-        }
-
-        private void frmHome_Load(object sender, EventArgs e)
-        {
-            Student obj1 = new Student(name);
-            lblWelcome.Text = "Welcome, " + name;
-            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

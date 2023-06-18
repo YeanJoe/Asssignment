@@ -77,10 +77,14 @@ namespace Asssignment.Admin
             SqlCommand cmdProfile = new SqlCommand($"SELECT Email, ContactNumber, Address FROM [Admin] WHERE Fullname = '{fullName}'", con);
             using (SqlDataReader reader = cmdProfile.ExecuteReader())
             {
-                email = reader.GetString(0);
-                contactNumber = reader["ContactNumber"].ToString();
-                address = reader["Address"].ToString();
+                while (reader.Read())
+                {
+                    email = reader.GetString(0);
+                    contactNumber = reader["ContactNumber"].ToString();
+                    address = reader["Address"].ToString();
+                }
             }
+                
             con.Close();
         }
 
